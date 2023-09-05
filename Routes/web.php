@@ -11,6 +11,8 @@
 |
 */
 
+/*
 \Illuminate\Support\Facades\Route::prefix('ui')->group(function(): void {
     \Illuminate\Support\Facades\Route::get('/', 'UIController@index');
 });
+*/

@@ -13,4 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-\Illuminate\Support\Facades\Route::middleware('auth:api')->get('/ui', fn(Request $request) => $request->user());
+//\Illuminate\Support\Facades\Route::middleware('auth:api')->get('/ui', fn(Request $request) => $request->user());
