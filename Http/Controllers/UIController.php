@@ -28,10 +28,9 @@ class UIController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(Request $request): void
     {
         //
     }
@@ -58,11 +57,10 @@ class UIController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @param Request $request
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): void
     {
         //
     }
@@ -72,7 +70,7 @@ class UIController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy($id): void
     {
         //
     }
