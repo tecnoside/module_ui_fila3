@@ -6,7 +6,7 @@ namespace Modules\UI\Providers\Filament;
 
 use Modules\Xot\Providers\Filament\XotBasePanelProvider;
 
-class AdminPanelProvider extends XotBasePanelProvider
+final class AdminPanelProvider extends XotBasePanelProvider
 {
     protected string $module = 'UI';
 }
