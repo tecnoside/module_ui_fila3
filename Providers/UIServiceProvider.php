@@ -11,7 +11,7 @@ use Modules\Xot\Providers\XotBaseServiceProvider;
  */
 class UIServiceProvider extends XotBaseServiceProvider
 {
-    public string $module_name = 'setting';
+    public string $module_name = 'ui';
 
     protected string $module_dir = __DIR__;
 
