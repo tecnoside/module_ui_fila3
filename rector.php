@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+use Rector\PHPUnit\Set\PHPUnitLevelSetList;
 
 use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
 use Rector\Config\RectorConfig;
@@ -34,7 +35,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     // define sets of rules
     $rectorConfig->sets([
-        \Rector\PHPUnit\Set\PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
+        PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
         SetList::DEAD_CODE,
         SetList::CODE_QUALITY,
         LevelSetList::UP_TO_PHP_81,
