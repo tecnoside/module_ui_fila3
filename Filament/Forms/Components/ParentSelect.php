@@ -18,11 +18,9 @@ class ParentSelect extends Select
         parent::setUp();
 
         //dddx($this->getModel());
-        $this->options(function (ParentSelect $component) {
-            
+        $this->options(fn(ParentSelect $component) =>
             //return Navigation::pluck('name', $component->getOptionValueProperty());
-            return ['a'=>'a','b'=>'b'];
-        });
+            ['a'=>'a','b'=>'b']);
         
         
     }
