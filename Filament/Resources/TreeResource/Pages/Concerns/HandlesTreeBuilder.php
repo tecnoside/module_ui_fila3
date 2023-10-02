@@ -154,7 +154,7 @@ trait HandlesTreeBuilder
     public function storeItem(?Model $record,array $data){
 
         $model=$this->getResource()::getModel();
-        $data['parent_id']=$record->getKey();
+        $data['parent_id']=$record?->getKey();
         $row=$model::create($data);
         //$k=$row->getKey();
         $v=$row->toArray();
