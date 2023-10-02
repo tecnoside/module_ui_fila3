@@ -28,6 +28,8 @@ trait HandlesTreeBuilder
     
     public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths)
     {
+
+        
         $items = [];
 
         foreach ($targetItemsStatePaths as $targetItemStatePath) {
@@ -36,6 +38,38 @@ trait HandlesTreeBuilder
 
             $items[$uuid] = $item;
         }
+        $model=$this->getResource()::getModel();
+        /*
+        dddx([
+            'items'=>$items,
+            'targetItemsStatePaths'=>$targetItemsStatePaths,
+            'targetStatePath'=>$targetStatePath,
+        ]);
+        */
+        if(Str::endsWith($targetStatePath,'.children')){
+            $parentPath=Str::beforeLast($targetStatePath,'.children');
+            $parent=data_get($this, $parentPath);
+            foreach($items as $item){
+                app($model)->find($item['id'])->update(['parent_id'=>$parent['id']]);
+            }    
+            
+        }
+        
+        $ids=collect($items)->pluck('id')->toArray();
+            /*
+            dddx([
+                'items'=>$items,
+                'ids'=>$ids,
+                'targetItemsStatePaths'=>$targetItemsStatePaths,
+                'targetStatePath'=>$targetStatePath,
+            ]);
+            */
+        $model::setNewOrder($ids);
+        
+
+
+        
+
 
         data_set($this, $targetStatePath, $items);
         Notification::make() 
@@ -83,8 +117,12 @@ trait HandlesTreeBuilder
         $keyName=$record->getKeyName();
         $id=$this->mountedItemData[$keyName];
         $row=$record->find($id);
-        $row->update($data);
-        data_set($this, $this->mountedItem, array_merge(data_get($this, $this->mountedItem), $data));
+        $up=tap($row)->update($data);
+
+        $up=array_merge(data_get($this, $this->mountedItem), $up->toArray());
+        data_set($this, $this->mountedItem, $up);
+        
+        
 
         $this->mountedItem = null;
         $this->mountedItemData = [];
@@ -95,6 +133,11 @@ trait HandlesTreeBuilder
 
     public function storeChildItem(Model $record,array $data){
         
+        $parent=data_get($this, $this->mountedChildTarget);
+        $data['parent_id'] = $parent['id'];
+        $row=get_class($record)::create($data);
+        $data=$row->toArray();
+
         $children = data_get($this, $this->mountedChildTarget . '.children', []);
 
         $children[(string) Str::uuid()] = [
@@ -109,10 +152,14 @@ trait HandlesTreeBuilder
     }
 
     public function storeItem(Model $record,array $data){
-        $this->data['items'][(string) Str::uuid()] = [
-            ...$data,
-            ...['children' => []],
-        ];
+
+        $data['parent_id']=$record->getKey();
+        $row=get_class($record)::create($data);
+        //$k=$row->getKey();
+        $v=$row->toArray();
+        $v['children'] = [];
+        $this->data['sons'][]=$v;
+        
     }
 
     protected function getHeaderActions(): array
@@ -141,7 +188,7 @@ trait HandlesTreeBuilder
                 ->form($formSchema)
                 ->modalWidth('xl')
                 ->action(function (array $data,$record) {
-                    //*
+                    /*
                     dddx([
                         'record'=>$record,
                         'data'=>$data,
@@ -153,14 +200,17 @@ trait HandlesTreeBuilder
                     //*/
                    
                     if ($this->mountedItem) { //UPDATE
+                       
                         return $this->updateItem($record,$data);
                        
                     }
                     if ($this->mountedChildTarget) { //ADD CHILD
+                        
                         return $this->storeChildItem($record,$data);
                         
                     }
                     //CREATE
+                    
                     return $this->storeItem($record,$data);
                     
                     
