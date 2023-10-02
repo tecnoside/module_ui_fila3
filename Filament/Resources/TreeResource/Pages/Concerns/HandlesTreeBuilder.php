@@ -151,10 +151,11 @@ trait HandlesTreeBuilder
         return ;
     }
 
-    public function storeItem(Model $record,array $data){
+    public function storeItem(?Model $record,array $data){
 
+        $model=$this->getResource()::getModel();
         $data['parent_id']=$record->getKey();
-        $row=get_class($record)::create($data);
+        $row=$model::create($data);
         //$k=$row->getKey();
         $v=$row->toArray();
         $v['children'] = [];
