@@ -28,9 +28,7 @@ class UIServiceProvider extends XotBaseServiceProvider
 
     public function registerCallback(): void
     {
-        // $loader = AliasLoader::getInstance();
-        // $loader->alias('UI', 'Modules\Theme\Services\UIService');
-
-        // $this->registerViewComposers();
+        $loader = AliasLoader::getInstance();
+        $loader->alias('ui', 'Modules\UI\Services\UIService');
     }
 }
