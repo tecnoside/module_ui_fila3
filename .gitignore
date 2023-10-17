@@ -9,3 +9,4 @@ package-lock.json
 *.cache
 .git-blame-ignore-revs
 .git-rewrite
+.git-blame-ignore-revs
