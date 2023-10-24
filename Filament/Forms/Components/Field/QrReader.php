@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\UI\Filament\Forms\Components\Field;
 
-use Closure;
 use Filament\Forms\Components\Field;
 
 class QrReader extends Field
