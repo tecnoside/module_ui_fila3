@@ -1,6 +1,6 @@
 <x-filament-forms::field-wrapper :id="$getId()" :label="$getLabel()" :label-sr-only="$isLabelHidden()" :helper-text="$getHelperText()"
     :hint="$getHint()" :hint-icon="$getHintIcon()" :required="$isRequired()" :state-path="$getStatePath()">
-    <div x-data="{ state: $wire.{{ 'entangle(\'' . $getStatePath() . '\')' }} }"
+    <div x-data="{ state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }} }"
         class="h-full w-full flex flex-col py-4 md:py-6 lg:py-8 m-0 gap-8 overflow-auto scroll-smooth">
         <div id="qr-reader"></div>
 
@@ -12,7 +12,7 @@
             <h2 class="font-bold text-slate-500 text-xl">Cerca</h2>
             <input id="card-filter" type="text" placeholder="Cerca"
                 class="w-full px-4 py-2 border border-black rounded-xl text-sm text-slate-500 min-h-[50px] bg-white active:border-orange-500 focus:border-orange-500"
-                wire:model.live="state">
+                x-model="state">
         </div>
     </div>
 </x-filament-forms::field-wrapper>
