@@ -1,12 +1,14 @@
-<?php 
+<?php
 
 /**
  * @see RyanChandler\FilamentNavigation\Filament\Fields\NavigationSelect;
  * @see https://github.com/ryangjchandler/filament-navigation
  */
+
 namespace Modules\UI\Filament\Forms\Components;
 
 use Filament\Forms\Components\Select;
+
 //use RyanChandler\FilamentNavigation\Models\Navigation;
 
 class ParentSelect extends Select
@@ -18,11 +20,10 @@ class ParentSelect extends Select
         parent::setUp();
 
         //dddx($this->getModel());
-        $this->options(fn(ParentSelect $component) =>
+        $this->options(fn (ParentSelect $component) =>
             //return Navigation::pluck('name', $component->getOptionValueProperty());
-            ['a'=>'a','b'=>'b']);
-        
-        
+            ['a' => 'a', 'b' => 'b']);
+
     }
 
     public function getOptionValueProperty(): string

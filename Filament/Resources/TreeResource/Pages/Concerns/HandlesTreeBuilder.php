@@ -1,20 +1,20 @@
 <?php
 
-
 namespace Modules\UI\Filament\Resources\TreeResource\Pages\Concerns;
 
-use Filament\Forms\Get;
-use Filament\Forms\Form;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Filament\Actions\Action;
+use Filament\Forms\ComponentContainer;
+use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Select;
-use Filament\Forms\ComponentContainer;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification; 
+use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+
 //use RyanChandler\FilamentNavigation\FilamentNavigation;
 
 trait HandlesTreeBuilder
@@ -22,14 +22,14 @@ trait HandlesTreeBuilder
     public $mountedItem;
 
     public $mountedItemData = [];
+
     public $mountedActionData = []; //added by Xot
 
     public $mountedChildTarget;
-    
+
     public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths)
     {
 
-        
         $items = [];
 
         foreach ($targetItemsStatePaths as $targetItemStatePath) {
@@ -38,7 +38,7 @@ trait HandlesTreeBuilder
 
             $items[$uuid] = $item;
         }
-        $model=$this->getResource()::getModel();
+        $model = $this->getResource()::getModel();
         /*
         dddx([
             'items'=>$items,
@@ -46,39 +46,33 @@ trait HandlesTreeBuilder
             'targetStatePath'=>$targetStatePath,
         ]);
         */
-        if(Str::endsWith($targetStatePath,'.children')){
-            $parentPath=Str::beforeLast($targetStatePath,'.children');
-            $parent=data_get($this, $parentPath);
-            foreach($items as $item){
-                app($model)->find($item['id'])->update(['parent_id'=>$parent['id']]);
-            }    
-            
+        if (Str::endsWith($targetStatePath, '.children')) {
+            $parentPath = Str::beforeLast($targetStatePath, '.children');
+            $parent = data_get($this, $parentPath);
+            foreach ($items as $item) {
+                app($model)->find($item['id'])->update(['parent_id' => $parent['id']]);
+            }
+
         }
-        
-        $ids=collect($items)->pluck('id')->toArray();
-            /*
-            dddx([
-                'items'=>$items,
-                'ids'=>$ids,
-                'targetItemsStatePaths'=>$targetItemsStatePaths,
-                'targetStatePath'=>$targetStatePath,
-            ]);
-            */
+
+        $ids = collect($items)->pluck('id')->toArray();
+        /*
+        dddx([
+            'items'=>$items,
+            'ids'=>$ids,
+            'targetItemsStatePaths'=>$targetItemsStatePaths,
+            'targetStatePath'=>$targetStatePath,
+        ]);
+        */
         $model::setNewOrder($ids);
-        
-
-
-        
-
 
         data_set($this, $targetStatePath, $items);
-        Notification::make() 
+        Notification::make()
             ->title('Sorted !')
             ->success()
-            ->send(); 
+            ->send();
     }
 
-    
     public function addChild(string $statePath)
     {
         $this->mountedChildTarget = $statePath;
@@ -106,61 +100,60 @@ trait HandlesTreeBuilder
 
     public function createItem()
     {
-        
-        $this->mountedItem = null; 
+
+        $this->mountedItem = null;
         $this->mountedItemData = [];
         $this->mountedActionData = [];
         $this->mountAction('item');
     }
 
-    public function updateItem(Model $record,array $data){
-        $keyName=$record->getKeyName();
-        $id=$this->mountedItemData[$keyName];
-        $row=$record->find($id);
-        $up=tap($row)->update($data);
+    public function updateItem(Model $record, array $data)
+    {
+        $keyName = $record->getKeyName();
+        $id = $this->mountedItemData[$keyName];
+        $row = $record->find($id);
+        $up = tap($row)->update($data);
 
-        $up=array_merge(data_get($this, $this->mountedItem), $up->toArray());
+        $up = array_merge(data_get($this, $this->mountedItem), $up->toArray());
         data_set($this, $this->mountedItem, $up);
-        
-        
 
         $this->mountedItem = null;
         $this->mountedItemData = [];
 
-        return ;
-
     }
 
-    public function storeChildItem(Model $record,array $data){
-        
-        $parent=data_get($this, $this->mountedChildTarget);
-        $data['parent_id'] = $parent['id'];
-        $row=get_class($record)::create($data);
-        $data=$row->toArray();
+    public function storeChildItem(Model $record, array $data)
+    {
 
-        $children = data_get($this, $this->mountedChildTarget . '.children', []);
+        $parent = data_get($this, $this->mountedChildTarget);
+        $data['parent_id'] = $parent['id'];
+        $row = get_class($record)::create($data);
+        $data = $row->toArray();
+
+        $children = data_get($this, $this->mountedChildTarget.'.children', []);
 
         $children[(string) Str::uuid()] = [
             ...$data,
             ...['children' => []],
         ];
 
-        data_set($this, $this->mountedChildTarget . '.children', $children);
+        data_set($this, $this->mountedChildTarget.'.children', $children);
 
         $this->mountedChildTarget = null;
-        return ;
+
     }
 
-    public function storeItem(?Model $record,array $data){
+    public function storeItem(?Model $record, array $data)
+    {
 
-        $model=$this->getResource()::getModel();
-        $data['parent_id']=$record?->getKey();
-        $row=$model::create($data);
+        $model = $this->getResource()::getModel();
+        $data['parent_id'] = $record?->getKey();
+        $row = $model::create($data);
         //$k=$row->getKey();
-        $v=$row->toArray();
+        $v = $row->toArray();
         $v['children'] = [];
-        $this->data['sons'][]=$v;
-        
+        $this->data['sons'][] = $v;
+
     }
 
     protected function getHeaderActions(): array
@@ -168,13 +161,12 @@ trait HandlesTreeBuilder
 
         //dddx(get_class_methods($this->getResource()));
         //dddx($this->getFormSchema());
-        $formSchema=$this->getResource()::form(Form::make($this))->getComponents();
-        $formSchema=collect($formSchema)
-            ->keyBy(function($item){
+        $formSchema = $this->getResource()::form(Form::make($this))->getComponents();
+        $formSchema = collect($formSchema)
+            ->keyBy(function ($item) {
                 return $item->getName();
             })->except('sons')
             ->toArray();
-
 
         //$formSchema=$this->getFormSchema();
         return [
@@ -188,7 +180,7 @@ trait HandlesTreeBuilder
                 })
                 ->form($formSchema)
                 ->modalWidth('xl')
-                ->action(function (array $data,$record) {
+                ->action(function (array $data, $record) {
                     /*
                     dddx([
                         'record'=>$record,
@@ -199,34 +191,31 @@ trait HandlesTreeBuilder
                         'mountedChildTarget'=>$this->mountedChildTarget,
                     ]);
                     //*/
-                   
+
                     if ($this->mountedItem) { //UPDATE
-                       
-                        return $this->updateItem($record,$data);
-                       
+
+                        return $this->updateItem($record, $data);
+
                     }
                     if ($this->mountedChildTarget) { //ADD CHILD
-                        
-                        return $this->storeChildItem($record,$data);
-                        
+
+                        return $this->storeChildItem($record, $data);
+
                     }
                     //CREATE
-                    
-                    return $this->storeItem($record,$data);
-                    
-                    
 
+                    return $this->storeItem($record, $data);
 
                 })
                 ->modalButton(__('filament-navigation::filament-navigation.items-modal.btn'))
                 ->label(__('filament-navigation::filament-navigation.items-modal.title')),
-            ];
+        ];
     }
-
 
     protected function getHeaderActionsOLD(): array
     {
-        $modelClass=$this->getResource()::getModel();
+        $modelClass = $this->getResource()::getModel();
+
         return [
             Action::make('item')
                 ->mountUsing(function (ComponentContainer $form) {
@@ -286,14 +275,14 @@ trait HandlesTreeBuilder
                         $this->mountedItem = null;
                         $this->mountedItemData = [];
                     } elseif ($this->mountedChildTarget) {
-                        $children = data_get($this, $this->mountedChildTarget . '.children', []);
+                        $children = data_get($this, $this->mountedChildTarget.'.children', []);
 
                         $children[(string) Str::uuid()] = [
                             ...$data,
                             ...['children' => []],
                         ];
 
-                        data_set($this, $this->mountedChildTarget . '.children', $children);
+                        data_set($this, $this->mountedChildTarget.'.children', $children);
 
                         $this->mountedChildTarget = null;
                     } else {
@@ -309,5 +298,4 @@ trait HandlesTreeBuilder
                 ->label(__('filament-navigation::filament-navigation.items-modal.title')),
         ];
     }
-    
 }
