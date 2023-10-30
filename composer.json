@@ -48,15 +48,15 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../module_user_fila3"
+            "url": "../User"
         },
         {
             "type": "path",
-            "url": "../module_tenant_fila3"
+            "url": "../Tenant"
         },
         {
             "type": "path",
-            "url": "../module_xot_fila3"
+            "url": "../Xot"
         }
     ],
     "scripts": {
