@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\UI\Providers;
 
+use Modules\UI\Services\UIService;
 use Illuminate\Foundation\AliasLoader;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
@@ -29,6 +30,6 @@ class UIServiceProvider extends XotBaseServiceProvider
     public function registerCallback(): void
     {
         $loader = AliasLoader::getInstance();
-        $loader->alias('ui', 'Modules\UI\Services\UIService');
+        $loader->alias('ui', UIService::class);
     }
 }
