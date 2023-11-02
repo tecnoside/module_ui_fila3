@@ -124,7 +124,7 @@ trait HandlesTreeBuilder
     {
         $parent = data_get($this, $this->mountedChildTarget);
         $data['parent_id'] = $parent['id'];
-        $row = \get_class($record)::create($data);
+        $row = $record::class::create($data);
         $data = $row->toArray();
 
         $children = data_get($this, $this->mountedChildTarget.'.children', []);
@@ -156,9 +156,7 @@ trait HandlesTreeBuilder
         // dddx($this->getFormSchema());
         $formSchema = $this->getResource()::form(Form::make($this))->getComponents();
         $formSchema = collect($formSchema)
-            ->keyBy(function ($item) {
-                return $item->getName();
-            })->except('sons')
+            ->keyBy(fn($item) => $item->getName())->except('sons')
             ->toArray();
 
         // $formSchema=$this->getFormSchema();
@@ -220,7 +218,7 @@ trait HandlesTreeBuilder
                         ->required(),
                     Select::make('type')
                         ->label(__('filament-navigation::filament-navigation.items-modal.type'))
-                        ->options(function () {
+                        ->options(function (): array {
                             $types = FilamentNavigation::get()->getItemTypes();
 
                             return array_combine(array_keys($types), Arr::pluck($types, 'name'));
@@ -251,9 +249,7 @@ trait HandlesTreeBuilder
                     Group::make()
                         ->statePath('data')
                         ->visible(fn (Component $component) => [] !== $component->evaluate(FilamentNavigation::get()->getExtraFields()))
-                        ->schema(function (Component $component) {
-                            return FilamentNavigation::get()->getExtraFields();
-                        }),
+                        ->schema(fn(Component $component) => FilamentNavigation::get()->getExtraFields()),
                 ])
                 ->modalWidth('md')
                 ->action(function (array $data) {
