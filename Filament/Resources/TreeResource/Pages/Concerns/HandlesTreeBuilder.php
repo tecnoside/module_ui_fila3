@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\UI\Filament\Resources\TreeResource\Pages\Concerns;
 
 use Filament\Actions\Action;
@@ -15,21 +17,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
-//use RyanChandler\FilamentNavigation\FilamentNavigation;
+// use RyanChandler\FilamentNavigation\FilamentNavigation;
 
 trait HandlesTreeBuilder
 {
-    public $mountedItem;
+    public string $mountedItem;
 
-    public $mountedItemData = [];
+    public array $mountedItemData = [];
 
-    public $mountedActionData = []; //added by Xot
+    public array $mountedActionData = []; // added by Xot
 
-    public $mountedChildTarget;
+    public string $mountedChildTarget;
 
     public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths)
     {
-
         $items = [];
 
         foreach ($targetItemsStatePaths as $targetItemStatePath) {
@@ -52,7 +53,6 @@ trait HandlesTreeBuilder
             foreach ($items as $item) {
                 app($model)->find($item['id'])->update(['parent_id' => $parent['id']]);
             }
-
         }
 
         $ids = collect($items)->pluck('id')->toArray();
@@ -100,7 +100,6 @@ trait HandlesTreeBuilder
 
     public function createItem()
     {
-
         $this->mountedItem = null;
         $this->mountedItemData = [];
         $this->mountedActionData = [];
@@ -119,15 +118,13 @@ trait HandlesTreeBuilder
 
         $this->mountedItem = null;
         $this->mountedItemData = [];
-
     }
 
     public function storeChildItem(Model $record, array $data)
     {
-
         $parent = data_get($this, $this->mountedChildTarget);
         $data['parent_id'] = $parent['id'];
-        $row = get_class($record)::create($data);
+        $row = \get_class($record)::create($data);
         $data = $row->toArray();
 
         $children = data_get($this, $this->mountedChildTarget.'.children', []);
@@ -140,27 +137,23 @@ trait HandlesTreeBuilder
         data_set($this, $this->mountedChildTarget.'.children', $children);
 
         $this->mountedChildTarget = null;
-
     }
 
     public function storeItem(?Model $record, array $data)
     {
-
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
         $row = $model::create($data);
-        //$k=$row->getKey();
+        // $k=$row->getKey();
         $v = $row->toArray();
         $v['children'] = [];
         $this->data['sons'][] = $v;
-
     }
 
     protected function getHeaderActions(): array
     {
-
-        //dddx(get_class_methods($this->getResource()));
-        //dddx($this->getFormSchema());
+        // dddx(get_class_methods($this->getResource()));
+        // dddx($this->getFormSchema());
         $formSchema = $this->getResource()::form(Form::make($this))->getComponents();
         $formSchema = collect($formSchema)
             ->keyBy(function ($item) {
@@ -168,7 +161,7 @@ trait HandlesTreeBuilder
             })->except('sons')
             ->toArray();
 
-        //$formSchema=$this->getFormSchema();
+        // $formSchema=$this->getFormSchema();
         return [
             Action::make('item')
                 ->mountUsing(function (ComponentContainer $form) {
@@ -192,20 +185,15 @@ trait HandlesTreeBuilder
                     ]);
                     //*/
 
-                    if ($this->mountedItem) { //UPDATE
-
+                    if ($this->mountedItem) { // UPDATE
                         return $this->updateItem($record, $data);
-
                     }
-                    if ($this->mountedChildTarget) { //ADD CHILD
-
+                    if ($this->mountedChildTarget) { // ADD CHILD
                         return $this->storeChildItem($record, $data);
-
                     }
-                    //CREATE
+                    // CREATE
 
                     return $this->storeItem($record, $data);
-
                 })
                 ->modalButton(__('filament-navigation::filament-navigation.items-modal.btn'))
                 ->label(__('filament-navigation::filament-navigation.items-modal.title')),
@@ -225,7 +213,7 @@ trait HandlesTreeBuilder
 
                     $form->fill($this->mountedItemData);
                 })
-                //->view('filament-navigation::hidden-action')
+                // ->view('filament-navigation::hidden-action')
                 ->form([
                     TextInput::make('label')
                         ->label(__('filament-navigation::filament-navigation.items-modal.label'))
@@ -262,7 +250,7 @@ trait HandlesTreeBuilder
                         }),
                     Group::make()
                         ->statePath('data')
-                        ->visible(fn (Component $component) => $component->evaluate(FilamentNavigation::get()->getExtraFields()) !== [])
+                        ->visible(fn (Component $component) => [] !== $component->evaluate(FilamentNavigation::get()->getExtraFields()))
                         ->schema(function (Component $component) {
                             return FilamentNavigation::get()->getExtraFields();
                         }),
