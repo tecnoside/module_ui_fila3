@@ -73,14 +73,14 @@ trait HandlesTreeBuilder
             ->send();
     }
 
-    public function addChild(string $statePath)
+    public function addChild(string $statePath): void
     {
         $this->mountedChildTarget = $statePath;
 
         $this->mountAction('item');
     }
 
-    public function removeItem(string $statePath)
+    public function removeItem(string $statePath): void
     {
         $uuid = Str::afterLast($statePath, '.');
 
@@ -90,7 +90,7 @@ trait HandlesTreeBuilder
         data_set($this, $parentPath, Arr::except($parent, $uuid));
     }
 
-    public function editItem(string $statePath)
+    public function editItem(string $statePath): void
     {
         $this->mountedItem = $statePath;
         $this->mountedItemData = Arr::except(data_get($this, $statePath), 'children');
@@ -98,7 +98,7 @@ trait HandlesTreeBuilder
         $this->mountAction('item');
     }
 
-    public function createItem()
+    public function createItem(): void
     {
         $this->mountedItem = null;
         $this->mountedItemData = [];
@@ -106,7 +106,7 @@ trait HandlesTreeBuilder
         $this->mountAction('item');
     }
 
-    public function updateItem(Model $record, array $data)
+    public function updateItem(Model $record, array $data): void
     {
         $keyName = $record->getKeyName();
         $id = $this->mountedItemData[$keyName];
@@ -120,7 +120,7 @@ trait HandlesTreeBuilder
         $this->mountedItemData = [];
     }
 
-    public function storeChildItem(Model $record, array $data)
+    public function storeChildItem(Model $record, array $data): void
     {
         $parent = data_get($this, $this->mountedChildTarget);
         $data['parent_id'] = $parent['id'];
@@ -139,7 +139,7 @@ trait HandlesTreeBuilder
         $this->mountedChildTarget = null;
     }
 
-    public function storeItem(?Model $record, array $data)
+    public function storeItem(?Model $record, array $data): void
     {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
@@ -156,7 +156,7 @@ trait HandlesTreeBuilder
         // dddx($this->getFormSchema());
         $formSchema = $this->getResource()::form(Form::make($this))->getComponents();
         $formSchema = collect($formSchema)
-            ->keyBy(fn($item) => $item->getName())->except('sons')
+            ->keyBy(fn ($item) => $item->getName())->except('sons')
             ->toArray();
 
         // $formSchema=$this->getFormSchema();
@@ -249,7 +249,7 @@ trait HandlesTreeBuilder
                     Group::make()
                         ->statePath('data')
                         ->visible(fn (Component $component) => [] !== $component->evaluate(FilamentNavigation::get()->getExtraFields()))
-                        ->schema(fn(Component $component) => FilamentNavigation::get()->getExtraFields()),
+                        ->schema(fn (Component $component) => FilamentNavigation::get()->getExtraFields()),
                 ])
                 ->modalWidth('md')
                 ->action(function (array $data) {
