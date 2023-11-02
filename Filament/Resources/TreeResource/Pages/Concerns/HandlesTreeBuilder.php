@@ -29,7 +29,7 @@ trait HandlesTreeBuilder
 
     public string $mountedChildTarget;
 
-    public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths)
+    public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths): void
     {
         $items = [];
 
