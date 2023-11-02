@@ -156,11 +156,7 @@ trait HandlesTreeBuilder
         // dddx($this->getFormSchema());
         $formSchema = $this->getResource()::form(Form::make($this))->getComponents();
         $formSchema = collect($formSchema)
-<<<<<<< HEAD
-            ->keyBy(fn($item) => $item->getName())->except('sons')
-=======
             ->keyBy(fn ($item) => $item->getName())->except('sons')
->>>>>>> 60c7ecb4d339b7ce9d99fe09e5c4a1839ed2e7dd
             ->toArray();
 
         // $formSchema=$this->getFormSchema();
@@ -252,13 +248,8 @@ trait HandlesTreeBuilder
                         }),
                     Group::make()
                         ->statePath('data')
-<<<<<<< HEAD
-                        ->visible(fn (Component $component) => $component->evaluate(FilamentNavigation::get()->getExtraFields()) !== [])
-                        ->schema(fn(Component $component) => FilamentNavigation::get()->getExtraFields()),
-=======
                         ->visible(fn (Component $component) => [] !== $component->evaluate(FilamentNavigation::get()->getExtraFields()))
                         ->schema(fn (Component $component) => FilamentNavigation::get()->getExtraFields()),
->>>>>>> 60c7ecb4d339b7ce9d99fe09e5c4a1839ed2e7dd
                 ])
                 ->modalWidth('md')
                 ->action(function (array $data) {
