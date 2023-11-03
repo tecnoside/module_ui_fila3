@@ -251,6 +251,7 @@ trait HandlesTreeBuilder
 <<<<<<< HEAD
                         ->visible(fn (Component $component) => [] !== $component->evaluate(FilamentNavigation::get()->getExtraFields()))
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                         ->visible(fn (Component $component) => $component->evaluate(FilamentNavigation::get()->getExtraFields()) !== [])
 >>>>>>> ae60357 (up)
@@ -258,6 +259,9 @@ trait HandlesTreeBuilder
 =======
                         ->schema(fn (Component $component) => FilamentNavigation::get()->getExtraFields()),
 >>>>>>> master
+=======
+                        ->schema(fn (Component $component) => FilamentNavigation::get()->getExtraFields()),
+>>>>>>> 60c7ecb (up)
                 ])
                 ->modalWidth('md')
                 ->action(function (array $data) {
