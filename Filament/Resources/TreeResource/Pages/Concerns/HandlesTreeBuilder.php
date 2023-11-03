@@ -248,7 +248,11 @@ trait HandlesTreeBuilder
                         }),
                     Group::make()
                         ->statePath('data')
+<<<<<<< HEAD
                         ->visible(fn (Component $component) => [] !== $component->evaluate(FilamentNavigation::get()->getExtraFields()))
+=======
+                        ->visible(fn (Component $component) => $component->evaluate(FilamentNavigation::get()->getExtraFields()) !== [])
+>>>>>>> ae60357 (up)
                         ->schema(fn(Component $component) => FilamentNavigation::get()->getExtraFields()),
                 ])
                 ->modalWidth('md')
