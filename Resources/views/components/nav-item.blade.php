@@ -1,4 +1,11 @@
-@props(['item', 'statePath'])
+@props([
+    'item',
+    'statePath',
+    'disableNewChildRecordCreation',
+    'disableRecordEdit',
+    'disableRecordDeletion',
+    'disableRecordsSorting',
+])
 
 <div
     x-data="{ open: $persist(true) }"
@@ -12,6 +19,7 @@
             'bg-white rounded-lg border border-gray-300 w-full flex',
             'dark:bg-gray-700 dark:border-gray-600',
         ])>
+            @if(!$disableRecordsSorting)
             <button type="button" @class([
                 'flex items-center bg-gray-50 rounded-l-lg border-r border-gray-300 px-px',
                 'dark:bg-gray-800 dark:border-gray-600',
@@ -19,10 +27,13 @@
                 @svg('heroicon-o-ellipsis-vertical', 'text-gray-400 w-4 h-4 -mr-2')
                 @svg('heroicon-o-ellipsis-vertical', 'text-gray-400 w-4 h-4')
             </button>
+            @endif
 
             <button
                 type="button"
+                @if(! $disableRecordEdit)
                 wire:click="editItem('{{ $statePath }}')"
+                @endif
                 class="appearance-none px-3 py-2 text-left"
             >
                 <span>{{ $item['label'] }}</span>
@@ -41,6 +52,7 @@
             'absolute top-0 right-0 h-6 divide-x rounded-bl-lg rounded-tr-lg border-gray-300 border-b border-l overflow-hidden rtl:border-l-0 rtl:border-r rtl:right-auto rtl:left-0 rtl:rounded-bl-none rtl:rounded-br-lg rtl:rounded-tr-none rtl:rounded-tl-lg hidden opacity-0 group-hover:opacity-100 group-hover:flex transition ease-in-out duration-250',
             'dark:border-gray-600 dark:divide-gray-600',
         ])>
+            @if(! $disableNewChildRecordCreation)
             <button
                 x-init
                 x-tooltip.raw.duration.0="{{__('filament-navigation::filament-navigation.items.add-child')}}"
@@ -51,7 +63,9 @@
             >
                 @svg('heroicon-o-plus', 'w-3 h-3 text-gray-500 hover:text-gray-900')
             </button>
+            @endif
 
+            @if(! $disableRecordDeletion)
             <button
                 x-init
                 x-tooltip.raw.duration.0="{{__('filament-navigation::filament-navigation.items.remove')}}"
@@ -62,6 +76,7 @@
             >
                 @svg('heroicon-o-trash', 'w-3 h-3 text-danger-500 hover:text-danger-900')
             </button>
+            @endif
         </div>
     </div>
 
@@ -74,7 +89,14 @@
             })"
         >
             @foreach ($item['children'] as $uuid => $child)
-                <x-ui::nav-item :statePath="$statePath . '.children.' . $uuid" :item="$child" />
+                <x-ui::nav-item
+                    :statePath="$statePath . '.children.' . $uuid"
+                    :item="$child"
+                    :$disableNewChildRecordCreation
+                    :$disableRecordEdit
+                    :$disableRecordDeletion
+                    :$disableRecordsSorting
+                />
             @endforeach
         </div>
     </div>

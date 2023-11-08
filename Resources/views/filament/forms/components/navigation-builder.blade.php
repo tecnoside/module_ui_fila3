@@ -1,3 +1,11 @@
+@php
+    $disableNewRecordCreation = $disableNewRecordCreation ?? false;
+    $disableNewChildRecordCreation = $disableNewChildRecordCreation ?? false;
+    $disableRecordDeletion = $disableRecordDeletion ?? false;
+    $disableRecordEdit = $disableRecordEdit ?? false;
+    $disableRecordsSorting = $disableRecordsSorting ?? false;
+@endphp
+
 <x-filament-forms::field-wrapper
     :id="$getId()"
     :label="$getLabel()"
@@ -17,9 +25,16 @@
             })"
             data-sortable-container
         >
-        
+
             @forelse($getState() as $uuid => $item)
-                <x-ui::nav-item :statePath="$getStatePath() . '.' . $uuid" :item="$item" />
+                <x-ui::nav-item
+                    :statePath="$getStatePath() . '.' . $uuid"
+                    :item="$item"
+                    :$disableNewChildRecordCreation
+                    :$disableRecordEdit
+                    :$disableRecordDeletion
+                    :$disableRecordsSorting
+                />
             @empty
                 <div @class([
                     'w-full bg-white rounded-lg border border-gray-300 px-3 py-2 text-left',
@@ -31,9 +46,11 @@
         </div>
     </div>
 
+    @if(!$disableNewRecordCreation)
     <div class="flex justify-end">
         <x-filament::button wire:click="createItem" type="button" size="sm">
             {{__('filament-navigation::filament-navigation.items.add-item')}}
         </x-filament::button>
     </div>
+    @endif
 </x-filament-forms::field-wrapper>
