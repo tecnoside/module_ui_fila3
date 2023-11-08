@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\UI\Providers;
 
-use Modules\UI\Services\UIService;
 use Illuminate\Foundation\AliasLoader;
+use Modules\UI\Services\UIService;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
 /**

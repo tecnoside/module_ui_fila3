@@ -4,19 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\UI\Filament\Resources\TreeResource\Pages\Concerns;
 
-use Filament\Forms\Get;
+use Filament\Actions\Action;
+use Filament\Forms\ComponentContainer;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Filament\Actions\Action;
 use Webmozart\Assert\Assert;
-use Filament\Forms\Components\Group;
-use Filament\Forms\Components\Select;
-use Filament\Forms\ComponentContainer;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Forms\Components\Component;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
 
 // use RyanChandler\FilamentNavigation\FilamentNavigation;
 
@@ -111,7 +107,7 @@ trait HandlesTreeBuilder
     {
         $keyName = $record->getKeyName();
         $id = $this->mountedItemData[$keyName];
-        Assert::isInstanceOf($row = $record->find($id),Model::class);
+        Assert::isInstanceOf($row = $record->find($id), Model::class);
         $up = tap($row)->update($data);
 
         $up = array_merge(data_get($this, $this->mountedItem), $up->toArray());
@@ -185,21 +181,22 @@ trait HandlesTreeBuilder
                     //*/
 
                     if ($this->mountedItem) { // UPDATE
-                         $this->updateItem($record, $data);
-                         return ;
+                        $this->updateItem($record, $data);
+
+                        return;
                     }
                     if ($this->mountedChildTarget) { // ADD CHILD
                         $this->storeChildItem($record, $data);
-                        return ;
+
+                        return;
                     }
                     // CREATE
 
                     $this->storeItem($record, $data);
-                    return ;
+
                 })
                 ->modalButton(__('filament-navigation::filament-navigation.items-modal.btn'))
                 ->label(__('filament-navigation::filament-navigation.items-modal.title')),
         ];
     }
-
 }
