@@ -193,7 +193,6 @@ trait HandlesTreeBuilder
                     // CREATE
 
                     $this->storeItem($record, $data);
-
                 })
                 ->modalButton(__('filament-navigation::filament-navigation.items-modal.btn'))
                 ->label(__('filament-navigation::filament-navigation.items-modal.title')),
