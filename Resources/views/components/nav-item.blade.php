@@ -19,7 +19,7 @@
             'bg-white rounded-lg border border-gray-300 w-full flex',
             'dark:bg-gray-700 dark:border-gray-600',
         ])>
-            @if(!$disableRecordsSorting)
+            @if (!$disableRecordsSorting)
             <button type="button" @class([
                 'flex items-center bg-gray-50 rounded-l-lg border-r border-gray-300 px-px',
                 'dark:bg-gray-800 dark:border-gray-600',
@@ -31,7 +31,7 @@
 
             <button
                 type="button"
-                @if(! $disableRecordEdit)
+                @if (! $disableRecordEdit)
                 wire:click="editItem('{{ $statePath }}')"
                 @endif
                 class="appearance-none px-3 py-2 text-left"
@@ -39,7 +39,7 @@
                 <span>{{ $item['label'] }}</span>
             </button>
 
-            @if(count($item['children']) > 0)
+            @if (count($item['children']) > 0)
                 <button type="button" x-on:click="open = !open" title="Toggle children" class="appearance-none text-gray-500">
                     <svg class="w-3.5 h-3.5 transition ease-in-out duration-200" x-bind:class="{
                         '-rotate-90': !open,
@@ -52,27 +52,27 @@
             'absolute top-0 right-0 h-6 divide-x rounded-bl-lg rounded-tr-lg border-gray-300 border-b border-l overflow-hidden rtl:border-l-0 rtl:border-r rtl:right-auto rtl:left-0 rtl:rounded-bl-none rtl:rounded-br-lg rtl:rounded-tr-none rtl:rounded-tl-lg hidden opacity-0 group-hover:opacity-100 group-hover:flex transition ease-in-out duration-250',
             'dark:border-gray-600 dark:divide-gray-600',
         ])>
-            @if(! $disableNewChildRecordCreation)
+            @if (! $disableNewChildRecordCreation)
             <button
                 x-init
-                x-tooltip.raw.duration.0="{{__('filament-navigation::filament-navigation.items.add-child')}}"
+                x-tooltip.raw.duration.0="{{ __('filament-navigation::filament-navigation.items.add-child') }}"
                 type="button"
                 wire:click="addChild('{{ $statePath }}')"
                 class="p-1"
-                title="{{__('filament-navigation::filament-navigation.items.add-child')}}"
+                title="{{ __('filament-navigation::filament-navigation.items.add-child') }}"
             >
                 @svg('heroicon-o-plus', 'w-3 h-3 text-gray-500 hover:text-gray-900')
             </button>
             @endif
 
-            @if(! $disableRecordDeletion)
+            @if (! $disableRecordDeletion)
             <button
                 x-init
-                x-tooltip.raw.duration.0="{{__('filament-navigation::filament-navigation.items.remove')}}"
+                x-tooltip.raw.duration.0="{{ __('filament-navigation::filament-navigation.items.remove') }}"
                 type="button"
                 wire:click="removeItem('{{ $statePath }}')"
                 class="p-1"
-                title="{{__('filament-navigation::filament-navigation.items.remove')}}"
+                title="{{ __('filament-navigation::filament-navigation.items.remove') }}"
             >
                 @svg('heroicon-o-trash', 'w-3 h-3 text-danger-500 hover:text-danger-900')
             </button>
