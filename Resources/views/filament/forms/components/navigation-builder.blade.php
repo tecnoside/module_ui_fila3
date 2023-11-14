@@ -26,7 +26,7 @@
             data-sortable-container
         >
 
-            @forelse($getState() as $uuid => $item)
+            @forelse ($getState() as $uuid => $item)
                 <x-ui::nav-item
                     :statePath="$getStatePath() . '.' . $uuid"
                     :item="$item"
@@ -40,16 +40,16 @@
                     'w-full bg-white rounded-lg border border-gray-300 px-3 py-2 text-left',
                     'dark:bg-gray-700 dark:border-gray-600',
                 ])>
-                    {{__('filament-navigation::filament-navigation.items.empty')}}
+                    {{ __('filament-navigation::filament-navigation.items.empty') }}
                 </div>
             @endforelse
         </div>
     </div>
 
-    @if(!$disableNewRecordCreation)
+    @if (!$disableNewRecordCreation)
     <div class="flex justify-end">
         <x-filament::button wire:click="createItem" type="button" size="sm">
-            {{__('filament-navigation::filament-navigation.items.add-item')}}
+            {{ __('filament-navigation::filament-navigation.items.add-item') }}
         </x-filament::button>
     </div>
     @endif
