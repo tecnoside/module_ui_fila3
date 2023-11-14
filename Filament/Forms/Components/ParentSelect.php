@@ -23,7 +23,6 @@ class ParentSelect extends Select
         $this->options(fn (ParentSelect $component) =>
             //return Navigation::pluck('name', $component->getOptionValueProperty());
             ['a' => 'a', 'b' => 'b']);
-
     }
 
     public function getOptionValueProperty(): string
