@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 [submodule "docs"]
 	path = docs
 	url = git@github.com:laraxot/doc_ui.git
+=======
+#[submodule "docs"]
+#	path = docs
+#	url = https://github.com/laraxot/doc_ui.git
+>>>>>>> f95ce81 (up)
