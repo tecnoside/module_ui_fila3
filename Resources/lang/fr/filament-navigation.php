@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'attributes' => [
         'external-link' => 'Lien externe',
@@ -10,7 +12,6 @@ return [
         'handle' => 'Clé',
         'created_at' => 'Créé le',
         'updated_at' => 'Màj le',
-
     ],
 
     'select-options' => [

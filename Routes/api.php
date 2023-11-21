@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Http\Request;
 
 /*
@@ -13,4 +15,4 @@ use Illuminate\Http\Request;
 |
 */
 
-//\Illuminate\Support\Facades\Route::middleware('auth:api')->get('/ui', fn(Request $request) => $request->user());
+// \Illuminate\Support\Facades\Route::middleware('auth:api')->get('/ui', fn(Request $request) => $request->user());

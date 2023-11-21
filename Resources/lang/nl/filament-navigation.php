@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'attributes' => [
         'external-link' => 'Externe link',
@@ -10,7 +12,6 @@ return [
         'handle' => 'Sleutel',
         'created_at' => 'Aangemaakt op',
         'updated_at' => 'Aangepast op',
-
     ],
 
     'select-options' => [
