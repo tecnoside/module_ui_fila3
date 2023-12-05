@@ -36,7 +36,7 @@ trait HandlesTreeBuilder
 
             $items[$uuid] = $item;
         }
-        
+
         $model = $this->getResource()::getModel();
         /*
         dddx([
@@ -154,7 +154,7 @@ trait HandlesTreeBuilder
         // dddx($this->getFormSchema());
         $formSchema = $this->getResource()::form(Form::make($this))->getComponents();
         $formSchema = collect($formSchema)
-            ->keyBy(static fn($item) => $item->getName())->except('sons')
+            ->keyBy(static fn ($item) => $item->getName())->except('sons')
             ->toArray();
 
         // $formSchema=$this->getFormSchema();
@@ -186,13 +186,13 @@ trait HandlesTreeBuilder
 
                         return;
                     }
-                    
+
                     if ($this->mountedChildTarget) { // ADD CHILD
                         $this->storeChildItem($record, $data);
 
                         return;
                     }
-                    
+
                     // CREATE
 
                     $this->storeItem($record, $data);
