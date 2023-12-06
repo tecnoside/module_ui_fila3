@@ -14,8 +14,8 @@
             ])
     }}
 >
-    @foreach($fields as $field)
-        
+    @foreach ($fields as $field)
+
         {!! str_replace(', ',',<br/>',$field->record($record)->getState()) !!}
         <br/>
         {{--
