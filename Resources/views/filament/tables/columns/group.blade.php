@@ -2,15 +2,26 @@
     $fields=$getFields();
     $record=$getRecord();
 @endphp
-<div>
-    <table >
+<div
+    {{
+        $attributes
+            ->merge($getExtraAttributes(), escape: false)
+            ->class([
+                'fi-ta-icon flex flex-wrap gap-1.5',
+                'px-3 py-4' => ! $isInline(),
+                //'flex-col' => $isListWithLineBreaks(),
+                'flex-col' => true,
+            ])
+    }}
+>
     @foreach($fields as $field)
-        <tr>
-            {{--
-            <td>{{ $field->getName() }}</td>
-            --}}
-            <td>{{ $field->record($record)->getState() }}</td>
-        </tr>
+        
+        {!! str_replace(', ',',<br/>',$field->record($record)->getState()) !!}
+        <br/>
+        {{--
+        {{ $field->record($record) }}
+        --}}
     @endforeach
-    </table>
+
+
 </div>
