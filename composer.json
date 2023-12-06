@@ -29,7 +29,7 @@
         "enlightn/enlightn": "^2.5",
         "laravel/pint": "^1.13",
         "nunomaduro/collision": "*",
-        "nunomaduro/larastan": "^2.6",
+        "larastan/larastan": "^2.6",
         "nunomaduro/phpinsights": "^2.9",
         "orchestra/testbench": "*",
         "pestphp/pest": "*",

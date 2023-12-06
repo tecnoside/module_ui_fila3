@@ -1,6 +1,6 @@
 includes:
     - phpstan-baseline.neon
-    - ./vendor/nunomaduro/larastan/extension.neon
+    - ./vendor/larastan/larastan/extension.neon
     - ./vendor/thecodingmachine/phpstan-safe-rule/phpstan-safe-rule.neon
     #- ./vendor/symplify/phpstan-rules/config/code-complexity-rules.neon
     #- ./vendor/symplify/phpstan-rules/config/collector-rules.neon
@@ -26,11 +26,11 @@ parameters:
         - ./docs/*
         - ./Tests/*
         - ./_ide_helper.php
-    
+
     bootstrapFiles:
         #- ./Services/vendor/autoload.php
         - ./phpstan_constants.php
-    
+
     scanFiles:
     #    - ./Helpers/Helper.php
     #   - ./vendor/amenadiel/jpgraph/src/config.inc.php
