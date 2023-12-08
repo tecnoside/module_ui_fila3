@@ -12,12 +12,12 @@ class GroupColumn extends Column
 
     public array $schema = [];
 
-    public function getFields()
+    public function getFields(): array
     {
         return $this->schema;
     }
 
-    public function schema(array $schema)
+    public function schema(array $schema): self
     {
         $this->schema = $schema;
 
