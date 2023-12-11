@@ -27,9 +27,9 @@
     "require-dev": {
         "driftingly/rector-laravel": "*",
         "enlightn/enlightn": "^2.5",
+        "larastan/larastan": "^2.6",
         "laravel/pint": "^1.13",
         "nunomaduro/collision": "*",
-        "larastan/larastan": "^2.6",
         "nunomaduro/phpinsights": "^2.9",
         "orchestra/testbench": "*",
         "pestphp/pest": "*",
@@ -44,7 +44,7 @@
         "symplify/phpstan-rules": "^12.4",
         "thecodingmachine/phpstan-safe-rule": "^1.2",
         "tightenco/duster": "*",
-        "vimeo/psalm": "^5.15"
+        "vimeo/psalm": "^5.17"
     },
     "repositories": [
         {

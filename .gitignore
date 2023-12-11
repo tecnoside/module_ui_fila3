@@ -12,3 +12,4 @@ package-lock.json
 .git-blame-ignore-revs
 *.phar
 .php-cs-fixer.cache
+*.cache
