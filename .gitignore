@@ -2,11 +2,32 @@
 *.lock
 /build
 composer.lock
+<<<<<<< HEAD
+=======
+composer.lock
+*.lock
+>>>>>>> master
 package-lock.json
 .php-cs-fixer.cache
 *.cache
 .git-blame-ignore-revs
 .git-rewrite
+<<<<<<< HEAD
 *.phar
 .git-rewrite/
 .php-cs-fixer.cache
+=======
+.git-blame-ignore-revs
+*.phar
+.php-cs-fixer.cache
+*.cache
+.git-blame-ignore-revs
+package-lock.json
+.php-cs-fixer.cache
+package-lock.json
+.git-rewrite/
+*.phar
+.git-rewrite/
+.php-cs-fixer.cache
+
+>>>>>>> master

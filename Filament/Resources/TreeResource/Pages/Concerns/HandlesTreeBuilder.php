@@ -149,7 +149,11 @@ trait HandlesTreeBuilder
             $last_son = $record::class::where('parent_id', $data['parent_id'])
                 ->orderByDesc('id')
                 ->first();
+<<<<<<< HEAD
             if ($last_son == null) {
+=======
+            if (null == $last_son) {
+>>>>>>> master
                 $data['id'] = $data['parent_id'].'-1';
             } else {
                 $new_id = intval(Str::afterLast($last_son['id'], '-')) + 1;
@@ -202,7 +206,11 @@ trait HandlesTreeBuilder
                     }
                 })
                 ->requiresConfirmation()
+<<<<<<< HEAD
                 ->visible($this->mountedItem != null),
+=======
+                ->visible(null != $this->mountedItem),
+>>>>>>> master
             Action::make('item')
                 ->mountUsing(function (ComponentContainer $form): void {
                     if (! $this->mountedItem) {

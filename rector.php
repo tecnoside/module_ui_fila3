@@ -47,4 +47,8 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->importNames();
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> master
