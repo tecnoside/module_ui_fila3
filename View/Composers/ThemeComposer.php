@@ -6,17 +6,17 @@ namespace Modules\UI\View\Composers;
 
 class ThemeComposer
 {
-    public function metatags()
+    public function metatags(): string
     {
         return '';
     }
 
-    public function metatag()
+    public function metatag(): string
     {
         return '';
     }
 
-    public function showScripts()
+    public function showScripts(): string
     {
         return '';
     }
