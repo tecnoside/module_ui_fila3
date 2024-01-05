@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\UI\View\Components\Render;
 
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\Component;
 use Modules\Xot\Actions\GetViewAction;
 
@@ -17,6 +18,7 @@ class Blocks extends Component
 {
     public function __construct(
         public array $blocks,
+        public ?Model $model = null,
         public string $tpl = 'v1')
     {
     }
