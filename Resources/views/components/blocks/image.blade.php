@@ -9,7 +9,7 @@
 @php
     $src = $image ? Storage::url($image) : $url;
 
-    $ratioClass = \App\Filament\Blocks\Image::getRatioClass($ratio ?: '4-3');
+    $ratioClass = \Modules\UI\Filament\Blocks\Image::getRatioClass($ratio ?: '4-3');
 @endphp
 
 @if ($src && $caption)
