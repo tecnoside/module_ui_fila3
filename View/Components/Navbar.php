@@ -7,7 +7,7 @@ namespace Modules\UI\View\Components;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\View\Component;
 use Modules\Blog\Models\Post;
-use Modules\Cms\Actions\GetViewAction;
+use Modules\Xot\Actions\GetViewAction;
 
 // use Modules\Xot\View\Components\XotBaseComponent;
 
