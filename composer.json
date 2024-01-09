@@ -1,11 +1,8 @@
 {
     "name": "laraxot/module_ui_fila3",
     "description": "",
-<<<<<<< HEAD
     "homepage": "https://github.com/laraxot/module_ui_fila3.git",
     "license": "MIT",
-=======
->>>>>>> dev
     "authors": [{
         "name": "Marco Sottana",
         "email": "marco.sottana@gmail.com"
