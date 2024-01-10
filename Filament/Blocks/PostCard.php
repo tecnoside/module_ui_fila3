@@ -26,6 +26,6 @@ class PostCard
                     ->label('Link text (optional)'),
             ])
             ->label('Link to post')
-            ->columns($context === 'form' ? 2 : 1);
+            ->columns('form' === $context ? 2 : 1);
     }
 }
