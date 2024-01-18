@@ -29,13 +29,13 @@ class Block extends Component
         $this->tpl = $this->block['type'];
 
         $views = ['ui::components.blocks.'.$this->tpl];
-        if (null !== $this->model) {
+        if ($this->model !== null) {
             $module = app(GetModuleNameFromModelAction::class)->execute($this->model);
             $views[] = strtolower($module).'::components.blocks.'.$this->tpl;
         }
 
         $view = Arr::first($views, static fn (string $view) => view()->exists($view));
-        if (null === $view) {
+        if ($view === null) {
             dddx([$views, $this->model]);
         }
         $view_params = $this->block['data'] ?? [];
