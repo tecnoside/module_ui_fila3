@@ -1,7 +1,7 @@
 @props(['blocks'])
 
 @foreach ($blocks as $block)
-    {{-- OBSOLETE 
+    {{-- OBSOLETE
     <x-render-block :block="$block" />
     --}}
 @endforeach
