@@ -12,10 +12,14 @@
     </a>
     <div class="mt-1">
 <<<<<<< HEAD
+<<<<<<< HEAD
         {{-- must be inside BLOG Module
 =======
         {{-- must be inside BLOG Module 
 >>>>>>> 4231555 (up)
+=======
+        {{-- must be inside BLOG Module
+>>>>>>> e6e8a9f (Dusting)
         <x-post-meta :post="$post" />
         --}}
     </div>
