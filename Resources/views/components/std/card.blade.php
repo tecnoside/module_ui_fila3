@@ -11,7 +11,11 @@
         <h2 class="mt-3 text-xl">{{ $post->title }}</h2>
     </a>
     <div class="mt-1">
+<<<<<<< HEAD
         {{-- must be inside BLOG Module
+=======
+        {{-- must be inside BLOG Module 
+>>>>>>> 4231555 (up)
         <x-post-meta :post="$post" />
         --}}
     </div>
