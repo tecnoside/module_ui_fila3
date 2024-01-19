@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\UI\Tests\Unit\View\Components;
 
 use Modules\UI\View\Components\Std;
@@ -16,9 +18,6 @@ final class StdTest extends TestCase
 
     private string $tpl;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -27,20 +26,16 @@ final class StdTest extends TestCase
         $this->std = new Std($this->tpl);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
 
-        unset($this->std);
-        unset($this->tpl);
+        unset($this->std, $this->tpl);
     }
 
     public function testRender(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }

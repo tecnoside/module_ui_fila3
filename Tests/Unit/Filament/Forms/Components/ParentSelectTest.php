@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\UI\Filament\Tests\Unit\Forms\Components;
 
 use Modules\UI\Filament\Forms\Components\ParentSelect;
-use ReflectionClass;
 use Tests\TestCase;
 
 /**
@@ -15,20 +16,14 @@ final class ParentSelectTest extends TestCase
 {
     private ParentSelect $parentSelect;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
-        /** @todo Correctly instantiate tested object to use it. */
+        /* @todo Correctly instantiate tested object to use it. */
         $this->parentSelect = new ParentSelect();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -39,7 +34,7 @@ final class ParentSelectTest extends TestCase
     public function testGetOptionValueProperty(): void
     {
         $expected = '42';
-        $property = (new ReflectionClass(ParentSelect::class))
+        $property = (new \ReflectionClass(ParentSelect::class))
             ->getProperty('optionValueProperty');
         $property->setValue($this->parentSelect, $expected);
         self::assertSame($expected, $this->parentSelect->getOptionValueProperty());
