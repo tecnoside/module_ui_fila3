@@ -34,7 +34,7 @@ class Block extends Component
         }
 
         /**
-         * @var phpstan-var view-string|null
+         * @phpstan-var view-string|null
          */
         $view = Arr::first($views, static fn (string $view) => view()->exists($view));
         if (null === $view) {
