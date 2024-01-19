@@ -24,7 +24,7 @@ class Block extends Component
     {
     }
 
-    public function render(): Renderable
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
         $this->tpl = $this->block['type'];
 
@@ -34,6 +34,9 @@ class Block extends Component
             $views[] = strtolower($module).'::components.blocks.'.$this->tpl;
         }
 
+        /**
+         * @var phpstan-var view-string|null
+         */
         $view = Arr::first($views, static fn (string $view) => view()->exists($view));
         if (null === $view) {
             dddx([$views, $this->model]);
