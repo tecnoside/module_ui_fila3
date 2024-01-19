@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\UI\View\Tests\Unit\Components\Render;
 
 use Illuminate\Database\Eloquent\Model;
-use Mockery;
 use Mockery\Mock;
 use Modules\UI\View\Components\Render\Blocks;
 use Tests\TestCase;
@@ -23,35 +24,26 @@ final class BlocksTest extends TestCase
 
     private string $tpl;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->blocks = [];
-        $this->model = Mockery::mock(Model::class);
+        $this->model = \Mockery::mock(Model::class);
         $this->tpl = '42';
         $this->blocks = new Blocks($this->blocks, $this->model, $this->tpl);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
 
-        unset($this->blocks);
-        unset($this->blocks);
-        unset($this->model);
-        unset($this->tpl);
+        unset($this->blocks, $this->blocks, $this->model, $this->tpl);
     }
 
     public function testRender(): void
     {
-        /** @todo This test is incomplete. */
+        /* @todo This test is incomplete. */
         self::markTestIncomplete();
     }
 }
