@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\UI\View\Tests\Unit\Components\Render;
+namespace Modules\UI\Tests\Unit\View\Components\Render;
 
 use Illuminate\Database\Eloquent\Model;
 use Mockery\Mock;

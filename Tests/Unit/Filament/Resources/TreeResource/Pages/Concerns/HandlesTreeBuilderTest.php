@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\UI\Filament\Resources\TreeResource\Tests\Unit\Pages\Concerns;
+namespace Modules\UI\Tests\Unit\Filament\Resources\TreeResource\Pages\Concerns;
 
 use Modules\UI\Filament\Resources\TreeResource\Pages\Concerns\HandlesTreeBuilder;
 use Tests\TestCase;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\UI\Filament\Tests\Unit\Forms\Components;
+namespace Modules\UI\Tests\Unit\Filament\Forms\Components;
 
 use Modules\UI\Filament\Forms\Components\ParentSelect;
 use Tests\TestCase;

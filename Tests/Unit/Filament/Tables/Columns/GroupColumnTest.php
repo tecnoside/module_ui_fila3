@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\UI\Filament\Tests\Unit\Tables\Columns;
+namespace Modules\UI\Tests\Unit\Filament\Tables\Columns;
 
 use Modules\UI\Filament\Tables\Columns\GroupColumn;
 use Tests\TestCase;
