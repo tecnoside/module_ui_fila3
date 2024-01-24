@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\UI\View\Components;
 
-use Closure;
-use Illuminate\View\Component;
-use Modules\Xot\Actions\GetViewAction;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\View\Component;
+use Modules\Xot\Actions\GetViewAction;
 
 class Sidebar extends Component
 {
@@ -17,7 +16,6 @@ class Sidebar extends Component
         // public string $tpl = 'v1'
     ) {
     }
-
 
     /**
      * Get the view / contents that represent the component.
@@ -34,7 +32,6 @@ class Sidebar extends Component
         return view($view, $view_params);
     }
 
-
     // public function render(): Renderable
     // {
     //     $categories = Category::query()
@@ -49,6 +46,4 @@ class Sidebar extends Component
 
     //     return view('components.sidebar', ['categories' => $categories]);
     // }
-
-
 }
