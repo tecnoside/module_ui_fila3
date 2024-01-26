@@ -22,3 +22,4 @@ package-lock.json
 .git-rewrite/
 .php-cs-fixer.cache
 
+node_modules
