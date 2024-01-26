@@ -1,6 +1,6 @@
 <?php
 /**
- * @see
+ * @see https://github.com/ryangjchandler/filament-navigation
  */
 
 declare(strict_types=1);
@@ -15,6 +15,8 @@ use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Konnco\FilamentImport\Actions\ImportAction;
+use Konnco\FilamentImport\Actions\ImportField;
 use Webmozart\Assert\Assert;
 
 trait HandlesTreeBuilder
@@ -26,6 +28,8 @@ trait HandlesTreeBuilder
     public array $mountedActionData = []; // added by Xot
 
     public ?string $mountedChildTarget = null;
+
+    private const YES = 'Sì';
 
     public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths): void
     {
@@ -191,8 +195,7 @@ trait HandlesTreeBuilder
             ->keyBy(static fn ($item) => $item->getName())->except('sons')
             ->toArray();
 
-        // $formSchema=$this->getFormSchema();
-        return [
+        $traitActions = [
             Action::make('delete')
                 ->action(function (array $data, $record): void {
                     if ($this->mountedItem) { // delete
@@ -230,8 +233,49 @@ trait HandlesTreeBuilder
 
                     $this->storeItem($record, $data);
                 })
-                ->modalSubmitActionLabel(__('filament-navigation::filament-navigation.items-modal.btn'))
-                ->label(__('filament-navigation::filament-navigation.items-modal.title')),
+                ->modalSubmitActionLabel(__('ui::filament-navigation.items-modal.btn'))
+                ->label(__('ui::filament-navigation.items-modal.title')),
+
+            ImportAction::make()
+            ->fields([
+                ImportField::make('id')
+                    ->label('camping::asset-template.fields.id')
+                    ->translateLabel(),
+                ImportField::make('parent_id')
+                    ->label('camping::asset-template.fields.parent')
+                    ->translateLabel(),
+                ImportField::make('name')
+                    ->label('camping::asset-template.fields.name')
+                    ->translateLabel(),
+                ImportField::make('asset_type_txt')
+                    ->label('camping::asset-template.fields.asset_type')
+                    ->translateLabel(),
+                ImportField::make('brand')
+                    ->label('camping::asset-template.fields.brand')
+                    ->translateLabel(),
+                ImportField::make('model')
+                    ->label('camping::asset-template.fields.model')
+                    ->translateLabel(),
+                ImportField::make('is_enabled')
+                    ->label('camping::asset-template.fields.is_enabled')
+                    ->translateLabel(),
+            ])
+            ->label('camping::asset-template.actions.import.title')
+            ->translateLabel()
+            ->icon('heroicon-o-arrow-up-tray')
+            ->handleRecordCreation(fn ($data) => $this->handleAssetTemplateCreation($data)),
         ];
+
+        // $formSchema=$this->getFormSchema();
+        return $traitActions;
+    }
+
+    private function handleAssetTemplateCreation(array $data): Model
+    {
+        $matchID = ['id' => $data['id']];
+        $data['is_enabled'] = trim((string) $data['is_enabled']) === $this::YES ? true : false;
+        $model = static::getModel()::updateOrCreate($matchID, $data);
+
+        return $model;
     }
 }
