@@ -190,6 +190,12 @@ trait HandlesTreeBuilder
     {
         // dddx(get_class_methods($this->getResource()));
         // dddx($this->getFormSchema());
+        // dddx(parent::getHeaderActions());
+        $actions = [];
+        if (method_exists($this, 'getMainHeaderActions')) {
+            $actions = $this->getMainHeaderActions();
+        }
+
         $formSchema = $this->getResource()::form(Form::make($this))->getComponents();
         $formSchema = collect($formSchema)
             ->keyBy(static fn ($item) => $item->getName())->except('sons')
@@ -264,6 +270,7 @@ trait HandlesTreeBuilder
             ->translateLabel()
             ->icon('heroicon-o-arrow-up-tray')
             ->handleRecordCreation(fn ($data) => $this->handleAssetTemplateCreation($data)),
+            ...$actions,
         ];
 
         // $formSchema=$this->getFormSchema();
