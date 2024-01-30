@@ -19,8 +19,7 @@ use Konnco\FilamentImport\Actions\ImportAction;
 use Konnco\FilamentImport\Actions\ImportField;
 use Webmozart\Assert\Assert;
 
-trait HandlesTreeBuilder
-{
+trait HandlesTreeBuilder {
     public ?string $mountedItem = null;
 
     public array $mountedItemData = [];
@@ -29,10 +28,10 @@ trait HandlesTreeBuilder
 
     public ?string $mountedChildTarget = null;
 
-    private const YES = 'Sì';
+    // Traits cannot have constants
+    // private const YES = 'Sì';
 
-    public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths): void
-    {
+    public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths): void {
         $items = [];
 
         foreach ($targetItemsStatePaths as $targetItemStatePath) {
@@ -76,15 +75,13 @@ trait HandlesTreeBuilder
             ->send();
     }
 
-    public function addChild(string $statePath): void
-    {
+    public function addChild(string $statePath): void {
         $this->mountedChildTarget = $statePath;
 
         $this->mountAction('item');
     }
 
-    public function removeItem(string $statePath): void
-    {
+    public function removeItem(string $statePath): void {
         // $uuid = Str::afterLast($statePath, '.');
 
         // $parentPath = Str::beforeLast($statePath, '.');
@@ -99,8 +96,7 @@ trait HandlesTreeBuilder
         $this->mountAction('delete');
     }
 
-    public function deleteItem(?Model $record, array $data): void
-    {
+    public function deleteItem(?Model $record, array $data): void {
         $statePath = $this->mountedItem;
         $uuid = Str::afterLast($statePath, '.');
 
@@ -115,24 +111,21 @@ trait HandlesTreeBuilder
         $this->mountedItem = null;
     }
 
-    public function editItem(string $statePath): void
-    {
+    public function editItem(string $statePath): void {
         $this->mountedItem = $statePath;
         $this->mountedItemData = Arr::except(data_get($this, $statePath), 'children');
 
         $this->mountAction('item');
     }
 
-    public function createItem(): void
-    {
+    public function createItem(): void {
         $this->mountedItem = null;
         $this->mountedItemData = [];
         $this->mountedActionData = [];
         $this->mountAction('item');
     }
 
-    public function updateItem(Model $record, array $data): void
-    {
+    public function updateItem(Model $record, array $data): void {
         $keyName = $record->getKeyName();
         $id = $this->mountedItemData[$keyName];
         Assert::isInstanceOf($row = $record->find($id), Model::class);
@@ -145,8 +138,7 @@ trait HandlesTreeBuilder
         $this->mountedItemData = [];
     }
 
-    public function storeChildItem(Model $record, array $data): void
-    {
+    public function storeChildItem(Model $record, array $data): void {
         $parent = data_get($this, $this->mountedChildTarget);
         $data['parent_id'] = $parent['id'];
         if (Str::contains($data['parent_id'], '-')) {
@@ -175,8 +167,7 @@ trait HandlesTreeBuilder
         $this->mountedChildTarget = null;
     }
 
-    public function storeItem(?Model $record, array $data): void
-    {
+    public function storeItem(?Model $record, array $data): void {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
         $row = $model::create($data);
@@ -186,8 +177,7 @@ trait HandlesTreeBuilder
         $this->data['sons'][] = $v;
     }
 
-    protected function getHeaderActions(): array
-    {
+    protected function getHeaderActions(): array {
         // dddx(get_class_methods($this->getResource()));
         // dddx($this->getFormSchema());
         // dddx(parent::getHeaderActions());
@@ -277,8 +267,7 @@ trait HandlesTreeBuilder
         return $traitActions;
     }
 
-    private function handleAssetTemplateCreation(array $data): Model
-    {
+    private function handleAssetTemplateCreation(array $data): Model {
         $matchID = ['id' => $data['id']];
         $data['is_enabled'] = trim((string) $data['is_enabled']) === $this::YES ? true : false;
         $model = static::getModel()::updateOrCreate($matchID, $data);
