@@ -15,8 +15,6 @@ use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Konnco\FilamentImport\Actions\ImportAction;
-use Konnco\FilamentImport\Actions\ImportField;
 use Webmozart\Assert\Assert;
 
 trait HandlesTreeBuilder
@@ -28,8 +26,6 @@ trait HandlesTreeBuilder
     public array $mountedActionData = []; // added by Xot
 
     public ?string $mountedChildTarget = null;
-
-    private const YES = 'Sì';
 
     public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths): void
     {
@@ -241,53 +237,10 @@ trait HandlesTreeBuilder
                 })
                 ->modalSubmitActionLabel(__('ui::filament-navigation.items-modal.btn'))
                 ->label(__('ui::filament-navigation.items-modal.title')),
-
-            ImportAction::make()
-            ->fields([
-                ImportField::make('id')
-                    ->alternativeColumnNames(['Codice inventario*', 'Codice inventario'])
-                    ->label('camping::asset-template.fields.id')
-                    ->translateLabel(),
-                ImportField::make('parent_id')
-                    ->alternativeColumnNames(['Codice inventario asset padre'])
-                    ->label('camping::asset-template.fields.parent')
-                    ->translateLabel(),
-                ImportField::make('name')
-                    ->alternativeColumnNames(['Descrizione*', 'Descrizione'])
-                    ->label('camping::asset-template.fields.name')
-                    ->translateLabel(),
-                ImportField::make('asset_type_txt')
-                    ->alternativeColumnNames(['Tipologia asset*', 'Tipologia asset'])
-                    ->label('camping::asset-template.fields.asset_type')
-                    ->translateLabel(),
-                /*ImportField::make('brand')
-                    ->label('camping::asset-template.fields.brand')
-                    ->translateLabel(),
-                ImportField::make('model')
-                    ->label('camping::asset-template.fields.model')
-                    ->translateLabel(),*/
-                ImportField::make('is_enabled')
-                    ->alternativeColumnNames(['Abilitato'])
-                    ->label('camping::asset-template.fields.is_enabled')
-                    ->translateLabel(),
-            ])
-            ->label('camping::asset-template.actions.import.title')
-            ->translateLabel()
-            ->icon('heroicon-o-arrow-up-tray')
-            ->handleRecordCreation(fn ($data) => $this->handleAssetTemplateCreation($data)),
             ...$actions,
         ];
 
         // $formSchema=$this->getFormSchema();
         return $traitActions;
-    }
-
-    private function handleAssetTemplateCreation(array $data): Model
-    {
-        $matchID = ['id' => $data['id']];
-        $data['is_enabled'] = trim((string) $data['is_enabled']) === $this::YES ? true : false;
-        $model = static::getModel()::updateOrCreate($matchID, $data);
-
-        return $model;
     }
 }
