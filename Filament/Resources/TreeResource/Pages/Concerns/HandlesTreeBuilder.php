@@ -1,6 +1,7 @@
 <?php
 /**
  * @see https://github.com/ryangjchandler/filament-navigation
+ * ---
  */
 
 declare(strict_types=1);
