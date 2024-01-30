@@ -245,24 +245,29 @@ trait HandlesTreeBuilder
             ImportAction::make()
             ->fields([
                 ImportField::make('id')
+                    ->alternativeColumnNames(['Codice inventario*', 'Codice inventario'])
                     ->label('camping::asset-template.fields.id')
                     ->translateLabel(),
                 ImportField::make('parent_id')
+                    ->alternativeColumnNames(['Codice inventario asset padre'])
                     ->label('camping::asset-template.fields.parent')
                     ->translateLabel(),
                 ImportField::make('name')
+                    ->alternativeColumnNames(['Descrizione*', 'Descrizione'])
                     ->label('camping::asset-template.fields.name')
                     ->translateLabel(),
                 ImportField::make('asset_type_txt')
+                    ->alternativeColumnNames(['Tipologia asset*', 'Tipologia asset'])
                     ->label('camping::asset-template.fields.asset_type')
                     ->translateLabel(),
-                ImportField::make('brand')
+                /*ImportField::make('brand')
                     ->label('camping::asset-template.fields.brand')
                     ->translateLabel(),
                 ImportField::make('model')
                     ->label('camping::asset-template.fields.model')
-                    ->translateLabel(),
+                    ->translateLabel(),*/
                 ImportField::make('is_enabled')
+                    ->alternativeColumnNames(['Abilitato'])
                     ->label('camping::asset-template.fields.is_enabled')
                     ->translateLabel(),
             ])
