@@ -176,6 +176,19 @@ trait HandlesTreeBuilder
     {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
+
+        if (! Str::contains($data['parent_id'], '-')) {
+            $last_son = $record::class::where('parent_id', $data['parent_id'])
+                ->orderByDesc('id')
+                ->first();
+            if (null == $last_son) {
+                $data['id'] = $data['parent_id'].'-1';
+            } else {
+                $new_id = intval(Str::afterLast($last_son['id'], '-')) + 1;
+                $data['id'] = $data['parent_id'].'-'.$new_id;
+            }
+        }
+
         $row = $model::create($data);
         // $k=$row->getKey();
         $v = $row->toArray();
