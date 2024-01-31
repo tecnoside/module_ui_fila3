@@ -18,7 +18,7 @@
                     'dark:bg-gray-700 dark:border-gray-600',
                 ])>
                     {{ __('ui::filament-navigation.items.empty') }}
-                </div>
+                </div> 
             @endforelse
         </div>
     </div>
