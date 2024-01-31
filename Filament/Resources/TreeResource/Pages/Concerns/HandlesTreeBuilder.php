@@ -241,7 +241,6 @@ trait HandlesTreeBuilder
             ...$actions,
         ];
 
-        // $formSchema=$this->getFormSchema();
         return $traitActions;
     }
 }
