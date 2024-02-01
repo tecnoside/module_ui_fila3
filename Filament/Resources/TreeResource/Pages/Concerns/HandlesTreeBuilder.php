@@ -16,6 +16,7 @@ use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Modules\Camping\Actions\Asset\GetNewInventoryNumberAction;
 use Webmozart\Assert\Assert;
 
 trait HandlesTreeBuilder
@@ -25,6 +26,7 @@ trait HandlesTreeBuilder
     public array $mountedItemData = [];
 
     public array $mountedActionData = []; // added by Xot
+    // protected array $mountedActionsData = []; // added by Xot
 
     public ?string $mountedChildTarget = null;
 
@@ -146,6 +148,7 @@ trait HandlesTreeBuilder
     {
         $parent = data_get($this, $this->mountedChildTarget);
         $data['parent_id'] = $parent['id'];
+        /*
         if (Str::contains($data['parent_id'], '-')) {
             $last_son = $record::class::where('parent_id', $data['parent_id'])
                 ->orderByDesc('id')
@@ -157,6 +160,8 @@ trait HandlesTreeBuilder
                 $data['id'] = $data['parent_id'].'-'.$new_id;
             }
         }
+        */
+        $data['id'] = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
         $row = $record::class::create($data);
         $data = $row->toArray();
 
@@ -177,17 +182,7 @@ trait HandlesTreeBuilder
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
 
-        if (! Str::contains($data['parent_id'], '-')) {
-            $last_son = $record::class::where('parent_id', $data['parent_id'])
-                ->orderByDesc('id')
-                ->first();
-            if (null == $last_son) {
-                $data['id'] = $data['parent_id'].'-1';
-            } else {
-                $new_id = intval(Str::afterLast($last_son['id'], '-')) + 1;
-                $data['id'] = $data['parent_id'].'-'.$new_id;
-            }
-        }
+        $data['id'] = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
 
         $row = $model::create($data);
         // $k=$row->getKey();
