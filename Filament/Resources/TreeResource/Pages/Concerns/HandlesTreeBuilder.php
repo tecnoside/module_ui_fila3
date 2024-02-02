@@ -208,42 +208,48 @@ trait HandlesTreeBuilder
 
         $traitActions = [
             Action::make('delete')
-                ->action(function (array $data, $record): void {
-                    if ($this->mountedItem) { // delete
-                        $this->deleteItem($record, $data);
+                ->action(
+                    function (array $data, $record): void {
+                        if ($this->mountedItem) { // delete
+                            $this->deleteItem($record, $data);
 
-                        return;
+                            return;
+                        }
                     }
-                })
+                )
                 ->requiresConfirmation()
                 ->visible(null != $this->mountedItem),
             Action::make('item')
-                ->mountUsing(function (ComponentContainer $form): void {
-                    if (! $this->mountedItem) {
-                        return;
-                    }
+                ->mountUsing(
+                    function (ComponentContainer $form): void {
+                        if (! $this->mountedItem) {
+                            return;
+                        }
 
-                    $form->fill($this->mountedItemData);
-                })
+                        $form->fill($this->mountedItemData);
+                    }
+                )
                 ->form($formSchema)
                 ->modalWidth('xl')
-                ->action(function (array $data, $record): void {
-                    if ($this->mountedItem) { // UPDATE
-                        $this->updateItem($record, $data);
+                ->action(
+                    function (array $data, $record): void {
+                        if ($this->mountedItem) { // UPDATE
+                            $this->updateItem($record, $data);
 
-                        return;
+                            return;
+                        }
+
+                        if ($this->mountedChildTarget) { // ADD CHILD
+                            $this->storeChildItem($record, $data);
+
+                            return;
+                        }
+
+                        // CREATE
+
+                        $this->storeItem($record, $data);
                     }
-
-                    if ($this->mountedChildTarget) { // ADD CHILD
-                        $this->storeChildItem($record, $data);
-
-                        return;
-                    }
-
-                    // CREATE
-
-                    $this->storeItem($record, $data);
-                })
+                )
                 ->modalSubmitActionLabel(__('ui::filament-navigation.items-modal.btn'))
                 ->label(__('ui::filament-navigation.items-modal.title')),
             ...$actions,

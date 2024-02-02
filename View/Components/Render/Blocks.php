@@ -19,8 +19,8 @@ class Blocks extends Component
     public function __construct(
         public array $blocks,
         public ?Model $model = null,
-        public string $tpl = 'v1')
-    {
+        public string $tpl = 'v1'
+    ) {
     }
 
     public function render(): Renderable

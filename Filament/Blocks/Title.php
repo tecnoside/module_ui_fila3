@@ -15,18 +15,22 @@ class Title
         string $context = 'form',
     ): Block {
         return Block::make($name)
-            ->schema([
+            ->schema(
+                [
                 TextInput::make('text')
                     ->required(),
 
                 Select::make('level')
-                    ->options([
+                    ->options(
+                        [
                         'h2' => 'h2',
                         'h3' => 'h3',
                         'h4' => 'h4',
-                    ])
+                        ]
+                    )
                     ->afterStateHydrated(static fn ($state, $set) => $state || $set('level', 'h2')),
-            ])
+                ]
+            )
             ->columns('form' === $context ? 2 : 1);
     }
 }

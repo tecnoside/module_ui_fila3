@@ -19,8 +19,8 @@ class BreadLink extends Component
     public function __construct(
         // public Post $article,
         // public bool $showAuthor = false,
-        public string $tpl = 'v1')
-    {
+        public string $tpl = 'v1'
+    ) {
     }
 
     public function render(): Renderable

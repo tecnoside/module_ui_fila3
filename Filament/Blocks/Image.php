@@ -16,7 +16,8 @@ class Image
         string $context = 'form',
     ): Block {
         return Block::make($name)
-            ->schema([
+            ->schema(
+                [
                 FileUpload::make('image')
                     ->label('Image upload'),
 
@@ -32,7 +33,8 @@ class Image
 
                 TextInput::make('caption')
                     ->columnSpanFull(),
-            ])
+                ]
+            )
             ->columns('form' === $context ? 2 : 1);
     }
 
