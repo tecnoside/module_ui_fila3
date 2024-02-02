@@ -183,11 +183,13 @@ trait HandlesTreeBuilder
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
 
-        $data['id'] = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
+        $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
+        $data['id'] = $new_id;
 
         $row = $model::create($data);
         // $k=$row->getKey();
         $v = $row->toArray();
+        $v['id'] = $new_id;
         $v['children'] = [];
         $this->data['sons'][] = $v;
     }
