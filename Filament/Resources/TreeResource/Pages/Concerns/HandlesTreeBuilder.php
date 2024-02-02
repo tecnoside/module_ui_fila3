@@ -149,21 +149,18 @@ trait HandlesTreeBuilder
         $parent = data_get($this, $this->mountedChildTarget);
         $data['parent_id'] = $parent['id'];
         /*
-        if (Str::contains($data['parent_id'], '-')) {
-            $last_son = $record::class::where('parent_id', $data['parent_id'])
-                ->orderByDesc('id')
-                ->first();
-            if (null == $last_son) {
-                $data['id'] = $data['parent_id'].'-1';
-            } else {
-                $new_id = intval(Str::afterLast($last_son['id'], '-')) + 1;
-                $data['id'] = $data['parent_id'].'-'.$new_id;
-            }
-        }
-        */
-        $data['id'] = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
+        dddx([
+            'data' => $data,
+            'parent' => $parent,
+            '$this->mountedChildTarget' => $this->mountedChildTarget,
+        ]);
+        // */
+
+        $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
+        $data['id'] = $new_id;
         $row = $record::class::create($data);
         $data = $row->toArray();
+        $data['id'] = $new_id;
 
         $children = data_get($this, $this->mountedChildTarget.'.children', []);
 
@@ -171,6 +168,10 @@ trait HandlesTreeBuilder
             ...$data,
             ...['children' => []],
         ];
+
+        // dddx([
+        //    'children' => $children,
+        // ]);
 
         data_set($this, $this->mountedChildTarget.'.children', $children);
 
@@ -218,7 +219,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible($this->mountedItem != null),
+                ->visible(null != $this->mountedItem),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
