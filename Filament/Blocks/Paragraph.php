@@ -16,7 +16,7 @@ class Paragraph
         return Block::make($name)
             ->schema(
                 [
-                RichEditor::make('text'),
+                    RichEditor::make('text'),
                 ]
             );
     }

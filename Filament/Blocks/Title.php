@@ -17,18 +17,18 @@ class Title
         return Block::make($name)
             ->schema(
                 [
-                TextInput::make('text')
-                    ->required(),
+                    TextInput::make('text')
+                        ->required(),
 
-                Select::make('level')
-                    ->options(
-                        [
-                        'h2' => 'h2',
-                        'h3' => 'h3',
-                        'h4' => 'h4',
-                        ]
-                    )
-                    ->afterStateHydrated(static fn ($state, $set) => $state || $set('level', 'h2')),
+                    Select::make('level')
+                        ->options(
+                            [
+                                'h2' => 'h2',
+                                'h3' => 'h3',
+                                'h4' => 'h4',
+                            ]
+                        )
+                        ->afterStateHydrated(static fn ($state, $set) => $state || $set('level', 'h2')),
                 ]
             )
             ->columns('form' === $context ? 2 : 1);
