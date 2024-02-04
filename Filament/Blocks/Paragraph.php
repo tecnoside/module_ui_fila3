@@ -14,8 +14,10 @@ class Paragraph
         string $context = 'form',
     ): Block {
         return Block::make($name)
-            ->schema([
-                RichEditor::make('text'),
-            ]);
+            ->schema(
+                [
+                    RichEditor::make('text'),
+                ]
+            );
     }
 }

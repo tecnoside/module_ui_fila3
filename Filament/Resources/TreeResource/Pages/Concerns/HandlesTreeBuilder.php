@@ -1,6 +1,7 @@
 <?php
 /**
  * @see https://github.com/ryangjchandler/filament-navigation
+ * ---
  */
 
 declare(strict_types=1);
@@ -15,23 +16,22 @@ use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Konnco\FilamentImport\Actions\ImportAction;
-use Konnco\FilamentImport\Actions\ImportField;
+use Modules\Camping\Actions\Asset\GetNewInventoryNumberAction;
 use Webmozart\Assert\Assert;
 
-trait HandlesTreeBuilder {
+trait HandlesTreeBuilder
+{
     public ?string $mountedItem = null;
 
     public array $mountedItemData = [];
 
     public array $mountedActionData = []; // added by Xot
+    // protected array $mountedActionsData = []; // added by Xot
 
     public ?string $mountedChildTarget = null;
 
-    // Traits cannot have constants
-    // private const YES = 'Sì';
-
-    public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths): void {
+    public function sortNavigation(string $targetStatePath, array $targetItemsStatePaths): void
+    {
         $items = [];
 
         foreach ($targetItemsStatePaths as $targetItemStatePath) {
@@ -75,13 +75,15 @@ trait HandlesTreeBuilder {
             ->send();
     }
 
-    public function addChild(string $statePath): void {
+    public function addChild(string $statePath): void
+    {
         $this->mountedChildTarget = $statePath;
 
         $this->mountAction('item');
     }
 
-    public function removeItem(string $statePath): void {
+    public function removeItem(string $statePath): void
+    {
         // $uuid = Str::afterLast($statePath, '.');
 
         // $parentPath = Str::beforeLast($statePath, '.');
@@ -96,7 +98,8 @@ trait HandlesTreeBuilder {
         $this->mountAction('delete');
     }
 
-    public function deleteItem(?Model $record, array $data): void {
+    public function deleteItem(?Model $record, array $data): void
+    {
         $statePath = $this->mountedItem;
         $uuid = Str::afterLast($statePath, '.');
 
@@ -111,21 +114,24 @@ trait HandlesTreeBuilder {
         $this->mountedItem = null;
     }
 
-    public function editItem(string $statePath): void {
+    public function editItem(string $statePath): void
+    {
         $this->mountedItem = $statePath;
         $this->mountedItemData = Arr::except(data_get($this, $statePath), 'children');
 
         $this->mountAction('item');
     }
 
-    public function createItem(): void {
+    public function createItem(): void
+    {
         $this->mountedItem = null;
         $this->mountedItemData = [];
         $this->mountedActionData = [];
         $this->mountAction('item');
     }
 
-    public function updateItem(Model $record, array $data): void {
+    public function updateItem(Model $record, array $data): void
+    {
         $keyName = $record->getKeyName();
         $id = $this->mountedItemData[$keyName];
         Assert::isInstanceOf($row = $record->find($id), Model::class);
@@ -138,22 +144,23 @@ trait HandlesTreeBuilder {
         $this->mountedItemData = [];
     }
 
-    public function storeChildItem(Model $record, array $data): void {
+    public function storeChildItem(Model $record, array $data): void
+    {
         $parent = data_get($this, $this->mountedChildTarget);
         $data['parent_id'] = $parent['id'];
-        if (Str::contains($data['parent_id'], '-')) {
-            $last_son = $record::class::where('parent_id', $data['parent_id'])
-                ->orderByDesc('id')
-                ->first();
-            if (null == $last_son) {
-                $data['id'] = $data['parent_id'].'-1';
-            } else {
-                $new_id = intval(Str::afterLast($last_son['id'], '-')) + 1;
-                $data['id'] = $data['parent_id'].'-'.$new_id;
-            }
-        }
+        /*
+        dddx([
+            'data' => $data,
+            'parent' => $parent,
+            '$this->mountedChildTarget' => $this->mountedChildTarget,
+        ]);
+        // */
+
+        $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
+        $data['id'] = $new_id;
         $row = $record::class::create($data);
         $data = $row->toArray();
+        $data['id'] = $new_id;
 
         $children = data_get($this, $this->mountedChildTarget.'.children', []);
 
@@ -162,22 +169,33 @@ trait HandlesTreeBuilder {
             ...['children' => []],
         ];
 
+        // dddx([
+        //    'children' => $children,
+        // ]);
+
         data_set($this, $this->mountedChildTarget.'.children', $children);
 
         $this->mountedChildTarget = null;
     }
 
-    public function storeItem(?Model $record, array $data): void {
+    public function storeItem(?Model $record, array $data): void
+    {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
+
+        $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
+        $data['id'] = $new_id;
+
         $row = $model::create($data);
         // $k=$row->getKey();
         $v = $row->toArray();
+        $v['id'] = $new_id;
         $v['children'] = [];
         $this->data['sons'][] = $v;
     }
 
-    protected function getHeaderActions(): array {
+    protected function getHeaderActions(): array
+    {
         // dddx(get_class_methods($this->getResource()));
         // dddx($this->getFormSchema());
         // dddx(parent::getHeaderActions());
@@ -193,90 +211,53 @@ trait HandlesTreeBuilder {
 
         $traitActions = [
             Action::make('delete')
-                ->action(function (array $data, $record): void {
-                    if ($this->mountedItem) { // delete
-                        $this->deleteItem($record, $data);
+                ->action(
+                    function (array $data, $record): void {
+                        if ($this->mountedItem) { // delete
+                            $this->deleteItem($record, $data);
 
-                        return;
+                            return;
+                        }
                     }
-                })
+                )
                 ->requiresConfirmation()
-                ->visible(null != $this->mountedItem),
+                ->visible($this->mountedItem != null),
             Action::make('item')
-                ->mountUsing(function (ComponentContainer $form): void {
-                    if (! $this->mountedItem) {
-                        return;
-                    }
+                ->mountUsing(
+                    function (ComponentContainer $form): void {
+                        if (! $this->mountedItem) {
+                            return;
+                        }
 
-                    $form->fill($this->mountedItemData);
-                })
+                        $form->fill($this->mountedItemData);
+                    }
+                )
                 ->form($formSchema)
                 ->modalWidth('xl')
-                ->action(function (array $data, $record): void {
-                    if ($this->mountedItem) { // UPDATE
-                        $this->updateItem($record, $data);
+                ->action(
+                    function (array $data, $record): void {
+                        if ($this->mountedItem) { // UPDATE
+                            $this->updateItem($record, $data);
 
-                        return;
+                            return;
+                        }
+
+                        if ($this->mountedChildTarget) { // ADD CHILD
+                            $this->storeChildItem($record, $data);
+
+                            return;
+                        }
+
+                        // CREATE
+
+                        $this->storeItem($record, $data);
                     }
-
-                    if ($this->mountedChildTarget) { // ADD CHILD
-                        $this->storeChildItem($record, $data);
-
-                        return;
-                    }
-
-                    // CREATE
-
-                    $this->storeItem($record, $data);
-                })
+                )
                 ->modalSubmitActionLabel(__('ui::filament-navigation.items-modal.btn'))
                 ->label(__('ui::filament-navigation.items-modal.title')),
-
-            ImportAction::make()
-            ->fields([
-                ImportField::make('id')
-                    ->alternativeColumnNames(['Codice inventario*', 'Codice inventario'])
-                    ->label('camping::asset-template.fields.id')
-                    ->translateLabel(),
-                ImportField::make('parent_id')
-                    ->alternativeColumnNames(['Codice inventario asset padre'])
-                    ->label('camping::asset-template.fields.parent')
-                    ->translateLabel(),
-                ImportField::make('name')
-                    ->alternativeColumnNames(['Descrizione*', 'Descrizione'])
-                    ->label('camping::asset-template.fields.name')
-                    ->translateLabel(),
-                ImportField::make('asset_type_txt')
-                    ->alternativeColumnNames(['Tipologia asset*', 'Tipologia asset'])
-                    ->label('camping::asset-template.fields.asset_type')
-                    ->translateLabel(),
-                /*ImportField::make('brand')
-                    ->label('camping::asset-template.fields.brand')
-                    ->translateLabel(),
-                ImportField::make('model')
-                    ->label('camping::asset-template.fields.model')
-                    ->translateLabel(),*/
-                ImportField::make('is_enabled')
-                    ->alternativeColumnNames(['Abilitato'])
-                    ->label('camping::asset-template.fields.is_enabled')
-                    ->translateLabel(),
-            ])
-            ->label('camping::asset-template.actions.import.title')
-            ->translateLabel()
-            ->icon('heroicon-o-arrow-up-tray')
-            ->handleRecordCreation(fn ($data) => $this->handleAssetTemplateCreation($data)),
             ...$actions,
         ];
 
-        // $formSchema=$this->getFormSchema();
         return $traitActions;
-    }
-
-    private function handleAssetTemplateCreation(array $data): Model {
-        $matchID = ['id' => $data['id']];
-        $data['is_enabled'] = trim((string) $data['is_enabled']) === $this::YES ? true : false;
-        $model = static::getModel()::updateOrCreate($matchID, $data);
-
-        return $model;
     }
 }

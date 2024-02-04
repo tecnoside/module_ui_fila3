@@ -19,22 +19,21 @@ class Blocks extends Component
     public function __construct(
         public array $blocks,
         public ?Model $model = null,
-        public string $tpl = 'v1')
-    {
+        public string $tpl = 'v1'
+    ) {
     }
 
     public function render(): Renderable
     {
-
         /**
          * @phpstan-var view-string
          */
         $view = app(GetViewAction::class)->execute($this->tpl);
 
         $view_params = [
-            'view'=>$view,
-            'blocks'=>$this->blocks,
-            'model'=>$this->model,
+            'view' => $view,
+            'blocks' => $this->blocks,
+            'model' => $this->model,
         ];
 
         return view($view, $view_params);

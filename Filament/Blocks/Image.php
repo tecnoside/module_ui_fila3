@@ -16,24 +16,26 @@ class Image
         string $context = 'form',
     ): Block {
         return Block::make($name)
-            ->schema([
-                FileUpload::make('image')
-                    ->label('Image upload'),
+            ->schema(
+                [
+                    FileUpload::make('image')
+                        ->label('Image upload'),
 
-                TextInput::make('url')
-                    ->label('or Image URL'),
+                    TextInput::make('url')
+                        ->label('or Image URL'),
 
-                Select::make('ratio')
-                    ->options(static::getRatios())
-                    ->afterStateHydrated(static fn ($state, $set) => $state || $set('ratio', '4-3')),
+                    Select::make('ratio')
+                        ->options(static::getRatios())
+                        ->afterStateHydrated(static fn ($state, $set) => $state || $set('ratio', '4-3')),
 
-                TextInput::make('alt')
-                    ->columnSpanFull(),
+                    TextInput::make('alt')
+                        ->columnSpanFull(),
 
-                TextInput::make('caption')
-                    ->columnSpanFull(),
-            ])
-            ->columns('form' === $context ? 2 : 1);
+                    TextInput::make('caption')
+                        ->columnSpanFull(),
+                ]
+            )
+            ->columns($context === 'form' ? 2 : 1);
     }
 
     public static function getRatios(): array
