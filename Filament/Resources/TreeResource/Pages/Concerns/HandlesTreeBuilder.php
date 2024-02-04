@@ -221,7 +221,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible($this->mountedItem != null),
+                ->visible(null != $this->mountedItem),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
