@@ -39,10 +39,6 @@ class Block extends Component
         $view = Arr::first($views, static fn (string $view) => view()->exists($view));
         if (null === $view) {
             throw new \Exception('none of these views exists ['.implode(', '.chr(13), $views).']');
-<<<<<<< HEAD
-=======
-            // dddx([$views, $this->model]);
->>>>>>> 8365272 (conflict)
         }
         $view_params = $this->block['data'] ?? [];
 
