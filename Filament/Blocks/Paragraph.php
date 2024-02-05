@@ -16,7 +16,11 @@ class Paragraph
         return Block::make($name)
             ->schema(
                 [
+<<<<<<< HEAD
                     RichEditor::make('text'),
+=======
+                RichEditor::make('text'),
+>>>>>>> 4b2b025 (up)
                 ]
             );
     }
