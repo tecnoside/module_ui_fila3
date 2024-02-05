@@ -20,6 +20,7 @@ class Title
                     TextInput::make('text')
                         ->required(),
 
+<<<<<<< HEAD
                     Select::make('level')
                         ->options(
                             [
@@ -31,6 +32,16 @@ class Title
                         ->afterStateHydrated(static fn ($state, $set) => $state || $set('level', 'h2')),
                 ]
             )
+=======
+                Select::make('level')
+                    ->options([
+                        'h2' => 'h2',
+                        'h3' => 'h3',
+                        'h4' => 'h4',
+                    ])
+                    ->afterStateHydrated(static fn ($state, $set) => $state || $set('level', 'h2')),
+            ])
+>>>>>>> 3ff731f (Lint)
             ->columns('form' === $context ? 2 : 1);
     }
 }

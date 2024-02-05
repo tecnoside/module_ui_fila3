@@ -31,10 +31,16 @@ class Image
                     TextInput::make('alt')
                         ->columnSpanFull(),
 
+<<<<<<< HEAD
                     TextInput::make('caption')
                         ->columnSpanFull(),
                 ]
             )
+=======
+                TextInput::make('caption')
+                    ->columnSpanFull(),
+            ])
+>>>>>>> 3ff731f (Lint)
             ->columns('form' === $context ? 2 : 1);
     }
 
