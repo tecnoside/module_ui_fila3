@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\UI\View\Components\Render;
 
-use Illuminate\Database\Eloquent\Model;
+use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Xot\Actions\Module\GetModuleNameFromModelAction;
 
 // use Modules\Xot\View\Components\XotBaseComponent;
@@ -42,7 +43,11 @@ class Block extends Component
          */
         $view = Arr::first($views, static fn (string $view) => view()->exists($view));
         if (null === $view) {
+<<<<<<< HEAD
             throw new \Exception('none of these views exists ['.implode(', '.chr(13), $views).']');
+=======
+            throw new Exception('none of these views exists ['.implode(', '.chr(13),$views).']');
+>>>>>>> 2d57e46 (up)
         }
         $view_params = $this->block['data'] ?? [];
 
