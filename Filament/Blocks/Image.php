@@ -18,8 +18,13 @@ class Image
         return Block::make($name)
             ->schema(
                 [
+<<<<<<< HEAD
                     FileUpload::make('image')
                         ->label('Image upload'),
+=======
+                FileUpload::make('image')
+                    ->label('Image upload'),
+>>>>>>> 4b2b025 (up)
 
                     TextInput::make('url')
                         ->label('or Image URL'),
@@ -31,8 +36,13 @@ class Image
                     TextInput::make('alt')
                         ->columnSpanFull(),
 
+<<<<<<< HEAD
                     TextInput::make('caption')
                         ->columnSpanFull(),
+=======
+                TextInput::make('caption')
+                    ->columnSpanFull(),
+>>>>>>> 4b2b025 (up)
                 ]
             )
             ->columns('form' === $context ? 2 : 1);
