@@ -24,9 +24,12 @@
                 </button>
             @endif
 
-            <button type="button" @if (!$disableRecordEdit) wire:click="editItem('{{ $statePath }}')" @endif
+            <button type="button" @if (!$disableRecordEdit) wire:click="editItem('{{ $statePath }}')" wire:loading.attr="disabled" @endif
                 class="appearance-none px-3 py-2 text-left">
-                <span>{{ $item['label'] }}</span>
+                <div style="float:left;">
+                    <span>{{ $item['label'] }}</span>
+                    <div wire:loading wire:target="editItem('{{ $statePath }}')"> @svg('heroicon-o-arrow-path', 'w-3 h-3 text-blue-500 hover:text-blue-900 animate-spin') </div>
+                </div>
             </button>
 
             @if (count($item['children']) > 0)
@@ -51,18 +54,24 @@
         ])>
 
             @if (!$disableNewChildRecordCreation)
-                <button x-init x-tooltip.raw.duration.0="{{ __('ui::filament-navigation.items.add-child') }}"
+                <button wire:loading.remove wire:target="addChild('{{ $statePath }}')" x-init x-tooltip.raw.duration.0="{{ __('ui::filament-navigation.items.add-child') }}"
                     type="button" wire:click="addChild('{{ $statePath }}')" class="p-1"
                     title="{{ __('ui::filament-navigation.items.add-child') }}">
                     @svg('heroicon-o-plus', 'w-3 h-3 text-gray-500 hover:text-gray-900')
                 </button>
+                <button wire:loading wire:target="addChild('{{ $statePath }}')" type="button" class="p-1">
+                    @svg('heroicon-o-arrow-path', 'w-3 h-3 text-blue-500 hover:text-blue-900 animate-spin')
+                </button>
             @endif
 
             @if (!$disableRecordDeletion)
-                <button x-init x-tooltip.raw.duration.0="{{ __('ui::filament-navigation.items.remove') }}"
+                <button wire:loading.remove wire:target="removeItem('{{ $statePath }}')" x-init x-tooltip.raw.duration.0="{{ __('ui::filament-navigation.items.remove') }}"
                     type="button" wire:click="removeItem('{{ $statePath }}')" class="p-1"
                     title="{{ __('ui::filament-navigation.items.remove') }}">
                     @svg('heroicon-o-trash', 'w-3 h-3 text-danger-500 hover:text-danger-900')
+                </button>
+                <button wire:loading wire:target="removeItem('{{ $statePath }}')" type="button" class="p-1">
+                    @svg('heroicon-o-arrow-path', 'w-3 h-3 text-blue-500 hover:text-blue-900 animate-spin')
                 </button>
             @endif
         </div>
