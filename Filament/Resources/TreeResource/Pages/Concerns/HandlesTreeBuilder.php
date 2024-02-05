@@ -70,7 +70,7 @@ trait HandlesTreeBuilder
 
         data_set($this, $targetStatePath, $items);
         Notification::make()
-            ->title('Sorted !')
+            ->title(trans('ui::filament-navigation.items.sorted'))
             ->success()
             ->send();
     }
@@ -152,7 +152,7 @@ trait HandlesTreeBuilder
         $parent = data_get($this, $this->mountedChildTarget);
         $data['parent_id'] = $parent['id'];
         /*
-        dddx([
+        dddx([f
             'data' => $data,
             'parent' => $parent,
             '$this->mountedChildTarget' => $this->mountedChildTarget,
@@ -224,7 +224,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible($this->mountedItem != null),
+                ->visible(null != $this->mountedItem),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
