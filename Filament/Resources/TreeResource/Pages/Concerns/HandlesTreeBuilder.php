@@ -79,6 +79,9 @@ trait HandlesTreeBuilder
     {
         $this->mountedChildTarget = $statePath;
 
+        $this->mountedItem = null;
+        $this->mountedActionData = [];
+
         $this->mountAction('item');
     }
 
@@ -221,7 +224,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible($this->mountedItem != null),
+                ->visible(null != $this->mountedItem),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
