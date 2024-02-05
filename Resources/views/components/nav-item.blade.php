@@ -7,7 +7,7 @@
     'disableRecordsSorting',
 ])
 
-<div x-data="{ open: $persist(true) }" wire:key="{{ $statePath }}" data-id="{{ $statePath }}" class="space-y-2"
+<div x-data="{ open: false }" wire:key="{{ $statePath }}" data-id="{{ $statePath }}" class="space-y-2"
     data-sortable-item>
     <div class="relative group">
         <div @class([
