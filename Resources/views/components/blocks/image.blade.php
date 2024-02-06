@@ -11,6 +11,7 @@
     if(!$src){
         $src = $model->media->first()->getUrl();
     }
+    dddx($src);
     $ratioClass = \Modules\UI\Filament\Blocks\Image::getRatioClass($ratio ?: '4-3');
 @endphp
 
