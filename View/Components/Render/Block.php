@@ -28,7 +28,7 @@ class Block extends Component
         $this->tpl = $this->block['type'];
 
         $views = ['ui::components.blocks.'.$this->tpl];
-        if (null !== $this->model) {
+        if ($this->model !== null) {
             $module = app(GetModuleNameFromModelAction::class)->execute($this->model);
             $views[] = strtolower($module).'::components.blocks.'.$this->tpl;
         }
