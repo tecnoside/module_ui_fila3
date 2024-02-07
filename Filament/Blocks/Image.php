@@ -31,18 +31,11 @@ class Image
                     TextInput::make('alt')
                         ->columnSpanFull(),
 
-<<<<<<< HEAD
                     TextInput::make('caption')
                         ->columnSpanFull(),
                 ]
             )
             ->columns('form' === $context ? 2 : 1);
-=======
-                TextInput::make('caption')
-                    ->columnSpanFull(),
-            ])
-            ->columns($context === 'form' ? 2 : 1);
->>>>>>> 1fc11df (Dusting)
     }
 
     public static function getRatios(): array
