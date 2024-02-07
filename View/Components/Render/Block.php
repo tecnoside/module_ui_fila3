@@ -37,13 +37,8 @@ class Block extends Component
          * @phpstan-var view-string|null
          */
         $view = Arr::first($views, static fn (string $view) => view()->exists($view));
-<<<<<<< HEAD
-        if ($view === null) {
-            throw new \Exception('none of these views exists ['.implode(', '.chr(13), $views).']');
-=======
         if (null === $view) {
-            dddx([$views, $this->model]);
->>>>>>> 760233f (Lint)
+            throw new \Exception('none of these views exists ['.implode(', '.chr(13), $views).']');
         }
         $view_params = $this->block['data'] ?? [];
 
