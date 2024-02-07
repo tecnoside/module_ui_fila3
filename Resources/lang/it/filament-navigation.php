@@ -28,6 +28,7 @@ return [
         'indent' => 'Aumenta rientro',
         'dedent' => 'Riduci rientro',
         'remove' => 'Rimuovi',
+        'sorted' => 'Ordinato',
     ],
 
     'items-modal' => [
