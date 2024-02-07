@@ -142,7 +142,7 @@ trait HandlesTreeBuilder
     public function storeChildItem(Model $record, array $data): void
     {
         Assert::isArray($parent = data_get($this, $this->mountedChildTarget));
-        $data['parent_id'] = $parent['id'];
+        Assert::string($data['parent_id'] = $parent['id']);
         /*
         dddx([f
             'data' => $data,
@@ -180,8 +180,8 @@ trait HandlesTreeBuilder
         if (null == $record) {
             return;
         }
-
-        $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
+        Assert::string($parent_id = $data['parent_id']);
+        $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $parent_id);
         $data['id'] = $new_id;
 
         $row = $model::create($data);
@@ -203,6 +203,9 @@ trait HandlesTreeBuilder
         }
 
         $formSchema = $this->getResource()::form(Form::make($this))->getComponents();
+        /**
+         * @var array<\Filament\Forms\Components\Component>|\Closure|null
+         */
         $formSchema = collect($formSchema)
             ->keyBy(static fn ($item) => $item->getName())->except('sons')
             ->toArray();
