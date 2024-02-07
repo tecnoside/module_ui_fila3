@@ -28,7 +28,7 @@ class Block extends Component
         $this->tpl = $this->block['type'];
 
         $views = ['ui::components.blocks.'.$this->tpl];
-        if ($this->model !== null) {
+        if (null !== $this->model) {
             $module = app(GetModuleNameFromModelAction::class)->execute($this->model);
             $views[] = strtolower($module).'::components.blocks.'.$this->tpl;
         }
@@ -37,8 +37,13 @@ class Block extends Component
          * @phpstan-var view-string|null
          */
         $view = Arr::first($views, static fn (string $view) => view()->exists($view));
+<<<<<<< HEAD
         if ($view === null) {
             throw new \Exception('none of these views exists ['.implode(', '.chr(13), $views).']');
+=======
+        if (null === $view) {
+            dddx([$views, $this->model]);
+>>>>>>> 760233f (Lint)
         }
         $view_params = $this->block['data'] ?? [];
 
