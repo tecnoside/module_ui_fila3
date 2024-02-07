@@ -35,37 +35,25 @@ trait HandlesTreeBuilder
         $items = [];
 
         foreach ($targetItemsStatePaths as $targetItemStatePath) {
-            $item = data_get($this, $targetItemStatePath);
+            Assert::isArray($item = data_get($this, $targetItemStatePath));
             $uuid = Str::afterLast($targetItemStatePath, '.');
 
             $items[$uuid] = $item;
         }
 
         $model = $this->getResource()::getModel();
-        /*
-        dddx([
-            'items'=>$items,
-            'targetItemsStatePaths'=>$targetItemsStatePaths,
-            'targetStatePath'=>$targetStatePath,
-        ]);
-        */
+
         if (Str::endsWith($targetStatePath, '.children')) {
             $parentPath = Str::beforeLast($targetStatePath, '.children');
-            $parent = data_get($this, $parentPath);
+            Assert::isArray($parent = data_get($this, $parentPath));
+
             foreach ($items as $item) {
                 app($model)->find($item['id'])->update(['parent_id' => $parent['id']]);
             }
         }
 
         $ids = collect($items)->pluck('id')->toArray();
-        /*
-        dddx([
-            'items'=>$items,
-            'ids'=>$ids,
-            'targetItemsStatePaths'=>$targetItemsStatePaths,
-            'targetStatePath'=>$targetStatePath,
-        ]);
-        */
+
         $model::setNewOrder($ids);
 
         data_set($this, $targetStatePath, $items);
@@ -103,13 +91,13 @@ trait HandlesTreeBuilder
 
     public function deleteItem(?Model $record, array $data): void
     {
-        $statePath = $this->mountedItem;
+        $statePath = (string) $this->mountedItem;
         $uuid = Str::afterLast($statePath, '.');
 
         $parentPath = Str::beforeLast($statePath, '.');
-        $parent = data_get($this, $parentPath);
-
-        $item = Arr::except(data_get($this, $statePath), 'children');
+        Assert::isArray($parent = data_get($this, $parentPath));
+        Assert::isArray($item = data_get($this, $statePath));
+        $item = Arr::except($item, 'children');
 
         $model = $this->getResource()::getModel();
         $model::where('id', $item['id'])->delete();
@@ -120,7 +108,8 @@ trait HandlesTreeBuilder
     public function editItem(string $statePath): void
     {
         $this->mountedItem = $statePath;
-        $this->mountedItemData = Arr::except(data_get($this, $statePath), 'children');
+        Assert::isArray($item = data_get($this, $statePath));
+        $this->mountedItemData = Arr::except($item, 'children');
 
         $this->mountAction('item');
     }
@@ -139,8 +128,11 @@ trait HandlesTreeBuilder
         $id = $this->mountedItemData[$keyName];
         Assert::isInstanceOf($row = $record->find($id), Model::class);
         $up = tap($row)->update($data);
-
-        $up = array_merge(data_get($this, $this->mountedItem), $up->toArray());
+        Assert::isArray($item = data_get($this, $this->mountedItem));
+        $up = array_merge($item, $up->toArray());
+        if (null == $this->mountedItem) {
+            return;
+        }
         data_set($this, $this->mountedItem, $up);
 
         $this->mountedItem = null;
@@ -149,7 +141,7 @@ trait HandlesTreeBuilder
 
     public function storeChildItem(Model $record, array $data): void
     {
-        $parent = data_get($this, $this->mountedChildTarget);
+        Assert::isArray($parent = data_get($this, $this->mountedChildTarget));
         $data['parent_id'] = $parent['id'];
         /*
         dddx([f
@@ -165,7 +157,7 @@ trait HandlesTreeBuilder
         $data = $row->toArray();
         $data['id'] = $new_id;
 
-        $children = data_get($this, $this->mountedChildTarget.'.children', []);
+        Assert::isArray($children = data_get($this, $this->mountedChildTarget.'.children', []));
 
         $children[(string) Str::uuid()] = [
             ...$data,
@@ -185,6 +177,9 @@ trait HandlesTreeBuilder
     {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
+        if (null == $record) {
+            return;
+        }
 
         $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
         $data['id'] = $new_id;
@@ -224,7 +219,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible($this->mountedItem != null),
+                ->visible(null != $this->mountedItem),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
