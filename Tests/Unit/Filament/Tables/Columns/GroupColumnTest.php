@@ -21,7 +21,7 @@ final class GroupColumnTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->groupColumn = new GroupColumn;
+        $this->groupColumn = new GroupColumn();
     }
 
     protected function tearDown(): void
