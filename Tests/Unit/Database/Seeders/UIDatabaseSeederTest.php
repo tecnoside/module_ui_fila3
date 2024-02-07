@@ -21,7 +21,7 @@ final class UIDatabaseSeederTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->uIDatabaseSeeder = new UIDatabaseSeeder();
+        $this->uIDatabaseSeeder = new UIDatabaseSeeder;
     }
 
     protected function tearDown(): void
