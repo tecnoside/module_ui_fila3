@@ -151,6 +151,7 @@ trait HandlesTreeBuilder
     {
         $parent = data_get($this, $this->mountedChildTarget);
         $data['parent_id'] = $parent['id'];
+<<<<<<< HEAD
         /*
         dddx([
             'data' => $data,
@@ -161,6 +162,19 @@ trait HandlesTreeBuilder
 
         $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
         $data['id'] = $new_id;
+=======
+        if (Str::contains($data['parent_id'], '-')) {
+            $last_son = $record::class::where('parent_id', $data['parent_id'])
+                ->orderByDesc('id')
+                ->first();
+            if ($last_son == null) {
+                $data['id'] = $data['parent_id'].'-1';
+            } else {
+                $new_id = intval(Str::afterLast($last_son['id'], '-')) + 1;
+                $data['id'] = $data['parent_id'].'-'.$new_id;
+            }
+        }
+>>>>>>> 1fc11df (Dusting)
         $row = $record::class::create($data);
         $data = $row->toArray();
         $data['id'] = $new_id;
@@ -224,7 +238,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible(null != $this->mountedItem),
+                ->visible($this->mountedItem != null),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
