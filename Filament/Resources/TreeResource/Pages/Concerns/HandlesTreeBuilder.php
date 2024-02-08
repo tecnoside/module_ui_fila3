@@ -170,11 +170,7 @@ trait HandlesTreeBuilder
     {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
-<<<<<<< HEAD
-        if (null == $record) {
-=======
         if ($record == null) {
->>>>>>> master
             return;
         }
         Assert::string($parent_id = $data['parent_id']);
