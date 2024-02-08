@@ -21,7 +21,7 @@ final class TitleTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->title = new Title();
+        $this->title = new Title;
     }
 
     protected function tearDown(): void
