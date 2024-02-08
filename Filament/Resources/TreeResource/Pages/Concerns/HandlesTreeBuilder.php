@@ -170,28 +170,15 @@ trait HandlesTreeBuilder
 
     public function storeItem(?Model $record, array $data): void
     {
-        $model = $this->getResource()::getModel();
-        $data['parent_id'] = $record?->getKey();
         if (null === $record) {
             return;
         }
-        Assert::string($parent_id = $data['parent_id']);
-        $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $parent_id);
-<<<<<<< HEAD
-=======
-=======
-        if (null == $record) {
-            return;
-        }
-<<<<<<< HEAD
 
-        $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
->>>>>>> 210f19d (up)
-=======
+        $model = $this->getResource()::getModel();
+        $data['parent_id'] = $record?->getKey();
         Assert::string($parent_id = $data['parent_id']);
         $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $parent_id);
->>>>>>> 6e5ca9b (up)
->>>>>>> 78c5686 (9/23)
+
         $data['id'] = $new_id;
 
         $row = $model::create($data);
