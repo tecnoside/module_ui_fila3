@@ -130,7 +130,7 @@ trait HandlesTreeBuilder
         $up = tap($row)->update($data);
         Assert::isArray($item = data_get($this, $this->mountedItem));
         $up = array_merge($item, $up->toArray());
-        if (null == $this->mountedItem) {
+        if ($this->mountedItem == null) {
             return;
         }
         data_set($this, $this->mountedItem, $up);
@@ -143,13 +143,6 @@ trait HandlesTreeBuilder
     {
         Assert::isArray($parent = data_get($this, $this->mountedChildTarget));
         Assert::string($data['parent_id'] = $parent['id']);
-        /*
-        dddx([f
-            'data' => $data,
-            'parent' => $parent,
-            '$this->mountedChildTarget' => $this->mountedChildTarget,
-        ]);
-        // */
 
         $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
         $data['id'] = $new_id;
@@ -177,7 +170,11 @@ trait HandlesTreeBuilder
     {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
+<<<<<<< HEAD
         if (null == $record) {
+=======
+        if ($record == null) {
+>>>>>>> master
             return;
         }
         Assert::string($parent_id = $data['parent_id']);
@@ -222,7 +219,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible(null != $this->mountedItem),
+                ->visible($this->mountedItem != null),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
