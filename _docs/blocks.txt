@@ -1,3 +1,5 @@
 https://github.com/whitecube/nova-flexible-content
 
 
+https://filamentphp.com/plugins/statik-flexible-content-blocks
+
