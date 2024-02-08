@@ -170,11 +170,19 @@ trait HandlesTreeBuilder
     {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
+<<<<<<< HEAD
         if ($record == null) {
             return;
         }
         Assert::string($parent_id = $data['parent_id']);
         $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $parent_id);
+=======
+        if (null == $record) {
+            return;
+        }
+
+        $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
+>>>>>>> 210f19d (up)
         $data['id'] = $new_id;
 
         $row = $model::create($data);
@@ -215,7 +223,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible($this->mountedItem != null),
+                ->visible(null != $this->mountedItem),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
