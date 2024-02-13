@@ -3,10 +3,9 @@
 declare(strict_types=1);
 
 use App\Listeners\GenerateSitemap;
-use TightenCo\Jigsaw\Jigsaw;
 
-/* @var $container \Illuminate\Container\Container */
-/* @var $events \TightenCo\Jigsaw\Events\EventBus */
+/** @var \Illuminate\Container\Container $container */
+/** @var \TightenCo\Jigsaw\Events\EventBus $events */
 
 /*
  * You can run custom code at different stages of the build process by
