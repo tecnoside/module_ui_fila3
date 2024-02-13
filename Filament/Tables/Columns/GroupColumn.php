@@ -8,7 +8,6 @@ use Filament\Tables\Columns\Column;
 
 class GroupColumn extends Column
 {
-
     public array $schema = [];
     protected string $view = 'ui::filament.tables.columns.group';
 
