@@ -11,7 +11,6 @@ namespace Modules\UI\Filament\Resources\TreeResource\Pages\Concerns;
 use Filament\Actions\Action;
 use Filament\Forms\ComponentContainer;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -130,7 +129,7 @@ trait HandlesTreeBuilder
         $up = tap($row)->update($data);
         Assert::isArray($item = data_get($this, $this->mountedItem));
         $up = array_merge($item, $up->toArray());
-        if (null == $this->mountedItem) {
+        if (null === $this->mountedItem) {
             return;
         }
         data_set($this, $this->mountedItem, $up);
@@ -170,7 +169,7 @@ trait HandlesTreeBuilder
     {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
-        if (null == $record) {
+        if (null === $record) {
             return;
         }
         Assert::string($parent_id = $data['parent_id']);
@@ -203,7 +202,7 @@ trait HandlesTreeBuilder
             ->keyBy(static fn ($item) => $item->getName())->except('sons')
             ->toArray();
 
-        $traitActions = [
+        return [
             Action::make('delete')
                 ->action(
                     function (array $data, $record): void {
@@ -215,7 +214,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible(null != $this->mountedItem),
+                ->visible(null !== $this->mountedItem),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
@@ -251,7 +250,5 @@ trait HandlesTreeBuilder
                 ->label(__('ui::filament-navigation.items-modal.title')),
             ...$actions,
         ];
-
-        return $traitActions;
     }
 }
