@@ -25,12 +25,11 @@ class Block extends Component
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
     {
-        if($this->tpl == 'v1'){
+        if ('v1' == $this->tpl) {
             $this->tpl = $this->block['type'];
-        }else{
+        } else {
             $this->tpl = $this->block['type'].'.'.$this->tpl;
         }
-        
 
         $views = ['ui::components.blocks.'.$this->tpl];
         if (null !== $this->model) {
