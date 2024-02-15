@@ -220,11 +220,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-<<<<<<< HEAD
                 ->visible(null !== $this->mountedItem),
-=======
-                ->visible($this->mountedItem != null),
->>>>>>> c612f98 (Dusting)
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
