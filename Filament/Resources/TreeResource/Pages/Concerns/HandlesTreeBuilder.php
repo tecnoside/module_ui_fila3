@@ -18,6 +18,9 @@ use Illuminate\Support\Str;
 use Modules\Camping\Actions\Asset\GetNewInventoryNumberAction;
 use Webmozart\Assert\Assert;
 
+/**
+ * @property array $data
+ */
 trait HandlesTreeBuilder
 {
     public ?string $mountedItem = null;
@@ -129,7 +132,7 @@ trait HandlesTreeBuilder
         $up = tap($row)->update($data);
         Assert::isArray($item = data_get($this, $this->mountedItem));
         $up = array_merge($item, $up->toArray());
-        if ($this->mountedItem === null) {
+        if (null === $this->mountedItem) {
             return;
         }
         data_set($this, $this->mountedItem, $up);
@@ -169,7 +172,7 @@ trait HandlesTreeBuilder
     {
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
-        if ($record === null) {
+        if (null === $record) {
             return;
         }
         Assert::string($parent_id = $data['parent_id']);
@@ -199,7 +202,8 @@ trait HandlesTreeBuilder
          * @var array<\Filament\Forms\Components\Component>|\Closure|null
          */
         $formSchema = collect($formSchema)
-            ->keyBy(static fn ($item) => $item->getName())->except('sons')
+            ->keyBy(static fn ($item) => $item->getName())
+            ->except('sons')
             ->toArray();
 
         return [
@@ -214,7 +218,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible($this->mountedItem !== null),
+                ->visible(null !== $this->mountedItem),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
