@@ -220,11 +220,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-<<<<<<< HEAD
                 ->visible(null !== $this->mountedItem),
-=======
-                ->visible(null != $this->mountedItem),
->>>>>>> fe43536 (Lint)
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
