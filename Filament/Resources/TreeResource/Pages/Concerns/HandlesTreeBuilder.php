@@ -220,11 +220,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-<<<<<<< HEAD
                 ->visible(null !== $this->mountedItem),
-=======
-                ->visible(null != $this->mountedItem),
->>>>>>> ac267ed (rebase 6/11)
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
