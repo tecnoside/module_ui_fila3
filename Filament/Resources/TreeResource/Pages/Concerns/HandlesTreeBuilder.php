@@ -175,7 +175,7 @@ trait HandlesTreeBuilder
         }
 
         $model = $this->getResource()::getModel();
-        $data['parent_id'] = $record?->getKey();
+        $data['parent_id'] = $record->getKey();
         Assert::string($parent_id = $data['parent_id']);
         $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $parent_id);
 
