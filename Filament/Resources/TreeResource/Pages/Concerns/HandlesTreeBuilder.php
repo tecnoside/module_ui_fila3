@@ -132,7 +132,7 @@ trait HandlesTreeBuilder
         $up = tap($row)->update($data);
         Assert::isArray($item = data_get($this, $this->mountedItem));
         $up = array_merge($item, $up->toArray());
-        if ($this->mountedItem == null) {
+        if (null == $this->mountedItem) {
             return;
         }
         data_set($this, $this->mountedItem, $up);
@@ -170,7 +170,7 @@ trait HandlesTreeBuilder
 
     public function storeItem(?Model $record, array $data): void
     {
-        if ($record === null) {
+        if (null === $record) {
             return;
         }
 
@@ -220,7 +220,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-                ->visible($this->mountedItem !== null),
+                ->visible(null !== $this->mountedItem),
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
