@@ -199,9 +199,12 @@ trait HandlesTreeBuilder
             $actions = $this->getMainHeaderActions();
         }
 
+        /**
+         * @var array<\Filament\Forms\Components\Field>
+         */
         $formSchema = $this->getResource()::form(Form::make($this))->getComponents();
         /**
-         * @var array<\Filament\Forms\Components\Component>|\Closure|null
+         * @var array<\Filament\Forms\Components\Field>|\Closure|null
          */
         $formSchema = collect($formSchema)
             ->keyBy(static fn ($item) => $item->getName())
