@@ -31,10 +31,6 @@ class Title
                         ->afterStateHydrated(static fn ($state, $set) => $state || $set('level', 'h2')),
                 ]
             )
-<<<<<<< HEAD
             ->columns('form' === $context ? 2 : 1);
-=======
-            ->columns($context === 'form' ? 2 : 1);
->>>>>>> master
     }
 }
