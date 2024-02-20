@@ -21,7 +21,11 @@ final class AdminPanelProviderTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
+<<<<<<< HEAD
         $this->adminPanelProvider = new AdminPanelProvider();
+=======
+        $this->adminPanelProvider = new AdminPanelProvider;
+>>>>>>> master
     }
 
     protected function tearDown(): void

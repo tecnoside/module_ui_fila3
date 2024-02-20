@@ -35,7 +35,11 @@ class Image
                         ->columnSpanFull(),
                 ]
             )
+<<<<<<< HEAD
             ->columns('form' === $context ? 2 : 1);
+=======
+            ->columns($context === 'form' ? 2 : 1);
+>>>>>>> master
     }
 
     public static function getRatios(): array

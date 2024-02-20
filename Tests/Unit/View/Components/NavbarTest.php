@@ -20,7 +20,11 @@ final class NavbarTest extends TestCase
     {
         parent::setUp();
 
+<<<<<<< HEAD
         $this->navbar = new Navbar();
+=======
+        $this->navbar = new Navbar;
+>>>>>>> master
     }
 
     protected function tearDown(): void

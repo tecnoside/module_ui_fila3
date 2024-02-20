@@ -21,7 +21,11 @@ final class ThemeComposerTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
+<<<<<<< HEAD
         $this->themeComposer = new ThemeComposer();
+=======
+        $this->themeComposer = new ThemeComposer;
+>>>>>>> master
     }
 
     protected function tearDown(): void

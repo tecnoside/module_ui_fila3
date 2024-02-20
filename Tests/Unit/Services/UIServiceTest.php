@@ -21,7 +21,11 @@ final class UIServiceTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
+<<<<<<< HEAD
         $this->uIService = new UIService();
+=======
+        $this->uIService = new UIService;
+>>>>>>> master
     }
 
     protected function tearDown(): void

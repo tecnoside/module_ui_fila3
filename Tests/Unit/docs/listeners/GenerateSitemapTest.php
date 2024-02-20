@@ -22,7 +22,11 @@ final class GenerateSitemapTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
+<<<<<<< HEAD
         $this->generateSitemap = new GenerateSitemap();
+=======
+        $this->generateSitemap = new GenerateSitemap;
+>>>>>>> master
     }
 
     protected function tearDown(): void

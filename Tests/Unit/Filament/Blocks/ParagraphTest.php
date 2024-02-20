@@ -21,7 +21,11 @@ final class ParagraphTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
+<<<<<<< HEAD
         $this->paragraph = new Paragraph();
+=======
+        $this->paragraph = new Paragraph;
+>>>>>>> master
     }
 
     protected function tearDown(): void
