@@ -16,10 +16,13 @@ class AdminPanelProvider extends XotBasePanelProvider
 
     public function panel(Panel $panel): Panel
     {
-        FilamentAsset::register([
-            Css::make('filament-navigation-styles', __DIR__.'/../../Resources/dist/plugin.css'),
-            Js::make('filament-navigation-scripts', __DIR__.'/../../Resources/dist/plugin.js'),
-        ], 'filament-navigation');
+        FilamentAsset::register(
+            [
+                Css::make('filament-navigation-styles', __DIR__.'/../../Resources/dist/plugin.css'),
+                Js::make('filament-navigation-scripts', __DIR__.'/../../Resources/dist/plugin.js'),
+            ],
+            'filament-navigation'
+        );
 
         return parent::panel($panel);
     }

@@ -18,3 +18,8 @@ package-lock.json
 .php-cs-fixer.cache
 package-lock.json
 .git-rewrite/
+*.phar
+.git-rewrite/
+.php-cs-fixer.cache
+
+node_modules

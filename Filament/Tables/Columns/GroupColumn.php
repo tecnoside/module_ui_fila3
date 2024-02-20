@@ -8,9 +8,9 @@ use Filament\Tables\Columns\Column;
 
 class GroupColumn extends Column
 {
-    protected string $view = 'ui::filament.tables.columns.group';
-
     public array $schema = [];
+
+    protected string $view = 'ui::filament.tables.columns.group';
 
     public function getFields(): array
     {

@@ -40,7 +40,7 @@
                     'w-full bg-white rounded-lg border border-gray-300 px-3 py-2 text-left',
                     'dark:bg-gray-700 dark:border-gray-600',
                 ])>
-                    {{ __('filament-navigation::filament-navigation.items.empty') }}
+                    {{ __('ui::filament-navigation.items.empty') }}
                 </div>
             @endforelse
         </div>
@@ -49,7 +49,7 @@
     @if (!$disableNewRecordCreation)
     <div class="flex justify-end">
         <x-filament::button wire:click="createItem" type="button" size="sm">
-            {{ __('filament-navigation::filament-navigation.items.add-item') }}
+            {{ __('ui::filament-navigation.items.add-item') }}
         </x-filament::button>
     </div>
     @endif
