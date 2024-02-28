@@ -26,7 +26,8 @@ class Slider
                         ->hint('Inserisci il nome del metodo da richiamare nel tema')
                         ->required(),
 
-                    Select::make('layout')
+                    Select::make('_tpl')
+                        ->label('layout')
                         ->options($views),
                     // ->afterStateHydrated(static fn ($state, $set) => $state || $set('level', 'h2')),
                 ]

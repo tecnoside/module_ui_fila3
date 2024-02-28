@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\UI\View\Components\Render;
 
+use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 use Modules\Xot\Actions\Module\GetModuleNameFromModelAction;
-
-// use Modules\Xot\View\Components\XotBaseComponent;
 
 /**
  * .
@@ -21,11 +21,15 @@ class Block extends Component
         public ?Model $model = null,
         public string $tpl = 'v1'
     ) {
+        $tpl_tmp = Arr::get($this->block, 'data._tpl', null);
+        if (null !== $tpl_tmp) {
+            $this->tpl = $tpl_tmp;
+        }
     }
 
-    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    public function render(): ViewFactory|View
     {
-        if ('v1' == $this->tpl) {
+        if ('v1' === $this->tpl) {
             $this->tpl = $this->block['type'];
         } else {
             $this->tpl = $this->block['type'].'.'.$this->tpl;
@@ -38,11 +42,15 @@ class Block extends Component
         }
 
         /**
+         * @callable
+         */
+        $callback = static fn (string $view) => view()->exists($view);
+        /**
          * @phpstan-var view-string|null
          */
-        $view = Arr::first($views, static fn (string $view) => view()->exists($view));
+        $view = Arr::first($views, $callback);
         if (null === $view) {
-            throw new \Exception('none of these views exists ['.implode(', '.chr(13), $views).']');
+            throw new \Exception('none of these views exists ['.implode(', '.\chr(13), $views).']');
         }
         $view_params = $this->block['data'] ?? [];
 
