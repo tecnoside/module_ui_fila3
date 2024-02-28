@@ -72,15 +72,19 @@ class AddressField extends Forms\Components\Field
         parent::setUp();
 
         $this->afterStateHydrated(function (AddressField $component, ?Model $record) {
-            $address = $record?->getRelationValue($this->getRelationship());
-
-            $component->state($address ? $address->toArray() : [
+            $data = [
                 'country' => null,
                 'street' => null,
                 'city' => null,
                 'state' => null,
                 'zip' => null,
-            ]);
+            ];
+            $address = $record?->getRelationValue($this->getRelationship());
+            if (null != $address && is_object($address) && method_exists($address, 'toArray')) {
+                $data = $address->toArray();
+            }
+
+            $component->state($data);
         });
 
         $this->dehydrated(false);
