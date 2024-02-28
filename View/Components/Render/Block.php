@@ -22,7 +22,7 @@ class Block extends Component
         public string $tpl = 'v1'
     ) {
         $tpl_tmp = Arr::get($this->block, 'data._tpl', null);
-        if (null !== $tpl_tmp) {
+        if (\is_string($tpl_tmp)) {
             $this->tpl = $tpl_tmp;
         }
     }
