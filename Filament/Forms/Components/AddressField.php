@@ -1,19 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\UI\Filament\Forms\Components;
 
 use Filament\Forms;
 use Illuminate\Database\Eloquent\Model;
-//use Squire\Models\Country;
+
+// use Squire\Models\Country;
 
 class AddressField extends Forms\Components\Field
 {
     protected string $view = 'filament-forms::components.group';
 
     /** @var string|callable|null */
-    public $relationship = null;
+    public $relationship;
 
-    public function relationship(string | callable $relationship): static
+    public function relationship(string|callable $relationship): static
     {
         $this->relationship = $relationship;
 
@@ -26,7 +29,7 @@ class AddressField extends Forms\Components\Field
         $record = $this->getRecord();
         $relationship = $record?->{$this->getRelationship()}();
 
-        if ($relationship === null) {
+        if (null === $relationship) {
             return;
         } elseif ($address = $relationship->first()) {
             $address->update($state);
@@ -43,9 +46,9 @@ class AddressField extends Forms\Components\Field
             Forms\Components\Grid::make()
                 ->schema([
                     Forms\Components\Select::make('country')
-                        ->searchable()
-                        //->getSearchResultsUsing(fn (string $query) => Country::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
-                        //->getOptionLabelUsing(fn ($value): ?string => Country::firstWhere('id', $value)?->getAttribute('name')),
+                        ->searchable(),
+                    // ->getSearchResultsUsing(fn (string $query) => Country::where('name', 'like', "%{$query}%")->pluck('name', 'id'))
+                    // ->getOptionLabelUsing(fn ($value): ?string => Country::firstWhere('id', $value)?->getAttribute('name')),
                 ]),
             Forms\Components\TextInput::make('street')
                 ->label('Street address')
@@ -68,7 +71,7 @@ class AddressField extends Forms\Components\Field
     {
         parent::setUp();
 
-        $this->afterStateHydrated(function (AddressForm $component, ?Model $record) {
+        $this->afterStateHydrated(function (AddressField $component, ?Model $record) {
             $address = $record?->getRelationValue($this->getRelationship());
 
             $component->state($address ? $address->toArray() : [
