@@ -12,20 +12,16 @@
           class="swiper [--swiper-pagination-bullet-inactive-color:#c2ced1] [--swiper-pagination-color:#ffffff]">
           <div class="swiper-wrapper">
 
-
-            @foreach($_theme->getMethodData($method) as $data)
-              {{-- {{ dddx($data) }} --}}
-
-            {{-- <template x-for="(slide,index) in slides" :key="index"> --}}
+            <template x-for="(slide,index) in slides" :key="index">
               <div class="swiper-slide">
-                <a href="{{ $data->link }}" class="block">
+                <a :href="slide.link" class="block">
                   <article
                     class="banner h-[320px] md:rounded-3xl bg-[#1d1d1d] relative flex flex-col w-full justify-end overflow-hidden">
                     <picture>
-                      <source srcset="{{ $data->desktop_thumbnail_webp }}" media="(min-width: 640px)" />
-                      <img src="{{ $data->mobile_thumbnail_webp }}"
-                        class="banner-image absolute inset-0 object-cover overflow-hidden h-full" alt="{{ $data->title }}"
-                        title="{{ $data->title }}" />
+                      <source :srcset="slide.desktop_thumbnail_webp" media="(min-width: 640px)" />
+                      <img :src="slide.mobile_thumbnail_webp"
+                        class="banner-image absolute inset-0 object-cover overflow-hidden h-full" :alt="slide.title"
+                        :title="slide.title" />
                     </picture>
                     <div
                       class="banner-overlay absolute z-[1] inset-0 bg-[linear-gradient(0deg,#0009_25.12%,#0000_102.62%)]">
@@ -34,23 +30,23 @@
                       class="banner-content z-10 relative p-6 pb-10 flex flex-col gap-2 lg:gap-0 lg:flex-row lg:justify-between lg:items-end">
                       <div class="flex flex-col gap-2 lg:max-w-[80%]">
                         <span class="py-1.5 px-4 font-semibold bg-white text-neutral-4 rounded-full text-sm w-max"
-                          >{{ $data->title }}
+                          x-text="slide.title">
                         </span>
 
                         <p class="text-white text-base lg:text-[2rem] lg:leading-10 font-semibold"
-                          >{{ $data->short_description }}</p>
+                          x-text="slide.short_description"></p>
                       </div>
                       <div>
                         <button type="button"
                           class="h-10 flex justify-center items-center bg-white text-blue-1 rounded-lg font-semibold px-8 text-xs border border-blue-1 lg:border-none w-full lg:w-max"
-                          >{{ $data->action_text }}</button>
+                          x-text="slide.action_text"></button>
                       </div>
                     </div>
                   </article>
                 </a>
               </div>
-            {{-- </template> --}}
-              @endforeach
+            </template>
+
 
 
 

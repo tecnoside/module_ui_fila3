@@ -6,15 +6,18 @@ namespace Modules\UI\Datas;
 
 use Spatie\LaravelData\Data;
 use Modules\UI\Datas\SliderData;
+use Illuminate\Support\Collection;
 use Spatie\LaravelData\DataCollection;
 
 class SliderDataCollection extends Data
 {
+    /**
+     * @var DataCollection<SliderData>
+     */
+    public DataCollection $slider_data;
+
     public function __construct(
-        /**
-         * @var DataCollection<SliderData>
-         */
-        public DataCollection $slider_data
+
 
     ) {
     }
