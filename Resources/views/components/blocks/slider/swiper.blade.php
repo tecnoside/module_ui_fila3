@@ -1,4 +1,5 @@
 <section class="md:pt-10 pb-6">
+    {{-- {{ dddx($_theme->getBanners()) }} --}}
     <div x-data="heroslider" class="relative flex items-center justify-center gap-6">
       <button type="button" @click="swiper.slidePrev()"
         class="size-12 hidden 2xl:flex justify-center items-center text-neutral-4 bg-white transition-colors duration-200 hover:bg-neutral-2 rounded-full">
