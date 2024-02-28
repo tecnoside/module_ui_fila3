@@ -1,5 +1,5 @@
 <section class="md:pt-10 pb-6">
-    {{-- {{ dddx($_theme->getBanners()) }} --}}
+    {{ dddx($_theme->getBanners()) }}
     <div x-data="heroslider" class="relative flex items-center justify-center gap-6">
       <button type="button" @click="swiper.slidePrev()"
         class="size-12 hidden 2xl:flex justify-center items-center text-neutral-4 bg-white transition-colors duration-200 hover:bg-neutral-2 rounded-full">
@@ -12,6 +12,7 @@
         <div x-ref="swiper"
           class="swiper [--swiper-pagination-bullet-inactive-color:#c2ced1] [--swiper-pagination-color:#ffffff]">
           <div class="swiper-wrapper">
+
             <template x-for="(slide,index) in slides" :key="index">
               <div class="swiper-slide">
                 <a :href="slide.link" class="block">
@@ -46,6 +47,10 @@
                 </a>
               </div>
             </template>
+
+
+
+
           </div>
           <div class="swiper-pagination lg:!left-6 lg:!text-left"></div>
         </div>
