@@ -16,8 +16,11 @@ class SliderData extends Data
         public ?string $link,
         public ?string $title,
         public ?string $short_description,
+        public ?string $description,
         public ?string $action_text,
 
     ) {
+        $this->short_description = $this->description;
     }
+
 }
