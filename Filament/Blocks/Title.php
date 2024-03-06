@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\UI\Filament\Blocks;
 
+use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Builder\Block;
 use Modules\Xot\Actions\View\GetViewsSiblingsAndSelfAction;
 
 class Title
@@ -34,7 +34,7 @@ class Title
                         )
                         ->afterStateHydrated(static fn ($state, $set) => $state || $set('level', 'h2')),
 
-                    Select::make('_tpl')    
+                    Select::make('_tpl')
                         ->label('layout')
                         ->options($views),
                 ]
