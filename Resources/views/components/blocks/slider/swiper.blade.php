@@ -13,7 +13,7 @@
           <div class="swiper-wrapper">
 
 
-            @foreach($_theme->getMethodData($method) as $data)
+            @foreach ($_theme->getMethodData($method) as $data)
               {{-- {{ dddx($data) }} --}}
 
             {{-- <template x-for="(slide,index) in slides" :key="index"> --}}
