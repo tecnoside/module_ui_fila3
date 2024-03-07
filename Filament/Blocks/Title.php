@@ -7,6 +7,7 @@ namespace Modules\UI\Filament\Blocks;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Modules\Xot\Actions\View\GetViewsSiblingsAndSelfAction;
 
 class Title
 {
@@ -14,6 +15,9 @@ class Title
         string $name = 'title',
         string $context = 'form',
     ): Block {
+        $view = 'ui::components.blocks.title.v1';
+        $views = app(GetViewsSiblingsAndSelfAction::class)->execute($view);
+
         return Block::make($name)
             ->schema(
                 [
@@ -29,6 +33,10 @@ class Title
                             ]
                         )
                         ->afterStateHydrated(static fn ($state, $set) => $state || $set('level', 'h2')),
+
+                    Select::make('_tpl')
+                        ->label('layout')
+                        ->options($views),
                 ]
             )
             ->columns($context === 'form' ? 2 : 1);
