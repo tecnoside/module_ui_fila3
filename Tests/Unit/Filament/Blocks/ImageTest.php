@@ -21,7 +21,7 @@ final class ImageTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->image = new Image();
+        $this->image = new Image;
     }
 
     protected function tearDown(): void
