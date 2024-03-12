@@ -1,5 +1,5 @@
 <section class="md:pt-10 pb-6">
-    <div x-data="heroslider" class="relative flex items-center justify-center gap-6">
+    <div id="heroslider" x-data="heroslider" class="relative flex items-center justify-center gap-6">
       <button type="button" @click="swiper.slidePrev()"
         class="size-12 hidden 2xl:flex justify-center items-center text-neutral-4 bg-white transition-colors duration-200 hover:bg-neutral-2 rounded-full">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 16" fill="currentColor" width="8px">
