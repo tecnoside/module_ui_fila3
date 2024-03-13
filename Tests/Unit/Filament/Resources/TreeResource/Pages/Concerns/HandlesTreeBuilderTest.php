@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\UI\Tests\Unit\Filament\Resources\TreeResource\Pages\Concerns;
 
-use Modules\Sam\Filament\Resources\TreeResource\Pages\Concerns\HandlesTreeBuilder;
+use Modules\UI\Filament\Resources\TreeResource\Pages\Concerns\HandlesTreeBuilder;
 use Tests\TestCase;
 
 /**
  * Class HandlesTreeBuilderTest.
  *
- * @covers \Modules\Sam\Filament\Resources\TreeResource\Pages\Concerns\HandlesTreeBuilder
+ * @covers \Modules\UI\Filament\Resources\TreeResource\Pages\Concerns\HandlesTreeBuilder
  */
 final class HandlesTreeBuilderTest extends TestCase
 {

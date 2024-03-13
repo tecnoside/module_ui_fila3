@@ -16,6 +16,8 @@ use Tests\TestCase;
  */
 final class BlocksTest extends TestCase
 {
+    private Blocks $blocks;
+
     private array $blocks;
 
     private Model|Mock $model;

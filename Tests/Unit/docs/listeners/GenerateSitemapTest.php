@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\UI\Tests\Unit\docs\listeners;
+namespace Tests\Unit\Listeners;
 
 use App\Listeners\GenerateSitemap;
 use Tests\TestCase;
@@ -22,7 +22,7 @@ final class GenerateSitemapTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->generateSitemap = new GenerateSitemap();
+        $this->generateSitemap = new GenerateSitemap;
     }
 
     protected function tearDown(): void
