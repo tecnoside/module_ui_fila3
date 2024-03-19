@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Listeners;
+namespace Modules\UI\Tests\Unit\docs\listeners;
 
 use App\Listeners\GenerateSitemap;
 use Tests\TestCase;
@@ -13,7 +13,7 @@ use TightenCo\Jigsaw\Jigsaw;
  *
  * @covers \App\Listeners\GenerateSitemap
  */
-final class GenerateSitemapTest extends TestCase
+class GenerateSitemapTest extends TestCase
 {
     private GenerateSitemap $generateSitemap;
 
