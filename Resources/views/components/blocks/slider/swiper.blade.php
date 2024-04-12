@@ -1,7 +1,7 @@
-<section class="md:pt-10 pb-6">
+<section class="pb-6 md:pt-10">
     <div id="heroslider" x-data="heroslider" class="relative flex items-center justify-center gap-6">
       <button type="button" @click="swiper.slidePrev()"
-        class="size-12 hidden 2xl:flex justify-center items-center text-neutral-4 bg-white transition-colors duration-200 hover:bg-neutral-2 rounded-full">
+        class="items-center justify-center hidden transition-colors duration-200 bg-white rounded-full size-12 2xl:flex text-neutral-4 hover:bg-neutral-2">
         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 16" fill="currentColor" width="8px">
           <path d="M9 14.666L7.554 16 0 8l7.554-8L9 1.334 2.706 8z"></path>
         </svg>
@@ -24,14 +24,14 @@
                     <picture>
                       <source srcset="{{ $data->desktop_thumbnail_webp }}" media="(min-width: 640px)" />
                       <img src="{{ $data->mobile_thumbnail_webp }}"
-                        class="banner-image absolute inset-0 object-cover overflow-hidden h-full" alt="{{ $data->title }}"
+                        class="absolute inset-0 object-cover w-full h-full overflow-hidden banner-image" alt="{{ $data->title }}"
                         title="{{ $data->title }}" />
                     </picture>
                     <div
                       class="banner-overlay absolute z-[1] inset-0 bg-[linear-gradient(0deg,#0009_25.12%,#0000_102.62%)]">
                     </div>
                     <div
-                      class="banner-content z-10 relative p-6 pb-10 flex flex-col gap-2 lg:gap-0 lg:flex-row lg:justify-between lg:items-end">
+                      class="relative z-10 flex flex-col gap-2 p-6 pb-10 banner-content lg:gap-0 lg:flex-row lg:justify-between lg:items-end">
                       <div class="flex flex-col gap-2 lg:max-w-[80%]">
                         <span class="py-1.5 px-4 font-semibold bg-white text-neutral-4 rounded-full text-sm w-max"
                           >{{ $data->title }}
@@ -42,7 +42,7 @@
                       </div>
                       <div>
                         <button type="button"
-                          class="h-10 flex justify-center items-center bg-white text-blue-1 rounded-lg font-semibold px-8 text-xs border border-blue-1 lg:border-none w-full lg:w-max"
+                          class="flex items-center justify-center w-full h-10 px-8 text-xs font-semibold bg-white border rounded-lg text-blue-1 border-blue-1 lg:border-none lg:w-max"
                           >{{ $data->action_text }}</button>
                       </div>
                     </div>
