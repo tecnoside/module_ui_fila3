@@ -40,11 +40,11 @@
                         <p class="text-white text-base lg:text-[2rem] lg:leading-10 font-semibold"
                           >{{ $data->short_description }}</p>
                       </div>
-                      <div>
+                      {{-- <div>
                         <button type="button"
                           class="h-10 flex justify-center items-center bg-white text-blue-1 rounded-lg font-semibold px-8 text-xs border border-blue-1 lg:border-none w-full lg:w-max"
                           >{{ $data->action_text }}</button>
-                      </div>
+                      </div> --}}
                     </div>
                   </article>
                 </a>
