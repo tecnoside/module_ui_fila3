@@ -1,68 +1,39 @@
-<section class="md:pt-10 pb-6">
-    <div id="heroslider" x-data="heroslider" class="relative flex items-center justify-center gap-6">
-      <button type="button" @click="swiper.slidePrev()"
-        class="size-12 hidden 2xl:flex justify-center items-center text-neutral-4 bg-white transition-colors duration-200 hover:bg-neutral-2 rounded-full">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 16" fill="currentColor" width="8px">
-          <path d="M9 14.666L7.554 16 0 8l7.554-8L9 1.334 2.706 8z"></path>
-        </svg>
-      </button>
-
-      <div class="max-w-[calc(100%-30px)] sm:max-w-[calc(100%-80px)] lg:max-w-[996px] w-full">
-        <div x-ref="swiper"
-          class="swiper [--swiper-pagination-bullet-inactive-color:#c2ced1] [--swiper-pagination-color:#ffffff]">
-          <div class="swiper-wrapper">
-
-
-            @foreach ($_theme->getMethodData($method) as $data)
-              {{-- {{ dddx($data) }} --}}
-
-            {{-- <template x-for="(slide,index) in slides" :key="index"> --}}
-              <div class="swiper-slide">
-                <a href="{{ $data->link }}" class="block">
-                  <article
-                    class="banner h-[320px] md:rounded-3xl bg-[#1d1d1d] relative flex flex-col w-full justify-end overflow-hidden">
-                    <picture>
-                      <source srcset="{{ $data->desktop_thumbnail_webp }}" media="(min-width: 640px)" />
-                      <img src="{{ $data->mobile_thumbnail_webp }}"
-                        class="banner-image absolute inset-0 object-cover overflow-hidden h-full" alt="{{ $data->title }}"
-                        title="{{ $data->title }}" />
-                    </picture>
-                    <div
-                      class="banner-overlay absolute z-[1] inset-0 bg-[linear-gradient(0deg,#0009_25.12%,#0000_102.62%)]">
-                    </div>
-                    <div
-                      class="banner-content z-10 relative p-6 pb-10 flex flex-col gap-2 lg:gap-0 lg:flex-row lg:justify-between lg:items-end">
-                      <div class="flex flex-col gap-2 lg:max-w-[80%]">
-                        <span class="py-1.5 px-4 font-semibold bg-white text-neutral-4 rounded-full text-sm w-max"
-                          >{{ $data->title }}
-                        </span>
-
-                        <p class="text-white text-base lg:text-[2rem] lg:leading-10 font-semibold"
-                          >{{ $data->short_description }}</p>
-                      </div>
-                      <div>
-                        <button type="button"
-                          class="h-10 flex justify-center items-center bg-white text-blue-1 rounded-lg font-semibold px-8 text-xs border border-blue-1 lg:border-none w-full lg:w-max"
-                          >{{ $data->action_text }}</button>
-                      </div>
-                    </div>
-                  </article>
-                </a>
-              </div>
-            {{-- </template> --}}
-              @endforeach
-
-
-
-          </div>
-          <div class="swiper-pagination lg:!left-6 lg:!text-left"></div>
-        </div>
-      </div>
-      <button type="button" @click="swiper.slideNext()"
-        class="size-12 2xl:static absolute right-8 z-[1] hidden lg:flex justify-center items-center text-neutral-4 bg-white transition-colors duration-200 hover:bg-neutral-2 rounded-full">
-        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 15" width="8px">
-          <path d="M.175 1.238L1.399 0 9 7.523 1.397 15l-1.22-1.242L6.52 7.52.175 1.24z" fill="currentColor"></path>
-        </svg>
-      </button>
-    </div>
-  </section>
+<section class="container p-6 mx-auto">
+	<div id="heroslider" x-data="heroslider" class="relative w-full">
+		<button type="button" @click="swiper.slidePrev()" class="absolute z-10 grid rounded-full place-items-center start-6 top-[40%] size-10 bg-white/50 hover:bg-white/60">
+			<x-heroicon-o-chevron-left class="size-6"/>
+		</button>
+		<div class="overflow-hidden rounded-xl">
+			<div x-ref="swiper" class="swiper [--swiper-pagination-bullet-inactive-color:#c2ced1] [--swiper-pagination-color:#ffffff]">
+				<div class="swiper-wrapper"> 
+					@foreach ($_theme->getMethodData($method) as $data) 
+					<div class="swiper-slide">
+						<a href="{{ $data->link }}" class="block">
+							<article class="banner h-[400px] relative p-6">
+								<div>
+									<img src="{{ $data->mobile_thumbnail_webp ?: 'https://placehold.co/900x320' }}" class="absolute inset-0 z-0 object-cover w-full h-full" alt="{{ $data->title }}" title="{{ $data->title }}" />
+									<div class="absolute inset-0 z-1 bg-gradient-to-t from-black/80 to-transparent"></div>
+								</div>
+								<div class="relative z-10 flex flex-col justify-end h-full">
+									<div class="px-10 mb-6 space-y-2 text-center">
+										<span class="inline-block py-1.5 px-4 font-semibold bg-white/25 backdrop-blur text-white rounded-full text-sm w-max">{{ $data->title }}</span>
+										<p class="text-3xl font-bold text-white lg:text-4xl xl:text-5xl">{{ $data->short_description }}</p>
+										<button type="button" class="inline-flex items-center justify-center px-4 py-1 space-x-2 font-semibold text-white text-blue-400">
+											<span>{{ $data->action_text }}</span>
+											<x-heroicon-o-arrow-right class="size-4"/>
+										</button>
+									</div>
+								</div>
+							</article>
+						</a>
+					</div> 
+					@endforeach 
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<button type="button" @click="swiper.slideNext()" class="absolute z-10 grid rounded-full place-items-center end-6 top-[40%] size-10 bg-white/50 hover:bg-white/60">
+			<x-heroicon-o-chevron-right class="size-6"/>
+		</button>
+	</div>
+</section>
