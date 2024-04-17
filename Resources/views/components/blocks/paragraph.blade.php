@@ -1,3 +1,4 @@
 @props(['text'])
 
-{!! $text !!}
+{{-- {!! $text !!} --}}
+DEPRECATED
