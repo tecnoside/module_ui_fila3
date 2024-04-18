@@ -21,7 +21,7 @@ final class UIServiceProviderTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->uIServiceProvider = new UIServiceProvider;
+        $this->uIServiceProvider = new UIServiceProvider();
     }
 
     protected function tearDown(): void

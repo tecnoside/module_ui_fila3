@@ -132,7 +132,7 @@ trait HandlesTreeBuilder
         $up = tap($row)->update($data);
         Assert::isArray($item = data_get($this, $this->mountedItem));
         $up = array_merge($item, $up->toArray());
-        if ($this->mountedItem == null) {
+        if (null == $this->mountedItem) {
             return;
         }
         data_set($this, $this->mountedItem, $up);
