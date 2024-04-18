@@ -21,7 +21,7 @@ final class ParentSelectTest extends TestCase
         parent::setUp();
 
         /* @todo Correctly instantiate tested object to use it. */
-        $this->parentSelect = new ParentSelect();
+        $this->parentSelect = new ParentSelect;
     }
 
     protected function tearDown(): void
