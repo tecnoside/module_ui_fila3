@@ -170,28 +170,19 @@ trait HandlesTreeBuilder
 
     public function storeItem(?Model $record, array $data): void
     {
-<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
         if (null === $record) {
-=======
-        $model = $this->getResource()::getModel();
-        $data['parent_id'] = $record?->getKey();
-        if ($record == null) {
->>>>>>> 55fdc4a (10/23):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
             return;
         }
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record->getKey();
         Assert::string($parent_id = $data['parent_id']);
         $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $parent_id);
-<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
 
         $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $data['parent_id']);
 
         Assert::string($parent_id = $data['parent_id']);
         $new_id = app(GetNewInventoryNumberAction::class)->execute($record::class, $parent_id);
 
-=======
->>>>>>> 55fdc4a (10/23):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
         $data['id'] = $new_id;
 
         $row = $model::create($data);
@@ -236,11 +227,7 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
                 ->visible(null !== $this->mountedItem),
-=======
-                ->visible($this->mountedItem != null),
->>>>>>> 55fdc4a (10/23):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
