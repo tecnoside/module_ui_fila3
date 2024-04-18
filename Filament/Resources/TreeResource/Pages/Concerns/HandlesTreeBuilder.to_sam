@@ -132,7 +132,7 @@ trait HandlesTreeBuilder
         $up = tap($row)->update($data);
         Assert::isArray($item = data_get($this, $this->mountedItem));
         $up = array_merge($item, $up->toArray());
-        if ($this->mountedItem == null) {
+        if (null == $this->mountedItem) {
             return;
         }
         data_set($this, $this->mountedItem, $up);
@@ -175,8 +175,12 @@ trait HandlesTreeBuilder
 =======
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record?->getKey();
+<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
         if ($record == null) {
 >>>>>>> 0b98ad7 (18/23):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
+=======
+        if (null == $record) {
+>>>>>>> b8adeb4 (Lint):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
             return;
         }
         $model = $this->getResource()::getModel();
@@ -234,10 +238,14 @@ trait HandlesTreeBuilder
                 )
                 ->requiresConfirmation()
 <<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
+<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
                 ->visible(null !== $this->mountedItem),
 =======
                 ->visible($this->mountedItem != null),
 >>>>>>> 0b98ad7 (18/23):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
+=======
+                ->visible(null != $this->mountedItem),
+>>>>>>> b8adeb4 (Lint):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
