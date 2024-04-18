@@ -5,8 +5,8 @@
 		</button>
 		<div class="overflow-hidden rounded-xl">
 			<div x-ref="swiper" class="swiper [--swiper-pagination-bullet-inactive-color:#c2ced1] [--swiper-pagination-color:#ffffff]">
-				<div class="swiper-wrapper"> 
-					@foreach ($_theme->getMethodData($method) as $data) 
+				<div class="swiper-wrapper">
+					@foreach ($_theme->getMethodData($method) as $data)
 					<div class="swiper-slide">
 						<a href="{{ $data->link }}" class="block">
 							<article class="banner h-[400px] relative p-6">
@@ -26,8 +26,8 @@
 								</div>
 							</article>
 						</a>
-					</div> 
-					@endforeach 
+					</div>
+					@endforeach
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>
