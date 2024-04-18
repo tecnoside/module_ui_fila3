@@ -227,7 +227,11 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
+<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
                 ->visible(null !== $this->mountedItem),
+=======
+                ->visible(null != $this->mountedItem),
+>>>>>>> ac267ed (rebase 6/11):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
