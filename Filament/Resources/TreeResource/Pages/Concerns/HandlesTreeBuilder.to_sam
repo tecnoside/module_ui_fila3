@@ -170,19 +170,6 @@ trait HandlesTreeBuilder
 
     public function storeItem(?Model $record, array $data): void
     {
-<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
-        if (null === $record) {
-=======
-        $model = $this->getResource()::getModel();
-        $data['parent_id'] = $record?->getKey();
-<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
-        if ($record == null) {
->>>>>>> 0b98ad7 (18/23):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
-=======
-        if (null == $record) {
->>>>>>> b8adeb4 (Lint):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
-            return;
-        }
         $model = $this->getResource()::getModel();
         $data['parent_id'] = $record->getKey();
         Assert::string($parent_id = $data['parent_id']);
@@ -237,15 +224,6 @@ trait HandlesTreeBuilder
                     }
                 )
                 ->requiresConfirmation()
-<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
-<<<<<<< HEAD:Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.to_sam
-                ->visible(null !== $this->mountedItem),
-=======
-                ->visible($this->mountedItem != null),
->>>>>>> 0b98ad7 (18/23):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
-=======
-                ->visible(null != $this->mountedItem),
->>>>>>> b8adeb4 (Lint):Filament/Resources/TreeResource/Pages/Concerns/HandlesTreeBuilder.php
             Action::make('item')
                 ->mountUsing(
                     function (ComponentContainer $form): void {
