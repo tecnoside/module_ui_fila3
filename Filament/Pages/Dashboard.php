@@ -18,15 +18,25 @@ class Dashboard extends Page
         $widgets = [
             [
                 'class' => Widgets\TestChartWidget::class,
-                'properties' => ['qid' => 5],
+                'properties' => [
+                    'qid' => 5,
+                    'max_height' => '900px',
+                    'type' => 'pie',
+                ],
             ],
             [
                 'class' => Widgets\TestChartWidget::class,
-                'properties' => ['qid' => 7],
+                'properties' => [
+                    'qid' => 7,
+                    'type' => 'bar',
+                ],
             ],
             [
                 'class' => Widgets\TestChartWidget::class,
-                'properties' => ['qid' => 9],
+                'properties' => [
+                    'qid' => 9,
+                    'type' => 'bar',
+                ],
             ],
         ];
 
