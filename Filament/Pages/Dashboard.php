@@ -28,11 +28,6 @@ class Dashboard extends Page
                 'class' => Widgets\TestChartWidget::class,
                 'properties' => ['qid' => 9],
             ],
-            // Widgets\StatsOverviewWidget::class,
-            // Widgets\StatsOverviewWidget::class,
-            // Widgets\TestChartWidget::make(['qid' => 5]),
-            // Widgets\TestChartWidget::make(['qid' => 7]),
-            // Widgets\StatsOverviewWidget::make(),
         ];
 
         return [
