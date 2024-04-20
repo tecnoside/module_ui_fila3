@@ -20,4 +20,9 @@ class ThemeComposer
     {
         return '';
     }
+
+    public function flag($lang)
+    {
+        return view("ui::svg.flags.{$lang}");
+    }
 }
