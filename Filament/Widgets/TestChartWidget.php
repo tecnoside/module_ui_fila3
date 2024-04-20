@@ -11,9 +11,13 @@ class TestChartWidget extends ChartWidget
 {
     // protected static ?string $heading = 'Blog Posts';
     protected static ?string $pollingInterval = null;
+
     public int $qid = 0;
+
     public string $max_height = '200px';
+
     public string $type = 'line';
+
     // danger, gray, info, primary, success or warning
     protected static string $color = 'info';
 
@@ -43,7 +47,7 @@ class TestChartWidget extends ChartWidget
 
     protected function getOptions(): RawJs
     {
-        return RawJs::make(<<<JS
+        return RawJs::make(<<<'JS'
         {
             scales: {
                 y: {
