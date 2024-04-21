@@ -21,7 +21,7 @@ class ThemeComposer
         return '';
     }
 
-    public function flag($lang)
+    public function flag(string $lang): \Illuminate\View\View
     {
         return view("ui::svg.flags.{$lang}");
     }
