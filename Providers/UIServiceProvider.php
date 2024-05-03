@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\UI\Providers;
 
+use Modules\UI\Services\UIService;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Config;
-use Modules\UI\Services\UIService;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
 /**
@@ -30,9 +30,10 @@ class UIServiceProvider extends XotBaseServiceProvider
 
     public function registerCallback(): void
     {
-        // $loader = AliasLoader::getInstance();
-        // $loader->alias('ui', UIService::class);
-
-        Config::set('blade-icons.sets.default.path', '/Modules/UI/Resources/svg');
+        //$loader = AliasLoader::getInstance();
+        //$loader->alias('ui', UIService::class);
+        Config::set('blade-icons.sets.default.path', 'Modules/UI/Resources/svg');
+        Config::set('blade-icons.sets.default.prefix', 'icon');
+        
     }
 }
