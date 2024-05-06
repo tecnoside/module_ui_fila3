@@ -29,7 +29,7 @@ class Block extends Component
 
     public function render(): ViewFactory|View
     {
-        if(!isset($this->block['type'])){
+        if (! isset($this->block['type'])) {
             return view('ui::empty');
         }
 
