@@ -1,6 +1,6 @@
 <!--
   This example requires some changes to your config:
-  
+
   ```
   // tailwind.config.js
   module.exports = {
@@ -13,7 +13,7 @@
   ```
 -->
 <div class="relative overflow-hidden">
-    {{--  
+    {{--
     <header class="relative">
       <div class="bg-gray-900 pt-6">
         <nav class="relative mx-auto flex max-w-7xl items-center justify-between px-6" aria-label="Global">
@@ -46,10 +46,10 @@
           </div>
         </nav>
       </div>
-  
+
       <!--
         Mobile menu, show/hide based on menu open state.
-  
+
         Entering: "duration-150 ease-out"
           From: "opacity-0 scale-95"
           To: "opacity-100 scale-100"
@@ -136,7 +136,7 @@
           </div>
         </div>
       </div>
-  
+
       <!-- More main page content here... -->
     </main>
   </div>

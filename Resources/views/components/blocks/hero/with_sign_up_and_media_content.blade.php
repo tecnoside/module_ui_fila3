@@ -1,6 +1,6 @@
 <!--
   This example requires some changes to your config:
-  
+
   ```
   // tailwind.config.js
   module.exports = {
@@ -24,7 +24,7 @@
         <rect x="118" width="404" height="784" fill="url(#9ebea6f4-a1f5-4d96-8c4e-4c2abf658047)" />
       </svg>
     </div>
-  
+
     <div class="relative pb-16 pt-6 sm:pb-24 lg:pb-32">
       <div>
         <nav class="relative mx-auto flex max-w-7xl items-center justify-between px-6" aria-label="Global">
@@ -57,10 +57,10 @@
             </span>
           </div>
         </nav>
-  
+
         <!--
           Mobile menu, show/hide based on menu open state.
-  
+
           Entering: "duration-150 ease-out"
             From: "opacity-0 scale-95"
             To: "opacity-100 scale-100"
@@ -94,7 +94,7 @@
           </div>
         </div>
       </div>
-  
+
       <main class="mx-auto mt-16 max-w-7xl px-4 px-6 sm:mt-24 lg:mt-32">
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
           <div class="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:text-left">

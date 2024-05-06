@@ -6,7 +6,7 @@
         <p class="mx-auto mt-3 max-w-4xl text-xl text-gray-300 sm:mt-5 sm:text-2xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit numquam eligendi quos odit doloribus molestiae voluptatum.</p>
       </div>
     </div>
-  
+
     <div class="mt-16 bg-white pb-12 lg:mt-20 lg:pb-20">
       <div class="relative z-0">
         <div class="absolute inset-0 h-5/6 bg-gray-900 lg:h-2/3"></div>

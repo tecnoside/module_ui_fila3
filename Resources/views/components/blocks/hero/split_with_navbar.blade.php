@@ -27,10 +27,10 @@
                   <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                 </svg>
               </button>
-  
+
               <!--
                 'Solutions' flyout menu, show/hide based on flyout menu state.
-  
+
                 Entering: "transition ease-out duration-200"
                   From: "opacity-0 translate-y-1"
                   To: "opacity-100 translate-y-0"
@@ -108,10 +108,10 @@
                 </div>
               </div>
             </div>
-  
+
             <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Pricing</a>
             <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Docs</a>
-  
+
             <div class="relative">
               <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
               <button type="button" class="text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" aria-expanded="false">
@@ -121,10 +121,10 @@
                   <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                 </svg>
               </button>
-  
+
               <!--
                 'More' flyout menu, show/hide based on flyout menu state.
-  
+
                 Entering: "transition ease-out duration-200"
                   From: "opacity-0 translate-y-1"
                   To: "opacity-100 translate-y-0"
@@ -204,10 +204,10 @@
           </div>
         </div>
       </div>
-  
+
       <!--
         Mobile menu, show/hide based on mobile menu state.
-  
+
         Entering: "duration-200 ease-out"
           From: "opacity-0 scale-95"
           To: "opacity-100 scale-100"
@@ -270,7 +270,7 @@
           <div class="space-y-6 px-5 py-6">
             <div class="grid grid-cols-2 gap-x-8 gap-y-4">
               <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">Pricing</a>
-  
+
               <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">Docs</a>
               <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">Help Center</a>
               <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">Guides</a>
@@ -288,7 +288,7 @@
         </div>
       </div>
     </div>
-  
+
     <main class="lg:relative">
       <div class="mx-auto w-full max-w-7xl pb-20 pt-16 text-center lg:py-48 lg:text-left">
         <div class="px-6 sm:px-8 lg:w-1/2 xl:pr-16">

@@ -38,7 +38,7 @@
                 </div>
               </figcaption>
             </figure>
-  
+
             <!-- More testimonials... -->
           </div>
           <div class="space-y-8 xl:row-start-1">
@@ -54,7 +54,7 @@
                 </div>
               </figcaption>
             </figure>
-  
+
             <!-- More testimonials... -->
           </div>
         </div>
@@ -72,7 +72,7 @@
                 </div>
               </figcaption>
             </figure>
-  
+
             <!-- More testimonials... -->
           </div>
           <div class="space-y-8 xl:row-span-2">
@@ -88,7 +88,7 @@
                 </div>
               </figcaption>
             </figure>
-  
+
             <!-- More testimonials... -->
           </div>
         </div>

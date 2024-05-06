@@ -58,7 +58,7 @@
         </div>
       </div>
     </header>
-  
+
     <div class="relative isolate pt-14">
       <svg class="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
         <defs>

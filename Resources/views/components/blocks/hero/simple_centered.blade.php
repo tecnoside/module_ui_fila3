@@ -19,10 +19,10 @@
         </svg>
       </div>
     </div>
-  
+
     <div class="relative pb-16 pt-6 sm:pb-24">
       <div>
-        {{--  
+        {{--
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
           <nav class="relative flex items-center justify-between sm:h-10 md:justify-center" aria-label="Global">
             <div class="flex flex-1 items-center md:absolute md:inset-y-0 md:left-0">
@@ -56,10 +56,10 @@
           </nav>
         </div>
         --}}
-  
+
         <!--
           Mobile menu, show/hide based on menu open state.
-  
+
           Entering: "duration-150 ease-out"
             From: "opacity-0 scale-95"
             To: "opacity-100 scale-100"
@@ -93,7 +93,7 @@
           </div>
         </div>
       </div>
-  
+
       <main class="mx-auto mt-16 max-w-7xl px-4 sm:mt-24">
         <div class="text-center">
           <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">

@@ -31,7 +31,7 @@
               </div>
             </div>
           </article>
-  
+
           <!-- More posts... -->
         </div>
       </div>

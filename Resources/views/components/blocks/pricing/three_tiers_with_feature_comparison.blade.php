@@ -181,21 +181,21 @@
         <!-- Feature comparison (up to lg) -->
         <section aria-labelledby="mobile-comparison-heading" class="lg:hidden">
           <h2 id="mobile-comparison-heading" class="sr-only">Feature comparison</h2>
-  
+
           <div class="mx-auto max-w-2xl space-y-16">
             <div class="border-t border-gray-900/10">
               <div class="-mt-px w-72 border-t-2 pt-10 md:w-80 border-transparent">
                 <h3 class="text-sm font-semibold leading-6 text-gray-900">Starter</h3>
                 <p class="mt-1 text-sm leading-6 text-gray-600">All your essential business finances, taken care of.</p>
               </div>
-  
+
               <div class="mt-10 space-y-10">
                 <div>
                   <h4 class="text-sm font-semibold leading-6 text-gray-900">Catered for business</h4>
                   <div class="relative mt-6">
                     <!-- Fake card background -->
                     <div aria-hidden="true" class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-sm sm:block"></div>
-  
+
                     <div class="relative rounded-lg bg-white shadow-sm sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0 ring-1 ring-gray-900/10">
                       <dl class="divide-y divide-gray-200 text-sm leading-6">
                         <div class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0">
@@ -257,7 +257,7 @@
                         </div>
                       </dl>
                     </div>
-  
+
                     <!-- Fake card border -->
                     <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg sm:block ring-1 ring-gray-900/10"></div>
                   </div>
@@ -267,7 +267,7 @@
                   <div class="relative mt-6">
                     <!-- Fake card background -->
                     <div aria-hidden="true" class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-sm sm:block"></div>
-  
+
                     <div class="relative rounded-lg bg-white shadow-sm sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0 ring-1 ring-gray-900/10">
                       <dl class="divide-y divide-gray-200 text-sm leading-6">
                         <div class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0">
@@ -335,7 +335,7 @@
                         </div>
                       </dl>
                     </div>
-  
+
                     <!-- Fake card border -->
                     <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg sm:block ring-1 ring-gray-900/10"></div>
                   </div>
@@ -347,14 +347,14 @@
                 <h3 class="text-sm font-semibold leading-6 text-indigo-600">Scale</h3>
                 <p class="mt-1 text-sm leading-6 text-gray-600">The best financial services for your thriving business.</p>
               </div>
-  
+
               <div class="mt-10 space-y-10">
                 <div>
                   <h4 class="text-sm font-semibold leading-6 text-gray-900">Catered for business</h4>
                   <div class="relative mt-6">
                     <!-- Fake card background -->
                     <div aria-hidden="true" class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-sm sm:block"></div>
-  
+
                     <div class="relative rounded-lg bg-white shadow-sm sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0 ring-2 ring-indigo-600">
                       <dl class="divide-y divide-gray-200 text-sm leading-6">
                         <div class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0">
@@ -416,7 +416,7 @@
                         </div>
                       </dl>
                     </div>
-  
+
                     <!-- Fake card border -->
                     <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg sm:block ring-2 ring-indigo-600"></div>
                   </div>
@@ -426,7 +426,7 @@
                   <div class="relative mt-6">
                     <!-- Fake card background -->
                     <div aria-hidden="true" class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-sm sm:block"></div>
-  
+
                     <div class="relative rounded-lg bg-white shadow-sm sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0 ring-2 ring-indigo-600">
                       <dl class="divide-y divide-gray-200 text-sm leading-6">
                         <div class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0">
@@ -494,7 +494,7 @@
                         </div>
                       </dl>
                     </div>
-  
+
                     <!-- Fake card border -->
                     <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg sm:block ring-2 ring-indigo-600"></div>
                   </div>
@@ -506,14 +506,14 @@
                 <h3 class="text-sm font-semibold leading-6 text-gray-900">Growth</h3>
                 <p class="mt-1 text-sm leading-6 text-gray-600">Convenient features to take your business to the next level.</p>
               </div>
-  
+
               <div class="mt-10 space-y-10">
                 <div>
                   <h4 class="text-sm font-semibold leading-6 text-gray-900">Catered for business</h4>
                   <div class="relative mt-6">
                     <!-- Fake card background -->
                     <div aria-hidden="true" class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-sm sm:block"></div>
-  
+
                     <div class="relative rounded-lg bg-white shadow-sm sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0 ring-1 ring-gray-900/10">
                       <dl class="divide-y divide-gray-200 text-sm leading-6">
                         <div class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0">
@@ -575,7 +575,7 @@
                         </div>
                       </dl>
                     </div>
-  
+
                     <!-- Fake card border -->
                     <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg sm:block ring-1 ring-gray-900/10"></div>
                   </div>
@@ -585,7 +585,7 @@
                   <div class="relative mt-6">
                     <!-- Fake card background -->
                     <div aria-hidden="true" class="absolute inset-y-0 right-0 hidden w-1/2 rounded-lg bg-white shadow-sm sm:block"></div>
-  
+
                     <div class="relative rounded-lg bg-white shadow-sm sm:rounded-none sm:bg-transparent sm:shadow-none sm:ring-0 ring-1 ring-gray-900/10">
                       <dl class="divide-y divide-gray-200 text-sm leading-6">
                         <div class="flex items-center justify-between px-4 py-3 sm:grid sm:grid-cols-2 sm:px-0">
@@ -653,7 +653,7 @@
                         </div>
                       </dl>
                     </div>
-  
+
                     <!-- Fake card border -->
                     <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 rounded-lg sm:block ring-1 ring-gray-900/10"></div>
                   </div>
@@ -662,11 +662,11 @@
             </div>
           </div>
         </section>
-  
+
         <!-- Feature comparison (lg+) -->
         <section aria-labelledby="comparison-heading" class="hidden lg:block">
           <h2 id="comparison-heading" class="sr-only">Feature comparison</h2>
-  
+
           <div class="grid grid-cols-4 gap-x-8 border-t border-gray-900/10 before:block">
             <div aria-hidden="true" class="-mt-px">
               <div class="border-t-2 pt-10 border-transparent">
@@ -687,7 +687,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="-mt-6 space-y-16">
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Catered for business</h3>
@@ -698,7 +698,7 @@
                   <div class="h-full w-full rounded-lg bg-white shadow-sm"></div>
                   <div class="h-full w-full rounded-lg bg-white shadow-sm"></div>
                 </div>
-  
+
                 <table class="relative w-full border-separate border-spacing-x-8">
                   <thead>
                     <tr class="text-left">
@@ -908,7 +908,7 @@
                     </tr>
                   </tbody>
                 </table>
-  
+
                 <!-- Fake card borders -->
                 <div class="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block" aria-hidden="true">
                   <div class="rounded-lg ring-1 ring-gray-900/10"></div>
@@ -926,7 +926,7 @@
                   <div class="h-full w-full rounded-lg bg-white shadow-sm"></div>
                   <div class="h-full w-full rounded-lg bg-white shadow-sm"></div>
                 </div>
-  
+
                 <table class="relative w-full border-separate border-spacing-x-8">
                   <thead>
                     <tr class="text-left">
@@ -1154,7 +1154,7 @@
                     </tr>
                   </tbody>
                 </table>
-  
+
                 <!-- Fake card borders -->
                 <div class="pointer-events-none absolute inset-x-8 inset-y-0 grid grid-cols-4 gap-x-8 before:block" aria-hidden="true">
                   <div class="rounded-lg ring-1 ring-gray-900/10"></div>

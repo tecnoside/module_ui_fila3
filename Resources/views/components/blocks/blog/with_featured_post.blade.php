@@ -36,7 +36,7 @@
               </a>
             </div>
           </article>
-  
+
           <!-- More posts... -->
         </div>
       </div>

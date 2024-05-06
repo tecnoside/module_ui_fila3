@@ -9,7 +9,7 @@
           <img src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
           <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
           <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
-  
+
           <div class="flex flex-wrap items-center gap-y-1 overflow-hidden text-sm leading-6 text-gray-300">
             <time datetime="2020-03-16" class="mr-8">Mar 16, 2020</time>
             <div class="-ml-4 flex items-center gap-x-4">
@@ -29,7 +29,7 @@
             </a>
           </h3>
         </article>
-  
+
         <!-- More posts... -->
       </div>
     </div>

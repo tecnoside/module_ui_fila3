@@ -20,7 +20,7 @@
               </figcaption>
             </figure>
           </div>
-  
+
           <!-- More testimonials... -->
         </div>
       </div>

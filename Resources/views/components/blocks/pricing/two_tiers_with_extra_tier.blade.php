@@ -101,7 +101,7 @@
               </div>
               <a href="#" aria-describedby="tier-team" class="mt-8 block rounded-md bg-indigo-600 px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started today</a>
             </div>
-  
+
             <div class="flex flex-col items-start gap-x-8 gap-y-6 rounded-3xl p-8 ring-1 ring-gray-900/10 sm:gap-y-10 sm:p-10 lg:col-span-2 lg:flex-row lg:items-center">
               <div class="lg:min-w-0 lg:flex-1">
                 <h3 class="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Discounted</h3>

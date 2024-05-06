@@ -5,7 +5,7 @@
         <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Plans for teams of&nbsp;all&nbsp;sizes</p>
       </div>
       <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">Distinctio et nulla eum soluta et neque labore quibusdam. Saepe et quasi iusto modi velit ut non voluptas in. Explicabo id ut laborum.</p>
-  
+
       <!-- xs to lg -->
       <div class="mx-auto mt-12 max-w-md space-y-8 sm:mt-16 lg:hidden">
         <section class="p-8">
@@ -231,7 +231,7 @@
           </ul>
         </section>
       </div>
-  
+
       <!-- lg+ -->
       <div class="isolate mt-20 hidden lg:block">
         <div class="relative -mx-8">
@@ -385,7 +385,7 @@
                   <div class="text-center text-sm leading-6 text-gray-500">Up to 50 users</div>
                 </td>
               </tr>
-  
+
               <tr>
                 <th scope="colgroup" colspan="4" class="pb-4 text-sm font-semibold leading-6 text-gray-900 pt-16">
                   Reporting
@@ -488,7 +488,7 @@
                   <span class="sr-only">Included in Premium</span>
                 </td>
               </tr>
-  
+
               <tr>
                 <th scope="colgroup" colspan="4" class="pb-4 text-sm font-semibold leading-6 text-gray-900 pt-16">
                   Support

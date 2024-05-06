@@ -10,7 +10,7 @@
         <p class="mt-6 max-w-3xl text-xl text-gray-300">Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate id malesuada non. Cras aliquet purus dui laoreet diam sed lacus, fames. Dui, amet, nec sit pulvinar.</p>
       </div>
     </div>
-  
+
     <!-- Overlapping cards -->
     <section class="relative z-10 mx-auto -mt-32 max-w-7xl px-6 pb-32 lg:px-8" aria-labelledby="contact-heading">
       <h2 class="sr-only" id="contact-heading">Contact us</h2>

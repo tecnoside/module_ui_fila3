@@ -1,6 +1,6 @@
 <!--
   This example requires some changes to your config:
-  
+
   ```
   // tailwind.config.js
   module.exports = {
@@ -53,10 +53,10 @@
             <a href="#" class="inline-flex items-center rounded-md border border-transparent bg-gray-600 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700">Log in</a>
           </div>
         </nav>
-  
+
         <!--
           Mobile menu, show/hide based on menu open state.
-  
+
           Entering: "duration-150 ease-out"
             From: "opacity-0 scale-95"
             To: "opacity-100 scale-100"
@@ -90,7 +90,7 @@
           </div>
         </div>
       </div>
-  
+
       <main class="mt-16 sm:mt-24">
         <div class="mx-auto max-w-7xl">
           <div class="lg:grid lg:grid-cols-12 lg:gap-8">
@@ -128,7 +128,7 @@
                 <div class="px-6 py-8 sm:px-10">
                   <div>
                     <p class="text-sm font-medium text-gray-700">Sign in with</p>
-  
+
                     <div class="mt-1 grid grid-cols-3 gap-3">
                       <div>
                         <a href="#" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
@@ -138,7 +138,7 @@
                           </svg>
                         </a>
                       </div>
-  
+
                       <div>
                         <a href="#" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                           <span class="sr-only">Sign in with X</span>
@@ -147,7 +147,7 @@
                           </svg>
                         </a>
                       </div>
-  
+
                       <div>
                         <a href="#" class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50">
                           <span class="sr-only">Sign in with GitHub</span>
@@ -158,7 +158,7 @@
                       </div>
                     </div>
                   </div>
-  
+
                   <div class="relative mt-6">
                     <div class="absolute inset-0 flex items-center" aria-hidden="true">
                       <div class="w-full border-t border-gray-300"></div>
@@ -167,24 +167,24 @@
                       <span class="bg-white px-2 text-gray-500">Or</span>
                     </div>
                   </div>
-  
+
                   <div class="mt-6">
                     <form action="#" method="POST" class="space-y-6">
                       <div>
                         <label for="name" class="sr-only">Full name</label>
                         <input type="text" name="name" id="name" autocomplete="name" placeholder="Full name" required class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                       </div>
-  
+
                       <div>
                         <label for="mobile-or-email" class="sr-only">Mobile number or email</label>
                         <input type="text" name="mobile-or-email" id="mobile-or-email" autocomplete="email" placeholder="Mobile number or email" required class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                       </div>
-  
+
                       <div>
                         <label for="password" class="sr-only">Password</label>
                         <input id="password" name="password" type="password" placeholder="Password" autocomplete="current-password" required class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                       </div>
-  
+
                       <div>
                         <button type="submit" class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Create your account</button>
                       </div>
