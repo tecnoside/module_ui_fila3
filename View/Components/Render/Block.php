@@ -29,6 +29,10 @@ class Block extends Component
 
     public function render(): ViewFactory|View
     {
+        if(!isset($this->block['type'])){
+            return view('ui::empty');
+        }
+
         if ('v1' === $this->tpl) {
             $this->tpl = $this->block['type'];
         } else {
