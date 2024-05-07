@@ -5,6 +5,7 @@
 <meta name="description" content="{{ $_theme->metatag('description') }}">
 <meta name="robots" content="index,follow">
 <meta nome="googlebot" content="index,follow">
+<link rel="icon" type="image/x-icon" href="{{ $_theme->asset(config('metatag.logo_square')) }}">
 <title>{{ $_theme->metatag('title') }}</title>
 
 {{-- https://www.advancedwebranking.com/blog/meta-tags-important-in-seo --}}
