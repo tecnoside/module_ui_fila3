@@ -9,7 +9,8 @@ class ThemeComposer
     /**
      * @return string
      */
-    public function metatags() {
+    public function metatags()
+    {
         /**
          * @phpstan-var view-string
          */
@@ -23,7 +24,8 @@ class ThemeComposer
      *
      * @return \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
      */
-    public function metatag($index) {
+    public function metatag($index)
+    {
         $ris = self::__getStatic($index);
         // echo '<br/>['.$index.']['.$ris.']';
         if ('' === $ris || null === $ris) {
@@ -33,7 +35,6 @@ class ThemeComposer
 
         return $ris;
     }
-
 
     public function showScripts(): string
     {
