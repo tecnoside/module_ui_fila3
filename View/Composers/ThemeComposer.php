@@ -16,7 +16,7 @@ class ThemeComposer
          */
         $view = 'ui::metatags';
 
-        return (string) view($view)->render();
+        return view($view);
     }
 
     /**
