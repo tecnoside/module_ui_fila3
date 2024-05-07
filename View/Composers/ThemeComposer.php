@@ -6,10 +6,7 @@ namespace Modules\UI\View\Composers;
 
 class ThemeComposer
 {
-    /**
-     * @return string
-     */
-    public function metatags()
+    public function metatags(): \Illuminate\View\View
     {
         /**
          * @phpstan-var view-string
@@ -26,12 +23,12 @@ class ThemeComposer
      */
     public function metatag($index)
     {
-        $ris = self::__getStatic($index);
+        // $ris = self::__getStatic($index);
         // echo '<br/>['.$index.']['.$ris.']';
-        if ('' === $ris || null === $ris) {
+        // if ('' === $ris || null === $ris) {
             $ris = config('metatag.'.$index);
-            self::__setStatic($index, $ris);
-        }
+            // self::__setStatic($index, $ris);
+        // }
 
         return $ris;
     }
