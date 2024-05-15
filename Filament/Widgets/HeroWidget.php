@@ -27,7 +27,7 @@ class HeroWidget extends BaseWidget
                 //->descriptionIcon('heroicon-m-arrow-trending-up')
                 //->chart([7, 2, 10, 3, 15, 4, 17])
                 //->color('success')
-                //->icon('heroicon-s-fire')
+                ->icon('heroicon-o-rectangle-stack')
                 ,
         ];
     }
