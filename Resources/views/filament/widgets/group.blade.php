@@ -1,7 +1,10 @@
 <x-filament-widgets::widget>
     <x-filament::section collapsible
-        description="{{ $title }}"
+        icon="{{ $icon }}"
         >
+        <x-slot name="heading">
+            {{ $title }}
+        </x-slot>
         @if(count($widgets)==1)
             @livewire($widgets[0]['class'], $widgets[0]['properties'])
         @endif
