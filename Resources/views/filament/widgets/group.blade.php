@@ -2,7 +2,7 @@
     <x-filament::section collapsible
         icon="{{ $icon }}"
         >
-        <x-slot name="heading">
+        <x-slot name="description">
             {{ $title }}
         </x-slot>
         @if(count($widgets)==1)
