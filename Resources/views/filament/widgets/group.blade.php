@@ -5,12 +5,12 @@
         <x-slot name="description">
             {{ $title }}
         </x-slot>
-        @if(count($widgets)==1)
+        @if (count($widgets)==1)
             @livewire($widgets[0]['class'], $widgets[0]['properties'])
         @endif
 
 
-        @if(count($widgets)==3)
+        @if (count($widgets)==3)
         <x-filament::grid lg='2'>
             <x-filament::grid.column>
                 @livewire($widgets[0]['class'], $widgets[0]['properties'])
