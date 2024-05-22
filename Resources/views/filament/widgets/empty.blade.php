@@ -1,3 +1,3 @@
 <x-filament::widget >
-    EMPTY {{ $question_chart_id }}
+    {{--  EMPTY  --}}
 </x-filament::widget >    
