@@ -10,6 +10,7 @@ use Filament\Widgets\Widget as BaseWidget;
 class GroupWidget extends BaseWidget
 {
     use InteractsWithPageFilters;
+    protected static ?string $pollingInterval = null;
 
     protected static ?string $pollingInterval = null;
 
