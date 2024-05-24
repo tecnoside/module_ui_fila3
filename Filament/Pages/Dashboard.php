@@ -45,7 +45,7 @@ class Dashboard extends Page
             // Widgets\TestChartWidget::make(['qid' => 6]),
             // Widgets\StatsOverviewWidget::class,
 
-            Widgets\StatWithIconWidget::make(['label'=>'Unique views', 'value'=>'192.1k']),
+            Widgets\StatWithIconWidget::make(['label' => 'Unique views', 'value' => '192.1k']),
             Widgets\TestWidget::make(['widgets' => $widgets]),
             Widgets\TestWidget::make(['widgets' => $widgets]),
             Widgets\TestWidget::make(['widgets' => $widgets]),
