@@ -11,6 +11,8 @@ class GroupWidget extends BaseWidget
 {
     use InteractsWithPageFilters;
 
+    protected static ?string $pollingInterval = null;
+
     protected static string $view = 'ui::filament.widgets.group';
 
     public array $widgets = [];
