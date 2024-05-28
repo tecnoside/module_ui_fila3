@@ -5,6 +5,7 @@
         <x-slot name="description">
             {{ $title }}
         </x-slot>
+
         @if (count($widgets)==1)
             @livewire($widgets[0]['class'], $widgets[0]['properties'])
         @endif
