@@ -11,7 +11,7 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Str;
 
-class SpatieImage
+class ImageSpatie
 {
     public static function make(
         string $name = 'image_spatie',
