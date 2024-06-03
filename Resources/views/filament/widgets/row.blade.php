@@ -7,11 +7,12 @@
         :xl="$grid['xl'] ?? null"
         class="gap-6"
     >
-    {{--
+
     @foreach ($widgets as $k=>$v)
         <x-filament::grid.column>
             {{ $k }}
         </x-filament::grid.column>
     @endforeach
-    --}}
+
+    </x-filament::grid>
 </x-filament-widgets::widget>
