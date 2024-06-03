@@ -4,43 +4,49 @@ declare(strict_types=1);
 
 namespace Modules\UI\Filament\Blocks;
 
+use Filament\Forms;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Support\Str;
 
 class SpatieImage
 {
     public static function make(
-        string $name = 'image',
+        string $name = 'image_spatie',
         string $context = 'form',
     ): Block {
-        // dddx(get_class_methods(SpatieMediaLibraryFileUpload::class));
-
         return Block::make($name)
-            ->schema(
-                [
-                    SpatieMediaLibraryFileUpload::make('image')
-                        ->label('Image upload')
-                        ->beforeStateDehydrated(function ($state) {
-                            dddx($state);
-                        }),
+            ->schema([
+                Forms\Components\Hidden::make('img_uuid')
+                    ->default(fn () => Str::uuid()->toString())
+                    ->formatStateUsing(fn ($state) => $state ?? Str::uuid()->toString())
+                    ->live(),
+                // ->required(),
 
-                    TextInput::make('url')
-                        ->label('or Image URL'),
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->columnSpanFull()
+                    ->collection(fn (Forms\Get $get) => $get('img_uuid')),
 
-                    Select::make('ratio')
-                        ->options(static::getRatios())
-                        ->afterStateHydrated(static fn ($state, $set) => $state || $set('ratio', '4-3')),
+                Select::make('ratio')
+                    ->options(static::getRatios())
+                    ->afterStateHydrated(static fn ($state, $set) => $state || $set('ratio', '4-3')),
 
-                    TextInput::make('alt')
-                        ->columnSpanFull(),
+                TextInput::make('alt')
+                    ->columnSpanFull(),
 
-                    TextInput::make('caption')
-                        ->columnSpanFull(),
-                ]
-            )
-            ->columns($context === 'form' ? 2 : 1);
+                TextInput::make('caption')
+                    ->columnSpanFull(),
+
+                // Filament\Forms\Components\SpatieMediaLibraryFileUpload::whereCustomProperties does not exist.
+                // ->whereCustomProperties(fn(Forms\Get $get) => ['gallery_id' => $get('gallery_id')])
+
+                // ->customProperties(fn(Forms\Get $get) => ['gallery_id' => $get('gallery_id')]),
+
+                // Forms\Components\SpatieMediaLibraryFileUpload::make('media_id')
+            ])
+            ->columns('form' === $context ? 2 : 1);
     }
 
     public static function getRatios(): array
