@@ -22,9 +22,9 @@ class SpatieImage
                 [
                     SpatieMediaLibraryFileUpload::make('image')
                         ->label('Image upload')
-                    ->beforeStateDehydrated(function ($state) {
-                        dddx($state);
-                    }),
+                        ->beforeStateDehydrated(function ($state) {
+                            dddx($state);
+                        }),
 
                     TextInput::make('url')
                         ->label('or Image URL'),
@@ -40,7 +40,7 @@ class SpatieImage
                         ->columnSpanFull(),
                 ]
             )
-            ->columns('form' === $context ? 2 : 1);
+            ->columns($context === 'form' ? 2 : 1);
     }
 
     public static function getRatios(): array
