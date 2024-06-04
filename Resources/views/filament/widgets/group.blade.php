@@ -2,11 +2,18 @@
     <x-filament::section collapsible
         icon="{{ $icon }}"
         >
+<<<<<<< HEAD
         <x-slot name="description">
             {{ $title }}
         </x-slot>
 
         @if (count($widgets)==1)
+=======
+        <x-slot name="heading">
+            {{ $title }}
+        </x-slot>
+        @if(count($widgets)==1)
+>>>>>>> 2e08643 (up)
             @livewire($widgets[0]['class'], $widgets[0]['properties'])
         @endif
 
