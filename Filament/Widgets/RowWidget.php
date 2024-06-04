@@ -21,6 +21,6 @@ class RowWidget extends Widget
 
     protected function getColumns(): int
     {
-        return 4;
+        return 3;
     }
 }
