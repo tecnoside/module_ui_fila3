@@ -6,13 +6,8 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
-<<<<<<< HEAD
     "@tailwindcss/typography": "^0.5.13",
     "autoprefixer": "^10.4.19",
-=======
-    "@tailwindcss/typography": "^0.5.10",
-    "autoprefixer": "^10.4.17",
->>>>>>> ddbb4d0 (up)
     "axios": "^1.6.8",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
