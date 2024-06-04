@@ -3,27 +3,15 @@
         <x-slot name="description">
             {{ $title }}
         </x-slot>
-<<<<<<< HEAD
-
         @if (count($widgets) == 1)
-=======
-        @if (count($widgets)==1)
->>>>>>> b3ee963 (Dusting)
             @livewire($widgets[0]['class'], $widgets[0]['properties'])
         @endif
 
 
-<<<<<<< HEAD
         @if (count($widgets) == 3)
             <x-filament::grid lg='2'>
                 <x-filament::grid.column>
                     @livewire($widgets[0]['class'], $widgets[0]['properties'])
-=======
-        @if (count($widgets)==3)
-        <x-filament::grid lg='2'>
-            <x-filament::grid.column>
-                @livewire($widgets[0]['class'], $widgets[0]['properties'])
->>>>>>> b3ee963 (Dusting)
 
                 </x-filament::grid.column>
                 <x-filament::grid.column>
