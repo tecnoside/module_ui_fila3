@@ -1,11 +1,5 @@
 <x-filament-widgets::widget>
-<<<<<<< HEAD
     <x-filament::section collapsible icon="{{ $icon }}">
-=======
-    <x-filament::section collapsible
-        icon="{{ $icon }}"
-        >
->>>>>>> e2ff3fe (.)
         <x-slot name="description">
             {{ $title }}
         </x-slot>
