@@ -18,4 +18,9 @@ class RowWidget extends Widget
     public array $grid = [];
 
     public array $widgets = [];
+
+    protected function getColumns(): int
+    {
+        return 4;
+    }
 }

@@ -1,18 +1,24 @@
-<x-filament-widgets::widget id="overlook-widget" >
-    <x-filament::grid
-        :default="$grid['default'] ?? 1"
-        :sm="$grid['sm'] ?? null"
-        :md="$grid['md'] ?? null"
-        :lg="$grid['lg'] ?? null"
-        :xl="$grid['xl'] ?? null"
-        class="gap-6"
+@php
+    $columns = $this->getColumns();
+@endphp
+
+<x-filament-widgets::widget class="fi-wi-stats-overview">
+    <div
+    {{--
+        @if ($pollingInterval = $this->getPollingInterval())
+            wire:poll.{{ $pollingInterval }}
+        @endif
+    --}}
+        @class([
+            'fi-wi-stats-overview-stats-ctn grid gap-6',
+            'md:grid-cols-1' => $columns === 1,
+            'md:grid-cols-2' => $columns === 2,
+            'md:grid-cols-3' => $columns === 3,
+            'md:grid-cols-2 xl:grid-cols-4' => $columns === 4,
+        ])
     >
-
-    @foreach ($widgets as $k=>$v)
-        <x-filament::grid.column>
-            {{ $k }}
-        </x-filament::grid.column>
-    @endforeach
-
-    </x-filament::grid>
+        @foreach ($this->widgets as $k=>$v)
+            @livewire($v['class'], $v['properties'])
+        @endforeach
+    </div>
 </x-filament-widgets::widget>
