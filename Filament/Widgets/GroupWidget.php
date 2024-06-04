@@ -18,9 +18,6 @@ class GroupWidget extends BaseWidget
     public array $widgets = [];
 
     public string $title = '';
-<<<<<<< HEAD
 
     public string $icon = '';
-=======
->>>>>>> 3b712af (up)
 }
