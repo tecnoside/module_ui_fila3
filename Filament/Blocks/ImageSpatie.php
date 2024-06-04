@@ -50,7 +50,9 @@ class ImageSpatie
                     ->afterStateUpdated(
                         function (HasForms $livewire, SpatieMediaLibraryFileUpload $component, TemporaryUploadedFile $state, Get $get, HasMedia $record) {
                             $livewire->validateOnly($component->getStatePath());
-                            $res = $record->addMedia($state)
+                            $res = $record
+                                ->addMedia($state)
+                                ->withResponsiveImages()
                                 ->toMediaCollection($get('img_uuid'));
                         }
                     ),
