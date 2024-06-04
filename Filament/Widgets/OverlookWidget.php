@@ -16,6 +16,7 @@ class OverlookWidget extends Widget
     protected int|string|array $columnSpan = 1;
 
     public string $icon = 'heroicon-o-envelope';
+
     public string $title = '';
 
     /*
