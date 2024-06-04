@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Spatie\MediaLibrary\HasMedia;
 
-class SpatieImage
+class ImageSpatie
 {
     public static function make(
         string $name = 'image_spatie',
@@ -73,7 +73,7 @@ class SpatieImage
 
                 // Forms\Components\SpatieMediaLibraryFileUpload::make('media_id')
             ])
-            ->columns('form' === $context ? 2 : 1);
+            ->columns($context === 'form' ? 2 : 1);
     }
 
     public static function getRatios(): array
