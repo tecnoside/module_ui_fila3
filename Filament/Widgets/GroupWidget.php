@@ -14,6 +14,8 @@ class GroupWidget extends BaseWidget
     protected static ?string $pollingInterval = null;
     protected static string $view = 'ui::filament.widgets.group';
     public array $widgets = [];
+
     public string $title = '';
+
     public string $icon = '';
 }
