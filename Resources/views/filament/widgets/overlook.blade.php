@@ -8,7 +8,7 @@
                     <div class="text-center overlook-name ">{{ $title }}</div>
                 </div>
                 <div>
-                    @foreach($stats as $stat)
+                    @foreach ($stats as $stat)
                     <div class="flex items-center justify-between text-gray-400">
                         <div class="flex items-center space-x-1">
                             {{--

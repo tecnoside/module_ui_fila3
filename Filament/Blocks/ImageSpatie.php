@@ -6,10 +6,15 @@ namespace Modules\UI\Filament\Blocks;
 
 use Filament\Forms;
 use Filament\Forms\Components\Builder\Block;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Get;
 use Illuminate\Support\Str;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Spatie\MediaLibrary\HasMedia;
 
 class ImageSpatie
 {
@@ -19,25 +24,49 @@ class ImageSpatie
     ): Block {
         return Block::make($name)
             ->schema([
-                Forms\Components\Hidden::make('img_uuid')
+                Hidden::make('img_uuid')
                     ->default(fn () => Str::uuid()->toString())
                     ->formatStateUsing(fn ($state) => $state ?? Str::uuid()->toString())
                     ->live(),
                 // ->required(),
 
                 SpatieMediaLibraryFileUpload::make('image')
-                    ->columnSpanFull()
-                    ->collection(fn (Forms\Get $get) => $get('img_uuid')),
-
+                    ->live()
+                    ->hiddenLabel()
+                    // ->imagePreviewHeight('250')
+                    // ->panelLayout('integrated')
+                    ->imageResizeMode('cover')
+                    ->panelAspectRatio('2:1')
+                    ->maxSize(102400)
+                    ->disk('local')
+                    ->image()
+                    // ->imageEditor()
+                    ->preserveFilenames()
+                    // ->columnSpanFull()
+                    ->openable()
+                    ->downloadable()
+                    // ->rules(Rule::dimensions()->maxWidth(600)->maxHeight(800))
+                    ->collection(fn (Get $get) => $get('img_uuid'))
+                    ->afterStateUpdated(
+                        function (HasForms $livewire, SpatieMediaLibraryFileUpload $component, TemporaryUploadedFile $state, Get $get, HasMedia $record) {
+                            $livewire->validateOnly($component->getStatePath());
+                            $res = $record
+                                ->addMedia($state)
+                                ->withResponsiveImages()
+                                ->toMediaCollection($get('img_uuid'));
+                        }
+                    ),
+                /*
                 Select::make('ratio')
                     ->options(static::getRatios())
                     ->afterStateHydrated(static fn ($state, $set) => $state || $set('ratio', '4-3')),
 
                 TextInput::make('alt')
                     ->columnSpanFull(),
-
+                */
                 TextInput::make('caption')
-                    ->columnSpanFull(),
+                // ->columnSpanFull()
+                ,
 
                 // Filament\Forms\Components\SpatieMediaLibraryFileUpload::whereCustomProperties does not exist.
                 // ->whereCustomProperties(fn(Forms\Get $get) => ['gallery_id' => $get('gallery_id')])
