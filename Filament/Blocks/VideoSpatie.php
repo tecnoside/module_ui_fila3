@@ -39,7 +39,7 @@ class VideoSpatie
                     ->panelAspectRatio('2:1')
                     ->maxSize(502400)
                     ->disk('local')
-                    ->image()
+                    // ->image()
                     // ->imageEditor()
                     ->preserveFilenames()
                     // ->columnSpanFull()
