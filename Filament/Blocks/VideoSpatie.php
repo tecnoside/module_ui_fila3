@@ -37,7 +37,7 @@ class VideoSpatie
                     // ->panelLayout('integrated')
                     ->imageResizeMode('cover')
                     ->panelAspectRatio('2:1')
-                    ->maxSize(102400)
+                    ->maxSize(502400)
                     ->disk('local')
                     ->image()
                     // ->imageEditor()
@@ -76,7 +76,7 @@ class VideoSpatie
 
                 // Forms\Components\SpatieMediaLibraryFileUpload::make('media_id')
             ])
-            ->columns($context === 'form' ? 2 : 1);
+            ->columns('form' === $context ? 2 : 1);
     }
 
     public static function getRatios(): array
