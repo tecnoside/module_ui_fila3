@@ -30,7 +30,7 @@ class VideoSpatie
                     ->live(),
                 // ->required(),
 
-                SpatieMediaLibraryFileUpload::make('image')
+                SpatieMediaLibraryFileUpload::make('video')
                     ->live()
                     ->hiddenLabel()
                     // ->imagePreviewHeight('250')
@@ -39,10 +39,8 @@ class VideoSpatie
                     ->panelAspectRatio('2:1')
                     ->maxSize(502400)
                     ->disk('local')
-                    // ->image()
-                    // ->imageEditor()
+
                     ->preserveFilenames()
-                    // ->columnSpanFull()
                     ->openable()
                     ->previewable()
                     ->downloadable()
