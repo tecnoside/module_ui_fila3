@@ -29,7 +29,7 @@ class AddressField extends Forms\Components\Field
         $record = $this->getRecord();
         $relationship = $record?->{$this->getRelationship()}();
 
-        if ($relationship === null) {
+        if (null === $relationship) {
             return;
         } elseif ($address = $relationship->first()) {
             $address->update($state);
@@ -80,7 +80,7 @@ class AddressField extends Forms\Components\Field
                 'zip' => null,
             ];
             $address = $record?->getRelationValue($this->getRelationship());
-            if ($address != null && is_object($address) && method_exists($address, 'toArray')) {
+            if (null != $address && is_object($address) && method_exists($address, 'toArray')) {
                 $data = $address->toArray();
             }
 
