@@ -57,9 +57,16 @@ class ImageSpatie
                         }
                     ),
 
+<<<<<<< HEAD
                 TextInput::make('caption')
                     ->label('didascalia'),
             ])
             ->columns('form' === $context ? 2 : 1);
+=======
+                TextInput::make('caption'),
+            ])
+            ->columns('form' === $context ? 2 : 1)
+        ;
+>>>>>>> up
     }
 }
