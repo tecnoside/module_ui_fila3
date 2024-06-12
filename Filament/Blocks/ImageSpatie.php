@@ -21,6 +21,7 @@ class ImageSpatie
         string $context = 'form',
     ): Block {
         return Block::make($name)
+            ->label('Immagine')
             ->schema([
                 Hidden::make('img_uuid')
                     ->default(fn () => Str::uuid()->toString())
@@ -53,7 +54,8 @@ class ImageSpatie
                         }
                     ),
 
-                TextInput::make('caption'),
+                TextInput::make('caption')
+                    ->label('didascalia'),
             ])
             ->columns('form' === $context ? 2 : 1);
     }
