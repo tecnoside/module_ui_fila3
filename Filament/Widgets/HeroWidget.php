@@ -24,10 +24,6 @@ class HeroWidget extends BaseWidget
     {
         return [
             Stat::make('', $this->title)
-                // ->description('32k increase '.$startDate)
-                // ->descriptionIcon('heroicon-m-arrow-trending-up')
-                // ->chart([7, 2, 10, 3, 15, 4, 17])
-                // ->color('success')
                 ->icon($this->icon),
         ];
     }
