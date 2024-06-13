@@ -24,8 +24,10 @@
         "guava/filament-icon-picker": "*",
         "illuminate/contracts": "*",
         "illuminate/support": "*",
-        "laraxot/module_xot_fila3": "*",
         "thecodingmachine/safe": "^2.5"
+    },
+    "require_comment": {
+        "laraxot/module_xot_fila3": "*"
     },
     "require-dev": {
         "driftingly/rector-laravel": "*",
