@@ -21,6 +21,7 @@
         }
     },
     "require": {
+        "guava/filament-icon-picker": "*",
         "illuminate/contracts": "*",
         "illuminate/support": "*",
         "laraxot/module_xot_fila3": "*",
