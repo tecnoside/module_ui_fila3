@@ -37,8 +37,7 @@ class UIServiceProvider extends XotBaseServiceProvider
 
     public function registerBladeIcons(): void
     {
-        $path = __DIR__.'/../Resources/svg';
-        Config::set('blade-icons.sets.default.path', $path);
+        Config::set('blade-icons.sets.default.path', 'Modules/UI/Resources/svg');
         Config::set('blade-icons.sets.default.prefix', 'icon');
     }
 }
