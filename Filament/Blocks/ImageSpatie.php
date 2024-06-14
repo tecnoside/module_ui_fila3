@@ -47,7 +47,8 @@ class ImageSpatie
                     ->collection(fn (Get $get) => $get('img_uuid'))
                     ->afterStateUpdated(
                         function (HasForms $livewire, SpatieMediaLibraryFileUpload $component, TemporaryUploadedFile $state, Get $get, HasMedia $record) {
-                            $livewire->validateOnly($component->getStatePath());
+                            // Call to an undefined method Filament\Forms\Contracts\HasForms::validateOnly().
+                            // $livewire->validateOnly($component->getStatePath());
                             Assert::string($collection_name = $get('img_uuid'), '['.__LINE__.']['.__FILE__.']');
                             $res = $record
                                 ->addMedia($state)
