@@ -13,6 +13,7 @@ use Filament\Forms\Get;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Spatie\MediaLibrary\HasMedia;
+use Webmozart\Assert\Assert;
 
 class ImageSpatie
 {
@@ -21,6 +22,7 @@ class ImageSpatie
         string $context = 'form',
     ): Block {
         return Block::make($name)
+            ->label('Immagine')
             ->schema([
                 Hidden::make('img_uuid')
                     ->default(fn () => Str::uuid()->toString())
@@ -46,14 +48,16 @@ class ImageSpatie
                     ->afterStateUpdated(
                         function (HasForms $livewire, SpatieMediaLibraryFileUpload $component, TemporaryUploadedFile $state, Get $get, HasMedia $record) {
                             $livewire->validateOnly($component->getStatePath());
+                            Assert::string($collection_name = $get('img_uuid'), '['.__LINE__.']['.__FILE__.']');
                             $res = $record
                                 ->addMedia($state)
                                 ->withResponsiveImages()
-                                ->toMediaCollection($get('img_uuid'));
+                                ->toMediaCollection($collection_name);
                         }
                     ),
 
-                TextInput::make('caption'),
+                TextInput::make('caption')
+                    ->label('didascalia'),
             ])
             ->columns('form' === $context ? 2 : 1);
     }
