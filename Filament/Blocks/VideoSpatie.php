@@ -15,6 +15,7 @@ use Filament\Forms\Get;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Spatie\MediaLibrary\HasMedia;
+use Webmozart\Assert\Assert;
 
 class VideoSpatie
 {
@@ -49,11 +50,13 @@ class VideoSpatie
                     ->collection(fn (Get $get) => $get('img_uuid'))
                     ->afterStateUpdated(
                         function (HasForms $livewire, SpatieMediaLibraryFileUpload $component, TemporaryUploadedFile $state, Get $get, HasMedia $record) {
-                            $livewire->validateOnly($component->getStatePath());
+                            // Call to an undefined method Filament\Forms\Contracts\HasForms::validateOnly().
+                            // $livewire->validateOnly($component->getStatePath());
+                            Assert::string($collection_name = $get('img_uuid'), '['.__LINE__.']['.__FILE__.']');
                             $res = $record
                                 ->addMedia($state)
                                 ->withResponsiveImages()
-                                ->toMediaCollection($get('img_uuid'));
+                                ->toMediaCollection($collection_name);
                         }
                     ),
                 /*
@@ -65,7 +68,7 @@ class VideoSpatie
                     ->columnSpanFull(),
                 */
                 TextInput::make('caption')
-                ->label('didascalia')
+                    ->label('didascalia')
                 // ->columnSpanFull()
                 ,
 
@@ -76,7 +79,7 @@ class VideoSpatie
 
                 // Forms\Components\SpatieMediaLibraryFileUpload::make('media_id')
             ])
-            ->columns('form' === $context ? 2 : 1);
+            ->columns($context === 'form' ? 2 : 1);
     }
 
     public static function getRatios(): array
