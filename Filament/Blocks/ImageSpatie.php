@@ -61,26 +61,5 @@ class ImageSpatie
                     ->label('didascalia'),
             ])
             ->columns($context === 'form' ? 2 : 1);
-<<<<<<< HEAD
-=======
-    }
-
-    public static function getRatios(): array
-    {
-        return [
-            '4-3' => '4/3',
-            '3-4' => '3/4',
-            'free' => 'free',
-        ];
-    }
-
-    public static function getRatioClass(string $ratio): string
-    {
-        return match ($ratio) {
-            '4-3' => 'aspect-[4/3]',
-            '3-4' => 'aspect-[3/4]',
-            default => '',
-        };
->>>>>>> d76209a (Dusting)
     }
 }
