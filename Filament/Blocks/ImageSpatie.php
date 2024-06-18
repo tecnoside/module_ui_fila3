@@ -60,10 +60,6 @@ class ImageSpatie
                 TextInput::make('caption')
                     ->label('didascalia'),
             ])
-<<<<<<< HEAD
             ->columns('form' === $context ? 2 : 1);
-=======
-            ->columns($context === 'form' ? 2 : 1);
->>>>>>> f631be8 (Dusting)
     }
 }
