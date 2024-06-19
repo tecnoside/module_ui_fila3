@@ -1,19 +1,9 @@
 <x-filament-widgets::widget>
-<<<<<<< HEAD
     <x-filament::section collapsible icon="{{ $icon }}">
         <x-slot name="description">
             {{ $title }}
         </x-slot>
         @if (count($widgets) == 1)
-=======
-    <x-filament::section collapsible
-        icon="{{ $icon }}"
-        >
-        <x-slot name="heading">
-            {{ $title }}
-        </x-slot>
-        @if(count($widgets)==1)
->>>>>>> 2e08643 (up)
             @livewire($widgets[0]['class'], $widgets[0]['properties'])
         @endif
 
