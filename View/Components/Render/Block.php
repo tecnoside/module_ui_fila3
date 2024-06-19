@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\UI\View\Components\Render;
 
-use Illuminate\Contracts\View\Factory as ViewFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\View\View;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
-use Illuminate\View\View;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\View\Factory as ViewFactory;
+use Modules\Xot\Actions\Module\GetModuleNameByModelAction;
 use Modules\Xot\Actions\Module\GetModuleNameFromModelAction;
 
 /**
@@ -41,7 +42,7 @@ class Block extends Component
 
         $views = ['ui::components.blocks.'.$this->tpl];
         if (null !== $this->model) {
-            $module = app(GetModuleNameFromModelAction::class)->execute($this->model);
+            $module = app(GetModuleNameByModelAction::class)->execute($this->model);
             $views[] = strtolower($module).'::components.blocks.'.$this->tpl;
         }
 
