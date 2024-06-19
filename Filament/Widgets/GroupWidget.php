@@ -19,14 +19,5 @@ class GroupWidget extends BaseWidget
 
     public string $title = '';
 
-<<<<<<< HEAD
     public string $icon = '';
-=======
-    public function getViewData(): array
-    {
-        return [
-            'test' => StatsOverviewWidget::make(),
-        ];
-    }
->>>>>>> ffc9ea5 (Lint)
 }
