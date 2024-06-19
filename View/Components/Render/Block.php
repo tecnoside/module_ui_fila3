@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\UI\View\Components\Render;
 
-use Illuminate\View\View;
+use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\View\View;
 use Modules\Xot\Actions\Module\GetModuleNameByModelAction;
-use Modules\Xot\Actions\Module\GetModuleNameFromModelAction;
 
 /**
  * .
