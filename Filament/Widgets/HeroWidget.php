@@ -16,8 +16,8 @@ class HeroWidget extends BaseWidget
 
     //protected static ?int $sort = 0;
 
-    public string $title='no-set';
-    public string $icon='';
+    public string $title = 'no-set';
+    public string $icon = '';
 
     public string $icon = '';
 
@@ -25,19 +25,10 @@ class HeroWidget extends BaseWidget
 
     protected function getStats(): array
     {
-        
+
         return [
             Stat::make('', $this->title)
-<<<<<<< HEAD
                 ->icon($this->icon),
-=======
-                //->description('32k increase '.$startDate)
-                //->descriptionIcon('heroicon-m-arrow-trending-up')
-                //->chart([7, 2, 10, 3, 15, 4, 17])
-                //->color('success')
-                ->icon($this->icon)
-                ,
->>>>>>> da7aac2 (up)
         ];
     }
 
