@@ -16,7 +16,6 @@ class HeroWidget extends BaseWidget
 
     public string $title = 'no-set';
     public string $icon = '';
-<<<<<<< HEAD
 
     protected static ?string $pollingInterval = null;
 
@@ -25,17 +24,6 @@ class HeroWidget extends BaseWidget
 
         return [
             Stat::make('', $this->title)
-=======
-
-    protected function getStats(): array
-    {
-        return [
-            Stat::make('', $this->title)
-                // ->description('32k increase '.$startDate)
-                // ->descriptionIcon('heroicon-m-arrow-trending-up')
-                // ->chart([7, 2, 10, 3, 15, 4, 17])
-                // ->color('success')
->>>>>>> da58eac (Lint)
                 ->icon($this->icon),
         ];
     }
