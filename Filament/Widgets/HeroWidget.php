@@ -15,6 +15,7 @@ class HeroWidget extends BaseWidget
     // protected static ?int $sort = 0;
 
     public string $title = 'no-set';
+
     public string $icon = '';
 
     protected static ?string $pollingInterval = null;
