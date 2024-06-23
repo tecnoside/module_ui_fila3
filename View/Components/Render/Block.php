@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
 use Illuminate\View\View;
-use Modules\Xot\Actions\Module\GetModuleNameFromModelAction;
+use Modules\Xot\Actions\Module\GetModuleNameByModelAction;
 
 /**
  * .
@@ -41,7 +41,7 @@ class Block extends Component
 
         $views = ['ui::components.blocks.'.$this->tpl];
         if ($this->model !== null) {
-            $module = app(GetModuleNameFromModelAction::class)->execute($this->model);
+            $module = app(GetModuleNameByModelAction::class)->execute($this->model);
             $views[] = strtolower($module).'::components.blocks.'.$this->tpl;
         }
 
