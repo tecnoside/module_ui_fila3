@@ -5,7 +5,7 @@ declare(strict_types=1);
  * @see https://github.com/bezhanSalleh/filament-language-switch/blob/main/src/Http/Livewire/FilamentLanguageSwitch.php
  */
 
-namespace BezhanSalleh\FilamentLanguageSwitch\Http\Livewire;
+namespace Modules\UI\Http\Livewire;
 
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
