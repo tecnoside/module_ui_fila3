@@ -21,12 +21,13 @@
         }
     },
     "require": {
+        "owenvoke/blade-fontawesome":"*"
+    },
+    "require_comment": {
         "guava/filament-icon-picker": "*",
         "illuminate/contracts": "*",
         "illuminate/support": "*",
-        "thecodingmachine/safe": "^2.5"
-    },
-    "require_comment": {
+        "thecodingmachine/safe": "^2.5",
         "laraxot/module_xot_fila3": "*"
     },
     "require-dev_comment": {
