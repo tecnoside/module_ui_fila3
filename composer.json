@@ -43,6 +43,7 @@
         "pestphp/pest-plugin-laravel": "*",
         "phpstan/phpstan-deprecation-rules": "*",
         "phpstan/phpstan-phpunit": "*",
+        
         "rector/rector": "*",
         "spatie/laravel-ray": "*",
         "symplify/phpstan-rules": "*",
