@@ -43,7 +43,7 @@ class Block extends Component
         $blocks = app(GetAllBlocksAction::class)->execute();
         $block = Arr::first($blocks, function ($block) {
             return $block['name'] === $this->block['type'];
-        });
+        }) ?? [];
         $module = Arr::get($block, 'module', 'UI');
         $module_low = Str::lower($module);
         // $backtrace = debug_backtrace();
