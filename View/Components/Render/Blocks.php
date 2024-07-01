@@ -12,7 +12,7 @@ use Modules\Xot\Actions\GetViewAction;
 // use Modules\Xot\View\Components\XotBaseComponent;
 
 /**
- * .
+ * 
  */
 class Blocks extends Component
 {
