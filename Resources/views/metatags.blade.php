@@ -8,6 +8,7 @@
 <link rel="icon" type="image/x-icon" href="{{ $_theme->asset(config('metatag.logo_square')) }}">
 <title>{{ $_theme->metatag('title') }}</title>
 
+
 {{-- https://www.advancedwebranking.com/blog/meta-tags-important-in-seo --}}
 {{-- <meta property="og:type" content="article" />
 <meta property="og:title" content="TITLE OF YOUR POST OR PAGE" />
