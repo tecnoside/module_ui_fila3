@@ -10,7 +10,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 use Illuminate\View\View;
-use Modules\Blog\Actions\Block\GetAllBlocksAction;
+use Modules\UI\Actions\Block\GetAllBlocksAction;
 use Modules\Xot\Actions\Module\GetModuleNameByModelAction;
 
 /**
@@ -42,9 +42,9 @@ class Block extends Component
         }
         $blocks = app(GetAllBlocksAction::class)->execute();
         $block = Arr::first($blocks, function ($block) {
-            return $block['name'] === $this->block['type'];
-        }) ?? [];
-        $module = Arr::get($block, 'module', 'UI');
+            return $block->name === $this->block['type'];
+        });
+        $module = $block?->module ?? 'UI';
         $module_low = Str::lower($module);
         // $backtrace = debug_backtrace();
 
@@ -69,7 +69,7 @@ class Block extends Component
          * @phpstan-var view-string|null
          */
         $view = $module_low.'::components.blocks.'.$this->tpl;
-        if (! view()->exists($view)) {
+        if (! view()->exists((string) $view)) {
             throw new \Exception('view not exitst ['.$view.']');
         }
         $view_params = $this->block['data'] ?? [];
