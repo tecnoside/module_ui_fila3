@@ -9,6 +9,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Get;
 use Illuminate\Support\Arr;
 use Modules\UI\Actions\Icon\GetAllIconsAction;
+use Webmozart\Assert\Assert;
 
 class IconPicker extends TextInput
 {
@@ -24,11 +25,18 @@ class IconPicker extends TextInput
             'heroicon-c-arrow-path' => 'heroicon-c-arrow-path',
             'icon-flags.af' => 'icon-flags.af',
         ];
-        $opts = $icons['heroicons']['icons'];
-        $opts = array_combine($opts, $opts);
+        // $opts = $icons['heroicons']['icons'];
+        // $opts = array_combine($opts, $opts);
+        // dddx([
+        //    'icons' => $icons,
+        //    'icons_1' => $icons->toCollection()->keys()->toArray(),
+        // 'methods' => get_class_methods($icons),
+        // ]);
 
         $packs = array_keys($icons);
+        // $packs = $icons->toCollection()->keys()->toArray();
         $packs = array_combine($packs, $packs);
+        // dddx($icons->toCollection()->get('heroicons')->toArray());
 
         $this->suffixAction(
             \Filament\Forms\Components\Actions\Action::make('icon')
@@ -46,7 +54,7 @@ class IconPicker extends TextInput
                             return [];
                         }
                         $key = $pack.'.icons';
-                        $opts = Arr::get($icons, $key, []);
+                        Assert::isArray($opts = Arr::get($icons, $key, []), '['.__LINE__.']['.__FILE__.']');
                         $opts = array_combine($opts, $opts);
 
                         return $opts;

@@ -8,8 +8,6 @@ use BladeUI\Icons\Factory as IconFactory;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
-use Modules\Xot\Datas\ComponentFileData;
-use Spatie\LaravelData\DataCollection;
 use Spatie\QueueableAction\QueueableAction;
 
 class GetAllIconsAction
@@ -17,7 +15,7 @@ class GetAllIconsAction
     use QueueableAction;
 
     /**
-     * @return DataCollection<ComponentFileData>
+     * @return array
      */
     public function execute(string $context = 'form')
     {
