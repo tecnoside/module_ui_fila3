@@ -49,4 +49,14 @@ enum CornerPositionEnum: string implements HasLabel, HasColor, HasIcon
             self::BOTTOM_RIGHT => 'heroicon-o-arrow-down-right',
         };
     }
+
+    public function getCssClass(): ?string
+    {
+        return match ($this) {
+            self::TOP_LEFT => 'top-0 left-0',
+            self::TOP_RIGHT => 'top-0 right-0',
+            self::BOTTOM_LEFT => 'bottom-0 left-0',
+            self::BOTTOM_RIGHT => 'bottom-0 right-0',
+        };
+    }
 }
