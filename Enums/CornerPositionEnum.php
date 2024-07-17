@@ -50,9 +50,9 @@ enum CornerPositionEnum: string implements HasLabel, HasColor, HasIcon
         };
     }
 
-    /*
-    --
-    */
+    /**
+     * ---.
+     */
     public function getCssClass(): ?string
     {
         return match ($this) {
