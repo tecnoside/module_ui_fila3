@@ -16,4 +16,4 @@ in caso abilitarlo
 ```bash
 php artisan module:enable UI
 ```
-[Vai a Altro](Altro.md)
+[Vai a Altro](docs/Altro.md)
