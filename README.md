@@ -16,3 +16,4 @@ in caso abilitarlo
 ```bash
 php artisan module:enable UI
 ```
+[Vai a Altro](altro.md)
