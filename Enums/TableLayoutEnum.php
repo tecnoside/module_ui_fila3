@@ -93,7 +93,7 @@ enum TableLayoutEnum: string implements HasLabel, HasColor, HasIcon
         return $columns;
     }
 
-    public static function init()
+    public static function init(): self
     {
         return self::LIST;
     }
