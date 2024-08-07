@@ -15,13 +15,14 @@
     }}
 >
     @foreach ($fields as $field)
-
-        {!! str_replace(', ',',<br/>',$field->record($record)->getState()) !!}
-        <br/>
-        {{--
-        {{ $field->record($record) }}
-        --}}
+        @php
+            $state=$field->record($record)->getState();
+            try{
+                $out=str_replace(', ',',<br/>',$state).'<br/>';
+            }catch(\TypeError $e){
+                $out=$field->record($record)->render();
+            }
+        @endphp
+        {!! $out !!}
     @endforeach
-
-
 </div>
