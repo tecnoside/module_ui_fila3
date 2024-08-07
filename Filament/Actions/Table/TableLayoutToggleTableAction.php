@@ -26,12 +26,17 @@ class TableLayoutToggleTableAction extends Action
             ->label('')
             // ->label(trans('ui::'.static::getDefaultName().'.label'))
             // ->tooltip(trans('setting::database_connection.actions.database-backup.tooltip'))
-            ->icon(fn ($livewire) => $livewire->layoutView->getIcon())
+            ->icon(function ($livewire) {
+                // $livewire->layoutView->toggle()->getIcon())
+                $livewire->layoutView = $livewire->layoutView->toggle();
+
+                return $livewire->layoutView->getIcon();
+            })
             ->action(
                 function ($livewire) {
-                    $livewire->layoutView = $livewire->layoutView->toggle();
+                    // $livewire->layoutView = $livewire->layoutView->toggle();
 
-                    // $livewire->dispatch('$refresh');
+                    $livewire->dispatch('$refresh');
 
                     // $livewire->dispatch('layoutViewChanged');
                     // $livewire->tableLayoutToggle();
