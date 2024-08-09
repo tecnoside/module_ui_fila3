@@ -32,12 +32,13 @@ class UIServiceProvider extends XotBaseServiceProvider
     {
         // $loader = AliasLoader::getInstance();
         // $loader->alias('ui', UIService::class);
-        $this->registerBladeIcons();
+        //$this->registerBladeIcons(); //moved to XotBaseServiceProvider
     }
 
-    public function registerBladeIcons(): void
-    {
-        Config::set('blade-icons.sets.default.path', 'Modules/UI/Resources/svg');
-        Config::set('blade-icons.sets.default.prefix', 'icon');
-    }
+    //public function registerBladeIcons(): void
+    //{
+    //    parent::registerBladeIcons();
+    //    Config::set('blade-icons.sets.default.path', 'Modules/UI/Resources/svg');
+    //    Config::set('blade-icons.sets.default.prefix', 'icon');
+    //}
 }
