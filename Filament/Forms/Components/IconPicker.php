@@ -40,31 +40,31 @@ class IconPicker extends TextInput
 
         $this->suffixAction(
             \Filament\Forms\Components\Actions\Action::make('icon')
-            ->icon(fn (?string $state) => $state)
+                ->icon(fn (?string $state) => $state)
             // ->modalContent(fn ($record) => view('ui::filament.forms.components.icon-picker', ['record' => $record]))
-            ->form([
-                Select::make('pack')
-                    ->options($packs)
-                    ->reactive()
-                    ->live(),
-                RadioIcon::make('newstate')
-                    ->options(function (Get $get) use ($icons): array {
-                        $pack = $get('pack');
-                        if (null == $pack) {
-                            return [];
-                        }
-                        $key = $pack.'.icons';
-                        Assert::isArray($opts = Arr::get($icons, $key, []), '['.__LINE__.']['.__FILE__.']');
-                        $opts = array_combine($opts, $opts);
+                ->form([
+                    Select::make('pack')
+                        ->options($packs)
+                        ->reactive()
+                        ->live(),
+                    RadioIcon::make('newstate')
+                        ->options(function (Get $get) use ($icons): array {
+                            $pack = $get('pack');
+                            if ($pack == null) {
+                                return [];
+                            }
+                            $key = $pack.'.icons';
+                            Assert::isArray($opts = Arr::get($icons, $key, []), '['.__LINE__.']['.__FILE__.']');
+                            $opts = array_combine($opts, $opts);
 
-                        return $opts;
-                    })
-                    ->inline()
-                    ->inlineLabel(false),
-            ])
-            ->action(function ($data, $set) {
-                $set('icon', $data['newstate']);
-            })
+                            return $opts;
+                        })
+                        ->inline()
+                        ->inlineLabel(false),
+                ])
+                ->action(function ($data, $set) {
+                    $set('icon', $data['newstate']);
+                })
         );
     }
 }

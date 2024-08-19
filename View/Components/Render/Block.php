@@ -35,7 +35,7 @@ class Block extends Component
             return view('ui::empty');
         }
 
-        if ('v1' === $this->tpl) {
+        if ($this->tpl === 'v1') {
             $this->tpl = $this->block['type'];
         } else {
             $this->tpl = $this->block['type'].'.'.$this->tpl;

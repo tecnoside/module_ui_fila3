@@ -10,7 +10,7 @@ use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 use Illuminate\Support\Arr;
 
-enum TableLayoutEnum: string implements HasLabel, HasColor, HasIcon
+enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
 {
     case GRID = 'grid';
     case LIST = 'list';
@@ -50,14 +50,14 @@ enum TableLayoutEnum: string implements HasLabel, HasColor, HasIcon
     public function toggle(): self
     {
         // $res = self::LIST === $this ? self::GRID : self::LIST;
-        $res = self::GRID === $this ? self::LIST : self::GRID;
+        $res = $this === self::GRID ? self::LIST : self::GRID;
 
         return $res;
     }
 
     public function isGridLayout(): bool
     {
-        return self::GRID === $this;
+        return $this === self::GRID;
     }
 
     public function getTableContentGrid(): ?array
