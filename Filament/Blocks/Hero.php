@@ -13,6 +13,7 @@ use Illuminate\Support\Arr;
 use Modules\UI\Filament\Forms\Components\RadioImage;
 use Modules\Xot\Actions\View\GetViewsSiblingsAndSelfAction;
 use Modules\Xot\Services\FileService;
+use Filament\Forms\Components\Repeater;
 
 class Hero
 {
@@ -46,6 +47,15 @@ class Hero
                         ->label('layout')
                         ->options($views),
                     //*/
+                    Repeater::make('buttons')
+                    ->schema([
+                        TextInput::make('label')->required(),
+                        TextInput::make('class'),
+                        TextInput::make('link'),
+
+                    ])
+                    ->columns(3)
+
                 ]
             );
     }
