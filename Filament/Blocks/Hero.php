@@ -6,6 +6,7 @@ namespace Modules\UI\Filament\Blocks;
 
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -13,7 +14,6 @@ use Illuminate\Support\Arr;
 use Modules\UI\Filament\Forms\Components\RadioImage;
 use Modules\Xot\Actions\View\GetViewsSiblingsAndSelfAction;
 use Modules\Xot\Services\FileService;
-use Filament\Forms\Components\Repeater;
 
 class Hero
 {
@@ -52,10 +52,8 @@ class Hero
                         TextInput::make('label')->required(),
                         TextInput::make('class'),
                         TextInput::make('link'),
-
                     ])
-                    ->columns(3)
-
+                    ->columns(3),
                 ]
             );
     }
