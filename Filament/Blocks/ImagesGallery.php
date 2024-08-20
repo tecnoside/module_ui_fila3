@@ -23,15 +23,15 @@ class ImagesGallery
                         SpatieMediaLibraryFileUpload::make('image')
                         // ->image()
                         // ->maxSize(5000)
-                        ->multiple()
-                        ->enableReordering()
-                        ->openable()
-                        ->downloadable()
-                        ->columnSpanFull()
+                            ->multiple()
+                            ->enableReordering()
+                            ->openable()
+                            ->downloadable()
+                            ->columnSpanFull()
                             // ->collection('avatars')
                             // ->conversion('thumbnail')
-                        ->disk('uploads')
-                        ->directory('photos'),
+                            ->disk('uploads')
+                            ->directory('photos'),
 
                         TextInput::make('title')
                             ->columnSpanFull(),

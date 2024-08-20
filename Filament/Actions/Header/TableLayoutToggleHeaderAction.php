@@ -13,6 +13,7 @@ class TableLayoutToggleHeaderAction extends Action
 {
     // use NavigationActionLabelTrait;
     public string $list_icon = 'heroicon-o-list-bullet';
+
     public string $grid_icon = 'heroicon-o-squares-2x2';
 
     public static function getDefaultName(): ?string

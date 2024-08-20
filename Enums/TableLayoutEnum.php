@@ -10,7 +10,7 @@ use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 use Illuminate\Support\Arr;
 
-enum TableLayoutEnum: string implements HasLabel, HasColor, HasIcon
+enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
 {
     case GRID = 'grid';
     case LIST = 'list';

@@ -25,3 +25,6 @@ package-lock.json
 node_modules
 .git-blame-ignore-revs
 .git-blame-ignore-revs
+node_modules
+vendor
+.git-blame-ignore-revs

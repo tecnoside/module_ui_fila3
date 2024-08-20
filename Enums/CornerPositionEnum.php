@@ -8,7 +8,7 @@ use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
-enum CornerPositionEnum: string implements HasLabel, HasColor, HasIcon
+enum CornerPositionEnum: string implements HasColor, HasIcon, HasLabel
 {
     case TOP_LEFT = 'top-left';
     case TOP_RIGHT = 'top-right';

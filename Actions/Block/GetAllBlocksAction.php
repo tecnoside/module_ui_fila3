@@ -24,11 +24,11 @@ class GetAllBlocksAction
         $blocks = Arr::map($files,
             function ($path) {
                 $class = Str::of($path)
-                ->after(base_path('Modules'))
-                ->prepend('\Modules')
-                ->before('.php')
-                ->replace('/', '\\')
-                ->toString();
+                    ->after(base_path('Modules'))
+                    ->prepend('\Modules')
+                    ->before('.php')
+                    ->replace('/', '\\')
+                    ->toString();
 
                 $name = Str::of(class_basename($class))->snake()->toString();
                 if (Str::endsWith($name, '_block')) {
