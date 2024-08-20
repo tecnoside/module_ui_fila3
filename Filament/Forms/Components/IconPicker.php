@@ -23,7 +23,7 @@ class IconPicker extends TextInput
             'heroicon-c-archive-box-x-mark' => 'heroicon-c-archive-box-x-mark',
             'heroicon-c-arrow-down' => 'heroicon-c-arrow-down',
             'heroicon-c-arrow-path' => 'heroicon-c-arrow-path',
-            'lang-flag.af' => 'lang-flag.af',
+            'ui-flags.af' => 'ui-flags.af',
         ];
         // $opts = $icons['heroicons']['icons'];
         // $opts = array_combine($opts, $opts);
