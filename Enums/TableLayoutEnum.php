@@ -50,14 +50,14 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
     public function toggle(): self
     {
         // $res = self::LIST === $this ? self::GRID : self::LIST;
-        $res = self::GRID === $this ? self::LIST : self::GRID;
+        $res = $this === self::GRID ? self::LIST : self::GRID;
 
         return $res;
     }
 
     public function isGridLayout(): bool
     {
-        return self::GRID === $this;
+        return $this === self::GRID;
     }
 
     public function getTableContentGrid(): ?array

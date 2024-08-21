@@ -48,12 +48,12 @@ class Hero
                         ->options($views),
                     //*/
                     Repeater::make('buttons')
-                    ->schema([
-                        TextInput::make('label')->required(),
-                        TextInput::make('class'),
-                        TextInput::make('link'),
-                    ])
-                    ->columns(3),
+                        ->schema([
+                            TextInput::make('label')->required(),
+                            TextInput::make('class'),
+                            TextInput::make('link'),
+                        ])
+                        ->columns(3),
                 ]
             );
     }
