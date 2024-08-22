@@ -10,7 +10,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Modules\\UI\\Providers\\UIServiceProvider"
+                "Modules\\UI\\Providers\\UIServiceProvider",
+                "Modules\\UI\\Providers\\Filament\\AdminPanelProvider"
             ],
             "aliases": {}
         }
