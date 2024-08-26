@@ -1,5 +1,8 @@
 @php
-    $data = $block['data']['gallery'][0];
+    $data=Arr::get($block,'data.gallery.0',null);
+    if($data==null){
+      return ;
+    }    
 @endphp
 
 <div>
