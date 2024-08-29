@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * The `Blocks` component is responsible for rendering a set of blocks on a view.
+ *
+ * It takes an optional array of `$blocks` and an optional `$model` parameter. The `$tpl` parameter
+ * specifies the template to use for rendering the blocks.
+ *
+ * The `render()` method retrieves the appropriate view based on the `$tpl` parameter, and then
+ * passes the `$view`, `$blocks`, and `$model` parameters to the view for rendering.
+ */
 declare(strict_types=1);
 
 namespace Modules\UI\View\Components\Render;
@@ -9,11 +17,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\View\Component;
 use Modules\Xot\Actions\GetViewAction;
 
-// use Modules\Xot\View\Components\XotBaseComponent;
-
-/**
- * .
- */
 class Blocks extends Component
 {
     public array $blocks = [];
