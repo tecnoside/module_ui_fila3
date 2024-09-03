@@ -32,3 +32,5 @@ build/
 vendor/
 build/
 node_modules
+docs/cache/
+cache/
