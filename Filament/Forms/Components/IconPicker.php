@@ -54,7 +54,7 @@ class IconPicker extends TextInput
                                 return [];
                             }
                             $key = $pack.'.icons';
-                            Assert::isArray($opts = Arr::get($icons, $key, []), '['.__LINE__.']['.__FILE__.']');
+                            Assert::isArray($opts = Arr::get($icons, $key, []), '['.__LINE__.']['.class_basename($this).']');
                             $opts = array_combine($opts, $opts);
 
                             return $opts;
