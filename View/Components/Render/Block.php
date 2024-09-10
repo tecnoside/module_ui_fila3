@@ -46,7 +46,6 @@ class Block extends Component
         $module = $block?->module ?? 'UI';
         $module_low = Str::lower($module);
 
-<<<<<<< HEAD
         /**
          * @phpstan-var view-string|null
          */
@@ -60,24 +59,6 @@ class Block extends Component
             ];
 
             return view('ui::alert', $view_params);
-=======
-        $views = ['ui::components.blocks.'.$this->tpl];
-        if (null !== $this->model) {
-            $module = app(GetModuleNameByModelAction::class)->execute($this->model);
-            $views[] = strtolower($module).'::components.blocks.'.$this->tpl;
-        }
-
-        /**
-         * @callable
-         */
-        $callback = static fn (string $view) => view()->exists($view);
-        /**
-         * @phpstan-var view-string|null
-         */
-        $view = Arr::first($views, $callback);
-        if (null === $view) {
-            throw new \Exception('none of these views exists ['.implode(', '.\chr(13), $views).']');
->>>>>>> 16d7e97 (Lint)
         }
         $view_params = $this->block['data'] ?? [];
 
