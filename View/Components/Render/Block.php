@@ -20,7 +20,7 @@ class Block extends Component
     public function __construct(
         public array $block,
         public ?Model $model = null,
-        public string $tpl = 'v1'
+        public string $tpl = 'v1',
     ) {
         $tpl_tmp = Arr::get($this->block, 'data._tpl', null);
         if (\is_string($tpl_tmp)) {
