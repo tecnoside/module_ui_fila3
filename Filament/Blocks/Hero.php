@@ -13,7 +13,6 @@ use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Arr;
 use Modules\UI\Filament\Forms\Components\RadioImage;
 use Modules\Xot\Actions\View\GetViewsSiblingsAndSelfAction;
-use Modules\Xot\Services\FileService;
 
 class Hero
 {
@@ -24,7 +23,7 @@ class Hero
         $view = 'ui::components.blocks.hero.simple';
         $views = app(GetViewsSiblingsAndSelfAction::class)->execute($view);
         $options = Arr::map($views, function ($view) {
-            return FileService::asset('ui::img/screenshots/'.$view.'.png');
+            return app(\Modules\Xot\Actions\File\AssetAction::class)->execute('ui::img/screenshots/'.$view.'.png');
         });
 
         return Block::make($name)
