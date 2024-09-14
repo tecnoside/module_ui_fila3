@@ -13,9 +13,14 @@ class WithSidebar extends Component
     public function __construct(
         // public Post $article,
         // public bool $showAuthor = false,
+<<<<<<< HEAD
         public string $tpl = 'v1',
     ) {
     }
+=======
+        public string $tpl = 'v1'
+    ) {}
+>>>>>>> origin/master
 
     public function render(): Renderable
     {
