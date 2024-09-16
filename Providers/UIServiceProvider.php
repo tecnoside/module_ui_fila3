@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\UI\Providers;
 
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\Facades\Config;
 use Modules\UI\Services\UIService;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
@@ -34,11 +33,4 @@ class UIServiceProvider extends XotBaseServiceProvider
         // $loader->alias('ui', UIService::class);
         // $this->registerBladeIcons(); //moved to XotBaseServiceProvider
     }
-
-    // public function registerBladeIcons(): void
-    // {
-    //    parent::registerBladeIcons();
-    //    Config::set('blade-icons.sets.default.path', 'Modules/UI/Resources/svg');
-    //    Config::set('blade-icons.sets.default.prefix', 'icon');
-    // }
 }
