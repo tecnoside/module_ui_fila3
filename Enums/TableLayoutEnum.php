@@ -31,7 +31,7 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
         */
     }
 
-    public function getColor(): string|array
+    public function getColor(): string
     {
         return match ($this) {
             self::GRID => 'gray',

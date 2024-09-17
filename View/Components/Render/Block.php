@@ -46,9 +46,7 @@ class Block extends Component
         $module = $block->module ?? 'UI';
         $module_low = Str::lower($module);
 
-        /**
-         * @phpstan-var view-string|null
-         */
+
         $view = $module_low.'::components.blocks.'.$this->tpl;
         if (! view()->exists((string) $view)) {
             // throw new \Exception();

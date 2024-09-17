@@ -31,7 +31,7 @@ enum CornerPositionEnum: string implements HasColor, HasIcon, HasLabel
         */
     }
 
-    public function getColor(): string|array
+    public function getColor(): string
     {
         return match ($this) {
             self::TOP_LEFT => 'gray',
