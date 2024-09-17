@@ -34,7 +34,7 @@ class Block extends Component
             return view('ui::empty');
         }
 
-        if ($this->tpl === 'v1') {
+        if ('v1' === $this->tpl) {
             $this->tpl = $this->block['type'];
         } else {
             $this->tpl = $this->block['type'].'.'.$this->tpl;
@@ -43,7 +43,7 @@ class Block extends Component
         $block = Arr::first($blocks, function ($block) {
             return $block->name === $this->block['type'];
         });
-        $module = $block?->module ?? 'UI';
+        $module = $block->module ?? 'UI';
         $module_low = Str::lower($module);
 
         /**
