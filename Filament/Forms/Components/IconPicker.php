@@ -50,7 +50,7 @@ class IconPicker extends TextInput
                     RadioIcon::make('newstate')
                         ->options(function (Get $get) use ($icons): array {
                             $pack = $get('pack');
-                            if ($pack == null) {
+                            if (null == $pack) {
                                 return [];
                             }
                             $key = $pack.'.icons';
