@@ -15,7 +15,7 @@ enum CornerPositionEnum: string implements HasColor, HasIcon, HasLabel
     case BOTTOM_LEFT = 'bottom-left';
     case BOTTOM_RIGHT = 'bottom-right';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         // return $this->name;
         return trans('ui::corner-position.'.$this->value.'.label');
@@ -31,7 +31,7 @@ enum CornerPositionEnum: string implements HasColor, HasIcon, HasLabel
         */
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string|array
     {
         return match ($this) {
             self::TOP_LEFT => 'gray',
@@ -41,7 +41,7 @@ enum CornerPositionEnum: string implements HasColor, HasIcon, HasLabel
         };
     }
 
-    public function getIcon(): ?string
+    public function getIcon(): string
     {
         return match ($this) {
             self::TOP_LEFT => 'heroicon-o-arrow-up-left',
@@ -54,7 +54,7 @@ enum CornerPositionEnum: string implements HasColor, HasIcon, HasLabel
     /**
      * ---.
      */
-    public function getCssClass(): ?string
+    public function getCssClass(): string
     {
         return match ($this) {
             self::TOP_LEFT => 'top-0 left-0',

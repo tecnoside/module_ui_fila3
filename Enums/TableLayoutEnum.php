@@ -15,7 +15,7 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
     case GRID = 'grid';
     case LIST = 'list';
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return $this->name;
         // return trans('ui::corner-position.'.$this->value.'.label');
@@ -31,7 +31,7 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
         */
     }
 
-    public function getColor(): string|array|null
+    public function getColor(): string|array
     {
         return match ($this) {
             self::GRID => 'gray',
@@ -39,7 +39,7 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
         };
     }
 
-    public function getIcon(): ?string
+    public function getIcon(): string
     {
         return match ($this) {
             self::LIST => 'heroicon-o-list-bullet',
