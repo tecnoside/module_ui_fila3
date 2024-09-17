@@ -19,20 +19,6 @@ class IconPicker extends TextInput
 
         $icons = app(GetAllIconsAction::class)->execute();
 
-        $opts_test = [
-            'heroicon-c-archive-box-x-mark' => 'heroicon-c-archive-box-x-mark',
-            'heroicon-c-arrow-down' => 'heroicon-c-arrow-down',
-            'heroicon-c-arrow-path' => 'heroicon-c-arrow-path',
-            'ui-flags.af' => 'ui-flags.af',
-        ];
-        // $opts = $icons['heroicons']['icons'];
-        // $opts = array_combine($opts, $opts);
-        // dddx([
-        //    'icons' => $icons,
-        //    'icons_1' => $icons->toCollection()->keys()->toArray(),
-        // 'methods' => get_class_methods($icons),
-        // ]);
-
         $packs = array_keys($icons);
         // $packs = $icons->toCollection()->keys()->toArray();
         $packs = array_combine($packs, $packs);
@@ -50,7 +36,7 @@ class IconPicker extends TextInput
                     RadioIcon::make('newstate')
                         ->options(function (Get $get) use ($icons): array {
                             $pack = $get('pack');
-                            if (null == $pack) {
+                            if (! is_string($pack)) {
                                 return [];
                             }
                             $key = $pack.'.icons';
