@@ -17,6 +17,9 @@
     @foreach ($fields as $field)
         @php
             $state=$field->record($record)->getState();
+            if($state==null){
+                continue;
+            }
             try{
                 $out=str_replace(', ',',<br/>',$state).'<br/>';
             }catch(\TypeError $e){
