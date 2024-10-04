@@ -11,10 +11,6 @@ use Filament\Widgets\Widget;
 
 class OverlookWidget extends Widget
 {
-    protected static string $view = 'ui::filament.widgets.overlook';
-
-    protected int|string|array $columnSpan = 1;
-
     public string $icon = 'heroicon-o-envelope';
 
     public string $title = '';
@@ -31,6 +27,10 @@ class OverlookWidget extends Widget
                 */
 
     public array $stats = [];
+
+    protected static string $view = 'ui::filament.widgets.overlook';
+
+    protected int|string|array $columnSpan = 1;
 
     /*
     public function mount(array $filter): void
