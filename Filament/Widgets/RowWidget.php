@@ -11,13 +11,13 @@ use Filament\Widgets\Widget;
 
 class RowWidget extends Widget
 {
-    protected static string $view = 'ui::filament.widgets.row';
-
-    protected int|string|array $columnSpan = 'full';
-
     public array $grid = [];
 
     public array $widgets = [];
+
+    protected static string $view = 'ui::filament.widgets.row';
+
+    protected int|string|array $columnSpan = 'full';
 
     protected function getColumns(): int
     {

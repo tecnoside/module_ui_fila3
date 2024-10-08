@@ -9,17 +9,22 @@ use Filament\Widgets\ChartWidget;
 
 class TestChartWidget extends ChartWidget
 {
-    // protected static ?string $heading = 'Blog Posts';
-    protected static ?string $pollingInterval = null;
-
     public int $qid = 0;
 
     public string $max_height = '200px';
 
     public string $type = 'line';
 
+    // protected static ?string $heading = 'Blog Posts';
+    protected static ?string $pollingInterval = null;
+
     // danger, gray, info, primary, success or warning
     protected static string $color = 'info';
+
+    public function getDescription(): ?string
+    {
+        return 'The number of blog posts published per month.';
+    }
 
     // protected static ?string $maxHeight = '20px';
 
@@ -58,10 +63,5 @@ class TestChartWidget extends ChartWidget
             },
         }
     JS);
-    }
-
-    public function getDescription(): ?string
-    {
-        return 'The number of blog posts published per month.';
     }
 }

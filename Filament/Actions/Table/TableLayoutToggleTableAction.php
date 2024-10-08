@@ -11,13 +11,6 @@ use Filament\Tables\Actions\Action;
  */
 class TableLayoutToggleTableAction extends Action
 {
-    // use NavigationActionLabelTrait;
-
-    public static function getDefaultName(): ?string
-    {
-        return 'table-layout-toggle-header';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -42,5 +35,11 @@ class TableLayoutToggleTableAction extends Action
                     // $livewire->tableLayoutToggle();
                 }
             );
+    }
+    // use NavigationActionLabelTrait;
+
+    public static function getDefaultName(): ?string
+    {
+        return 'table-layout-toggle-header';
     }
 }

@@ -16,11 +16,6 @@ class TableLayoutToggleHeaderAction extends Action
 
     public string $grid_icon = 'heroicon-o-squares-2x2';
 
-    public static function getDefaultName(): ?string
-    {
-        return 'table-layout-toggle-header';
-    }
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -31,11 +26,16 @@ class TableLayoutToggleHeaderAction extends Action
             // ->tooltip(trans('setting::database_connection.actions.database-backup.tooltip'))
             // ->icon(trans('setting::database_connection.actions.database-backup.icon'))
             // ->icon($this->list_icon)
-            ->icon(fn ($livewire) => 'list' == $livewire->layoutView ? $this->list_icon : $this->grid_icon)
+            ->icon(fn ($livewire) => 'list' === $livewire->layoutView ? $this->list_icon : $this->grid_icon)
             ->action(
                 function ($livewire) {
-                    $livewire->layoutView = ('grid' == $livewire->layoutView ? 'list' : 'grid');
+                    $livewire->layoutView = ('grid' === $livewire->layoutView ? 'list' : 'grid');
                 }
             );
+    }
+
+    public static function getDefaultName(): ?string
+    {
+        return 'table-layout-toggle-header';
     }
 }

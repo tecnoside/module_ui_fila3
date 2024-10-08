@@ -15,6 +15,11 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
     case GRID = 'grid';
     case LIST = 'list';
 
+    public static function init(): self
+    {
+        return self::LIST;
+    }
+
     public function getLabel(): string
     {
         return $this->name;
@@ -91,10 +96,5 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
             : $caller->getListTableColumns();
 
         return $columns;
-    }
-
-    public static function init(): self
-    {
-        return self::LIST;
     }
 }

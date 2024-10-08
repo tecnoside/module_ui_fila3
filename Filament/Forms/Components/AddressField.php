@@ -11,10 +11,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class AddressField extends Forms\Components\Field
 {
-    protected string $view = 'filament-forms::components.group';
-
     /** @var string|callable|null */
     public $relationship;
+
+    protected string $view = 'filament-forms::components.group';
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->afterStateHydrated(function (AddressField $component, ?Model $record) {
+            $data = [
+                'country' => null,
+                'street' => null,
+                'city' => null,
+                'state' => null,
+                'zip' => null,
+            ];
+            $address = $record?->getRelationValue($this->getRelationship());
+            if (null !== $address && is_object($address) && method_exists($address, 'toArray')) {
+                $data = $address->toArray();
+            }
+
+            $component->state($data);
+        });
+
+        $this->dehydrated(false);
+    }
 
     public function relationship(string|callable $relationship): static
     {
@@ -31,7 +54,8 @@ class AddressField extends Forms\Components\Field
 
         if (null === $relationship) {
             return;
-        } elseif ($address = $relationship->first()) {
+        }
+        if ($address = $relationship->first()) {
             $address->update($state);
         } else {
             $relationship->updateOrCreate($state);
@@ -65,29 +89,6 @@ class AddressField extends Forms\Components\Field
                         ->maxLength(255),
                 ]),
         ];
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->afterStateHydrated(function (AddressField $component, ?Model $record) {
-            $data = [
-                'country' => null,
-                'street' => null,
-                'city' => null,
-                'state' => null,
-                'zip' => null,
-            ];
-            $address = $record?->getRelationValue($this->getRelationship());
-            if (null != $address && is_object($address) && method_exists($address, 'toArray')) {
-                $data = $address->toArray();
-            }
-
-            $component->state($data);
-        });
-
-        $this->dehydrated(false);
     }
 
     public function getRelationship(): string
