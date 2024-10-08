@@ -12,6 +12,8 @@ use Illuminate\View\Component;
 use Illuminate\View\View;
 use Modules\UI\Actions\Block\GetAllBlocksAction;
 
+use function is_string;
+
 /**
  * .
  */
@@ -23,7 +25,7 @@ class Block extends Component
         public string $tpl = 'v1',
     ) {
         $tpl_tmp = Arr::get($this->block, 'data._tpl', null);
-        if (\is_string($tpl_tmp)) {
+        if (is_string($tpl_tmp)) {
             $this->tpl = $tpl_tmp;
         }
     }
@@ -34,7 +36,7 @@ class Block extends Component
             return view('ui::empty');
         }
 
-        if ('v1' === $this->tpl) {
+        if ($this->tpl === 'v1') {
             $this->tpl = $this->block['type'];
         } else {
             $this->tpl = $this->block['type'].'.'.$this->tpl;

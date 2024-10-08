@@ -39,7 +39,7 @@ class GetAllIconsAction
             foreach ($set['paths'] as $path) {
                 foreach (File::allFiles($path) as $file) {
                     // Simply ignore files that aren't SVGs
-                    if ('svg' !== $file->getExtension()) {
+                    if ($file->getExtension() !== 'svg') {
                         continue;
                     }
 
