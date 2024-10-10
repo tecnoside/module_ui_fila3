@@ -25,8 +25,13 @@ class TableLayoutToggleTableAction extends Action
             ->icon(function ($livewire) {
                 // $livewire->layoutView->toggle()->getIcon())
                 // $livewire->layoutView = $livewire->layoutView->toggle();
+
+                $session_val = session('layoutView');
+                if (! is_string($session_val)) {
+                    $session_val = 'list';
+                }
                 try {
-                    $layoutView = TableLayoutEnum::tryFrom(session('layoutView'));
+                    $layoutView = TableLayoutEnum::tryFrom($session_val);
                 } catch (\TypeError $e) {
                     $layoutView = null;
                 }
