@@ -8,7 +8,6 @@ use Exception;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Session;
 use Modules\UI\Enums\TableLayoutEnum;
-use TypeError;
 
 /**
  * @see https://filamentphp.com/plugins/tgeorgel-table-layout-toggle
@@ -28,10 +27,10 @@ class TableLayoutToggleTableAction extends Action
                 // $livewire->layoutView = $livewire->layoutView->toggle();
                 try {
                     $layoutView = TableLayoutEnum::tryFrom(session('layoutView'));
-                } catch (TypeError $e) {
+                } catch (\TypeError $e) {
                     $layoutView = null;
                 }
-                if ($layoutView === null) {
+                if (null === $layoutView) {
                     $layoutView = TableLayoutEnum::GRID;
                 }
                 $livewire->layoutView = $layoutView;
