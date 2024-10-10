@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\UI\Filament\Widgets;
 
+use Closure;
 use Filament\Widgets\Widget as BaseWidget;
 use Illuminate\Contracts\Support\Htmlable;
 
@@ -14,7 +15,7 @@ class StatWithIconWidget extends BaseWidget
     protected string|Htmlable $label;
 
     /**
-     * @var scalar|Htmlable|\Closure
+     * @var scalar|Htmlable|Closure
      */
     protected $value;
 
