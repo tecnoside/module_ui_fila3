@@ -24,16 +24,6 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
     {
         return $this->name;
         // return trans('ui::corner-position.'.$this->value.'.label');
-
-        // or
-        /*
-        return match ($this) {
-            self::Draft => 'Draft',
-            self::Reviewing => 'Reviewing',
-            self::Published => 'Published',
-            self::Rejected => 'Rejected',
-        };
-        */
     }
 
     public function getColor(): string
