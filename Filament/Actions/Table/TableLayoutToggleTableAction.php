@@ -13,7 +13,7 @@ class TableLayoutToggleTableAction extends Action
     protected function setUp(): void
     {
         parent::setUp();
-        $current=$this->getCurrentLayout();
+        $current = $this->getCurrentLayout();
         $this
             ->name('tableLayoutToggle')
             ->label('') // Nessuna label, solo tooltip
@@ -31,7 +31,7 @@ class TableLayoutToggleTableAction extends Action
         $newLayout = $currentLayout->toggle(); // Esegui il toggle tra GRID e LIST
         Session::put('table_layout', $newLayout->value); // Salva il layout nella sessione
         // Aggiorna la vista del layout dinamicamente
-        $livewire->layoutView=$newLayout;
+        $livewire->layoutView = $newLayout;
         $livewire->dispatch('$refresh');
         $livewire->dispatch('refreshTable');
     }
@@ -39,12 +39,11 @@ class TableLayoutToggleTableAction extends Action
     protected function getCurrentLayout(): TableLayoutEnum
     {
         $layout = Session::get('table_layout', TableLayoutEnum::init()->value); // Recupera il layout dalla sessione
-        $res=TableLayoutEnum::TryFrom($layout);
-        if($res!=null){
+        $res = TableLayoutEnum::TryFrom($layout);
+        if (null != $res) {
             return $res;
         }
+
         return TableLayoutEnum::init();
     }
-
-
 }
