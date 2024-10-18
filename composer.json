@@ -26,34 +26,6 @@
     "require": {
         "owenvoke/blade-fontawesome":"*"
     },
-    "require_comment": {
-        "guava/filament-icon-picker": "*",
-        "illuminate/contracts": "*",
-        "illuminate/support": "*",
-        "thecodingmachine/safe": "^2.5",
-        "laraxot/module_xot_fila3": "*"
-    },
-    "require-dev_comment": {
-        "driftingly/rector-laravel": "*",
-        "enlightn/enlightn": "^2.5",
-        "larastan/larastan": "^2.9",
-        "laravel/pint": "^1.13",
-        "nunomaduro/collision": "*",
-        "nunomaduro/phpinsights": "^2.9",
-        "orchestra/testbench": "^9.4",
-        "pestphp/pest": "*",
-        "pestphp/pest-plugin-arch": "*",
-        "pestphp/pest-plugin-laravel": "*",
-        "phpstan/phpstan-deprecation-rules": "*",
-        "phpstan/phpstan-phpunit": "*",
-
-        "rector/rector": "*",
-        "spatie/laravel-ray": "*",
-        "symplify/phpstan-rules": "*",
-        "thecodingmachine/phpstan-safe-rule": "^1.2",
-        "tightenco/duster": "*",
-        "vimeo/psalm": "*"
-    },
     "repositories": [
         {
             "type": "path",
