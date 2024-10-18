@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\UI\Filament\Actions\Table;
 
-use Exception;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Actions\Action;
 use Illuminate\Support\Facades\Session;
@@ -34,7 +33,7 @@ class TableLayoutToggleTableAction extends Action
         Session::put('table_layout', $newLayout->value); // Salva il layout nella sessione
         // Aggiorna la vista del layout dinamicamente
         if (! property_exists($livewire, 'layoutView')) {
-            throw new Exception('add layoutView to ['.$livewire::class.']');
+            throw new \Exception('add layoutView to ['.$livewire::class.']');
         }
         $livewire->layoutView = $newLayout;
         $livewire->dispatch('$refresh');
@@ -48,7 +47,7 @@ class TableLayoutToggleTableAction extends Action
             return TableLayoutEnum::init();
         }
         $res = TableLayoutEnum::TryFrom($layout);
-        if ($res !== null) {
+        if (null !== $res) {
             return $res;
         }
 

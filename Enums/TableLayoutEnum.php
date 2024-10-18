@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\UI\Enums;
 
-use Exception;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
@@ -46,14 +45,14 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
     public function toggle(): self
     {
         // $res = self::LIST === $this ? self::GRID : self::LIST;
-        $res = $this === self::GRID ? self::LIST : self::GRID;
+        $res = self::GRID === $this ? self::LIST : self::GRID;
 
         return $res;
     }
 
     public function isGridLayout(): bool
     {
-        return $this === self::GRID;
+        return self::GRID === $this;
     }
 
     public function getTableContentGrid(): ?array
@@ -76,10 +75,10 @@ enum TableLayoutEnum: string implements HasColor, HasIcon, HasLabel
         $caller = Arr::get($trace, '1.object');
 
         if (! method_exists($caller, 'getGridTableColumns')) {
-            throw new Exception('method getGridTableColumns not found in ['.get_class($caller).']');
+            throw new \Exception('method getGridTableColumns not found in ['.get_class($caller).']');
         }
         if (! method_exists($caller, 'getListTableColumns')) {
-            throw new Exception('method getListTableColumns not found in ['.get_class($caller).']');
+            throw new \Exception('method getListTableColumns not found in ['.get_class($caller).']');
         }
 
         $columns = $this->isGridLayout()
