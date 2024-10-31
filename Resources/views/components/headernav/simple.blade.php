@@ -4,7 +4,14 @@
 
             <div class="relative z-50 flex items-center w-auto h-full">
                 <a href="{{ route('home') }}" class="flex items-center mr-0 md:mr-5 shrink-0">
+                    
                     <x-filament-panels::logo />
+                    
+                {{--
+                <div class="flex justify-center items-center mb-4">
+                   <img alt="filament-panels::layout.logo.alt" src="/assets/images/logo01.png" style="height: 2em;" class="fi-logo flex dark:hidden">
+                </div>
+                --}}
                 </a>
                 <div @click="mobileMenuOpen=!mobileMenuOpen"
                     class="relative flex items-center justify-center w-8 h-8 ml-5 overflow-hidden text-gray-500 bg-gray-100 rounded cursor-pointer md:hidden hover:text-gray-700 hover:bg-gray-200">
