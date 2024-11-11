@@ -22,13 +22,15 @@ class UIServiceProvider extends XotBaseServiceProvider
     /**
      * Undocumented function.
      */
-    public function bootCallback(): void
+    public function boot(): void
     {
+        parent::boot();
         // -------
     }
 
-    public function registerCallback(): void
+    public function register(): void
     {
+        parent::register();
         // $loader = AliasLoader::getInstance();
         // $loader->alias('ui', UIService::class);
         // $this->registerBladeIcons(); //moved to XotBaseServiceProvider
