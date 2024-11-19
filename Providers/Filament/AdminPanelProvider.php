@@ -18,8 +18,8 @@ class AdminPanelProvider extends XotBasePanelProvider
     {
         FilamentAsset::register(
             [
-                Css::make('filament-navigation-styles', __DIR__.'/../../Resources/dist/plugin.css'),
-                Js::make('filament-navigation-scripts', __DIR__.'/../../Resources/dist/plugin.js'),
+                Css::make('filament-navigation-styles', __DIR__ . '/../../Resources/dist/plugin.css'),
+                Js::make('filament-navigation-scripts', __DIR__ . '/../../Resources/dist/plugin.js'),
             ],
             'filament-navigation'
         );

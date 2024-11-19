@@ -20,8 +20,9 @@ class GetAllBlocksAction
      */
     public function execute(string $context = 'form'): DataCollection
     {
-        $files = File::glob(base_path('Modules').'/*/Filament/Blocks/*.php');
-        $blocks = Arr::map($files,
+        $files = File::glob(base_path('Modules') . '/*/Filament/Blocks/*.php');
+        $blocks = Arr::map(
+            $files,
             function ($path) {
                 $class = Str::of($path)
                     ->after(base_path('Modules'))
