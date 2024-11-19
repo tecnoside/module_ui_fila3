@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Blade;
 use Modules\UI\Services\UIService;
 use Modules\Xot\Providers\XotBaseServiceProvider;
 
+use function Safe\realpath;
+
 /**
  * ---.
  */
@@ -26,9 +28,8 @@ class UIServiceProvider extends XotBaseServiceProvider
     public function boot(): void
     {
         parent::boot();
-        // -------
+
         $components_path = realpath(__DIR__.'/../Resources/views/components');
-        // dddx($components_path);
         Blade::anonymousComponentPath($components_path);
     }
 
