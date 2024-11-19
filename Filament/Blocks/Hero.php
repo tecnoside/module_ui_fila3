@@ -23,7 +23,7 @@ class Hero
         $view = 'ui::components.blocks.hero.simple';
         $views = app(GetViewsSiblingsAndSelfAction::class)->execute($view);
         $options = Arr::map($views, function ($view) {
-            return app(\Modules\Xot\Actions\File\AssetAction::class)->execute('ui::img/screenshots/' . $view . '.png');
+            return app(\Modules\Xot\Actions\File\AssetAction::class)->execute('ui::img/screenshots/'.$view.'.png');
         });
 
         return Block::make($name)

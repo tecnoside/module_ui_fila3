@@ -22,7 +22,8 @@ use Modules\Xot\Actions\GetViewAction;
 class Blocks extends Component
 {
     public array $blocks = [];
-    public function __construct(?array $blocks = [], public ?Model $model = null, public string $tpl = 'v1',)
+
+    public function __construct(?array $blocks = [], public ?Model $model = null, public string $tpl = 'v1')
     {
         if (is_array($blocks)) {
             $this->blocks = $blocks;
@@ -40,6 +41,7 @@ class Blocks extends Component
             'blocks' => $this->blocks,
             'model' => $this->model,
         ];
+
         return view($view, $view_params);
     }
 }

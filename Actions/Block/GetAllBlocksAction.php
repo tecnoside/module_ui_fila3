@@ -20,7 +20,7 @@ class GetAllBlocksAction
      */
     public function execute(string $context = 'form'): DataCollection
     {
-        $files = File::glob(base_path('Modules') . '/*/Filament/Blocks/*.php');
+        $files = File::glob(base_path('Modules').'/*/Filament/Blocks/*.php');
         $blocks = Arr::map(
             $files,
             function ($path) {

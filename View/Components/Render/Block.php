@@ -37,7 +37,7 @@ class Block extends Component
         if ('v1' === $this->tpl) {
             $this->tpl = $this->block['type'];
         } else {
-            $this->tpl = $this->block['type'] . '.' . $this->tpl;
+            $this->tpl = $this->block['type'].'.'.$this->tpl;
         }
         $blocks = app(GetAllBlocksAction::class)->execute();
         $block = Arr::first($blocks, function ($block) {
@@ -46,10 +46,10 @@ class Block extends Component
         $module = $block->module ?? 'UI';
         $module_low = Str::lower($module);
 
-        $view = $module_low . '::components.blocks.' . $this->tpl;
+        $view = $module_low.'::components.blocks.'.$this->tpl;
         if (! view()->exists((string) $view)) {
             // throw new \Exception();
-            $message = 'view not exists [' . $view . ']';
+            $message = 'view not exists ['.$view.']';
             $view_params = [
                 'title' => 'deprecated',
                 'message' => $message,

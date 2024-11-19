@@ -45,12 +45,12 @@ class GetAllIconsAction
 
                     // $iconName = $this->getIconName($file, parentPath: $path, prefix: $prefix);
                     $iconName = str($file->getPathname())
-                        ->after($path . DIRECTORY_SEPARATOR)
+                        ->after($path.DIRECTORY_SEPARATOR)
                         ->replace(DIRECTORY_SEPARATOR, '.')
                         ->basename('.svg')
                         ->toString();
 
-                    $icons[] = $set['prefix'] . '-' . $iconName;
+                    $icons[] = $set['prefix'].'-'.$iconName;
                 }
             }
             $set['icons'] = $icons;
