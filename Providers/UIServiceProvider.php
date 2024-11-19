@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Modules\UI\Providers;
 
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Facades\Blade;
 use Modules\UI\Services\UIService;
 use Modules\Xot\Providers\XotBaseServiceProvider;
+
+use function Safe\realpath;
 
 /**
  * ---.
@@ -22,13 +25,17 @@ class UIServiceProvider extends XotBaseServiceProvider
     /**
      * Undocumented function.
      */
-    public function bootCallback(): void
+    public function boot(): void
     {
-        // -------
+        parent::boot();
+
+        $components_path = realpath(__DIR__.'/../Resources/views/components');
+        Blade::anonymousComponentPath($components_path);
     }
 
-    public function registerCallback(): void
+    public function register(): void
     {
+        parent::register();
         // $loader = AliasLoader::getInstance();
         // $loader->alias('ui', UIService::class);
         // $this->registerBladeIcons(); //moved to XotBaseServiceProvider
