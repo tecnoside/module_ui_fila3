@@ -5,10 +5,10 @@ declare(strict_types=1);
 return [
     'fields' => [
         'text' => [
-            'label' => 'Testo'
+            'label' => 'Testo',
         ],
         'level' => [
-            'label' => 'Grandezza'
-        ]
-    ]
+            'label' => 'Grandezza',
+        ],
+    ],
 ];
