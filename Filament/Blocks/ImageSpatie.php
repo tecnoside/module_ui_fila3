@@ -49,7 +49,7 @@ class ImageSpatie
                         function (HasForms $livewire, SpatieMediaLibraryFileUpload $component, TemporaryUploadedFile $state, Get $get, HasMedia $record) {
                             // Call to an undefined method Filament\Forms\Contracts\HasForms::validateOnly().
                             // $livewire->validateOnly($component->getStatePath());
-                            Assert::string($collection_name = $get('img_uuid'), '['.__LINE__.']['.class_basename(__CLASS__).']');
+                            Assert::string($collection_name = $get('img_uuid'), '[' . __LINE__ . '][' . class_basename(__CLASS__) . ']');
                             $res = $record
                                 ->addMedia($state)
                                 ->withResponsiveImages()

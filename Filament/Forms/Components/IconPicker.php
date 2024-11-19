@@ -39,8 +39,8 @@ class IconPicker extends TextInput
                             if (! is_string($pack)) {
                                 return [];
                             }
-                            $key = $pack.'.icons';
-                            Assert::isArray($opts = Arr::get($icons, $key, []), '['.__LINE__.']['.class_basename($this).']');
+                            $key = $pack . '.icons';
+                            Assert::isArray($opts = Arr::get($icons, $key, []), '[' . __LINE__ . '][' . class_basename($this) . ']');
                             $opts = array_combine($opts, $opts);
 
                             return $opts;

@@ -33,7 +33,7 @@ class TableLayoutToggleTableAction extends Action
         Session::put('table_layout', $newLayout->value); // Salva il layout nella sessione
         // Aggiorna la vista del layout dinamicamente
         if (! property_exists($livewire, 'layoutView')) {
-            throw new \Exception('add layoutView to ['.$livewire::class.']');
+            throw new \Exception('add layoutView to [' . $livewire::class . ']');
         }
         $livewire->layoutView = $newLayout;
         $livewire->dispatch('$refresh');
